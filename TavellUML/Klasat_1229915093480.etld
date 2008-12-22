@@ -66,8 +66,26 @@
                 </graph>
                 <graph id="7">
                     <name/>
+                    <margins>
+                        <proportional bottom="0.0" left="0.0" right="0.0" top="0.0"/>
+                        <constant bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </margins>
+                    <url/>
+                    <graphics type="basicGraph">
+                        <backgroundColor value="255 255 255"/>
+                        <imageUsed/>
+                        <imageTiled value="false"/>
+                        <imageStyle value="WORLD_OFFSET"/>
+                        <imageMinTileStep value="25"/>
+                        <imageX value="0.0"/>
+                        <imageY value="0.0"/>
+                        <drawNodesBeforeEdges value="true"/>
+                    </graphics>
+                </graph>
+                <graph id="8">
+                    <name/>
                     <nodes>
-                        <node id="8">
+                        <node id="9">
                             <name/>
                             <center x="-200.9314162665433" y="110.46570813327168"/>
                             <size height="292.3659971459375" width="236.0495960563512"/>
@@ -88,11 +106,11 @@
                                 <PEID value="DCE.DBBBA018-D7CF-0C9A-D179-C77B1C4A20EF"/>
                             </graphics>
                         </node>
-                        <node id="9">
+                        <node id="10">
                             <name/>
-                            <center x="109.4079003760707" y="190.74653521842663"/>
-                            <size height="112.63280217917264" width="176.13853106742954"/>
-                            <originalSize height="112.63280217917264" width="176.13853106742957"/>
+                            <center x="126.782109222858" y="164.98477727319033"/>
+                            <size height="164.15631806964527" width="210.88694876100413"/>
+                            <originalSize height="164.15631806964527" width="210.88694876100413"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -109,7 +127,7 @@
                                 <PEID value="DCE.1E4D2126-752D-8D0C-3528-3852EFB1BFEB"/>
                             </graphics>
                         </node>
-                        <node id="10">
+                        <node id="11">
                             <name/>
                             <center x="-189.54831391864823" y="-253.79356699937182"/>
                             <size height="371.448602931314" width="318.726865741063"/>
@@ -130,7 +148,7 @@
                                 <PEID value="DCE.4E70CA9E-2642-7E1B-8D22-E835A6406CEF"/>
                             </graphics>
                         </node>
-                        <node id="11">
+                        <node id="12">
                             <name/>
                             <center x="778.015385652436" y="36.17598754700879"/>
                             <size height="191.71540796454917" width="188.12074406521356"/>
@@ -151,7 +169,7 @@
                                 <PEID value="DCE.551BFBEE-8746-BC6B-933C-83A972AD6D28"/>
                             </graphics>
                         </node>
-                        <node id="12">
+                        <node id="13">
                             <name/>
                             <center x="746.2625212083076" y="-246.60423920070116"/>
                             <size height="311.5375379423924" width="210.88694876100408"/>
@@ -172,7 +190,7 @@
                                 <PEID value="DCE.74E0EED1-FC66-D13D-2376-213E5F6F28B9"/>
                             </graphics>
                         </node>
-                        <node id="13">
+                        <node id="14">
                             <name/>
                             <center x="494.63604825483685" y="8.616897652104896"/>
                             <size height="191.71540796454917" width="206.09406356188993"/>
@@ -193,7 +211,7 @@
                                 <PEID value="DCE.7E5821AF-9330-DF35-C5AA-542898220BF4"/>
                             </graphics>
                         </node>
-                        <node id="14">
+                        <node id="15">
                             <name/>
                             <center x="482.6538352570523" y="-221.4415919053542"/>
                             <size height="112.63280217917293" width="186.92252276543547"/>
@@ -214,9 +232,9 @@
                                 <PEID value="DCE.8264041B-0AC3-1F0A-13A1-59F6D75B5AFF"/>
                             </graphics>
                         </node>
-                        <node id="15">
+                        <node id="16">
                             <name/>
-                            <center x="162.72874821621096" y="-240.61313270180906"/>
+                            <center x="162.72874821621096" y="-240.613132701809"/>
                             <size height="412.1881271237808" width="297.15888234505127"/>
                             <originalSize height="412.1881271237808" width="297.15888234505127"/>
                             <shape resource="0"/>
@@ -235,7 +253,7 @@
                                 <PEID value="DCE.DA921CAA-0187-7B31-26CD-E154F8E55156"/>
                             </graphics>
                         </node>
-                        <node id="16">
+                        <node id="17">
                             <name/>
                             <center x="188.49050616144714" y="-565.9302155916537"/>
                             <size height="152.17410507186082" width="178.534973666987"/>
@@ -256,7 +274,7 @@
                                 <PEID value="DCE.DFB957EB-FE90-FD7D-0F21-AD89F5E8C31A"/>
                             </graphics>
                         </node>
-                        <node id="17">
+                        <node id="18">
                             <name/>
                             <center x="400.57567622222973" y="-579.1106498892162"/>
                             <size height="152.17410507186105" width="178.5349736669864"/>
@@ -277,7 +295,7 @@
                                 <PEID value="DCE.962FFFE3-4145-A2F9-D270-0A8CAF851C5E"/>
                             </graphics>
                         </node>
-                        <node id="18">
+                        <node id="19">
                             <name/>
                             <center x="-36.775098196897986" y="-550.3533386945337"/>
                             <size height="152.17410507186082" width="178.53497366698645"/>
@@ -298,11 +316,11 @@
                                 <PEID value="DCE.BC19EDCF-EC76-BD2D-0159-6FE04C934AF7"/>
                             </graphics>
                         </node>
-                        <node id="19">
+                        <node id="20">
                             <name value="Stivat[0] jane guret jashte loje, Stivat[1..24] jane guret ne loje, Stivat[25..26] jane guret e perfunduar"/>
                             <center x="294.0" y="151.0"/>
                             <size height="80.28082708515501" width="149.77766247230397"/>
-                            <originalSize height="77.8843844855981" width="147.38121987274712"/>
+                            <originalSize height="77.88438448559815" width="147.38121987274724"/>
                             <shape resource="0"/>
                             <url/>
                             <visible value="true"/>
@@ -321,11 +339,11 @@
                         </node>
                     </nodes>
                     <edges>
-                        <edge id="20" source="9" target="8">
+                        <edge id="21" source="10" target="9">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="21">
+                                <edgeLabel id="22">
                                     <name value="1"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -344,7 +362,7 @@
                                         <PEID value="DCE.E13A80FA-33F5-3870-2D50-18701A646EBE"/>
                                     </graphics>
                                 </edgeLabel>
-                                <edgeLabel id="22">
+                                <edgeLabel id="23">
                                     <name value="*"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -377,11 +395,11 @@
                                 <PEID value="DCE.086384AC-F372-45D3-888F-F4391081C0D8"/>
                             </graphics>
                         </edge>
-                        <edge id="23" source="13" target="11">
+                        <edge id="24" source="14" target="12">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="24">
+                                <edgeLabel id="25">
                                     <name value="1"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -400,7 +418,7 @@
                                         <PEID value="DCE.CD94B6F1-2788-D701-CE9C-66FC68A6CBEC"/>
                                     </graphics>
                                 </edgeLabel>
-                                <edgeLabel id="25">
+                                <edgeLabel id="26">
                                     <name value="2"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -433,11 +451,11 @@
                                 <PEID value="DCE.D457FA26-73FC-6249-4FA8-AEFF4BCF0112"/>
                             </graphics>
                         </edge>
-                        <edge id="26" source="14" target="12">
+                        <edge id="27" source="15" target="13">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="27">
+                                <edgeLabel id="28">
                                     <name value="1"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -456,7 +474,7 @@
                                         <PEID value="DCE.30CFFED9-B8A4-6424-3C8A-CF0BE0A0E171"/>
                                     </graphics>
                                 </edgeLabel>
-                                <edgeLabel id="28">
+                                <edgeLabel id="29">
                                     <name value="*"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -489,7 +507,7 @@
                                 <PEID value="DCE.C444B38A-8560-7A8E-A8A1-C7B2A853B370"/>
                             </graphics>
                         </edge>
-                        <edge id="29" source="18" target="15">
+                        <edge id="30" source="19" target="16">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -505,7 +523,7 @@
                                 <PEID value="DCE.A9154BE4-99CE-B340-0291-74246F78D1D2"/>
                             </graphics>
                         </edge>
-                        <edge id="30" source="16" target="15">
+                        <edge id="31" source="17" target="16">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -521,7 +539,7 @@
                                 <PEID value="DCE.64FEFB00-EFFC-BA2C-7DDA-59D342DA0BC4"/>
                             </graphics>
                         </edge>
-                        <edge id="31" source="17" target="15">
+                        <edge id="32" source="18" target="16">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -537,13 +555,13 @@
                                 <PEID value="DCE.AC88E6B7-0E65-F41A-6443-767CCCC1CF9D"/>
                             </graphics>
                         </edge>
-                        <edge id="32" source="13" target="15">
+                        <edge id="33" source="14" target="16">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="33">
+                                <edgeLabel id="34">
                                     <name value="1"/>
-                                    <size height="20.000000000000014" width="75.0"/>
+                                    <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
                                     <distanceFromSource value="0.9"/>
                                     <url/>
@@ -560,7 +578,7 @@
                                         <PEID value="DCE.07936165-FC3E-06BD-B69E-7CCC3E049135"/>
                                     </graphics>
                                 </edgeLabel>
-                                <edgeLabel id="34">
+                                <edgeLabel id="35">
                                     <name value="1"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -593,11 +611,11 @@
                                 <PEID value="DCE.4BB8DF2F-F72C-AB40-ABF5-F2175191805D"/>
                             </graphics>
                         </edge>
-                        <edge id="35" source="14" target="15">
+                        <edge id="36" source="15" target="16">
                             <sourceClipping/>
                             <targetClipping/>
                             <edgeLabels>
-                                <edgeLabel id="36">
+                                <edgeLabel id="37">
                                     <name value="1"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -616,7 +634,7 @@
                                         <PEID value="DCE.D7BF9C92-B72F-351C-118A-1CD09786F101"/>
                                     </graphics>
                                 </edgeLabel>
-                                <edgeLabel id="37">
+                                <edgeLabel id="38">
                                     <name value="1"/>
                                     <size height="20.0" width="75.0"/>
                                     <constantOffset x="0.0" y="-10.0"/>
@@ -649,7 +667,7 @@
                                 <PEID value="DCE.3467E17C-7516-7D76-FB47-6329880BB0AF"/>
                             </graphics>
                         </edge>
-                        <edge id="38" source="15" target="19">
+                        <edge id="39" source="16" target="20">
                             <sourceClipping/>
                             <targetClipping/>
                             <url/>
@@ -683,7 +701,7 @@
                     </graphics>
                 </graph>
             </graphs>
-            <rootGraph value="7"/>
+            <rootGraph value="8"/>
         </instances>
     </graphManager>
     <serviceInput type="jlayout">
