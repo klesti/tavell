@@ -52,8 +52,5 @@ public class Lojtar {
             neLoje.push(g);
         }    
     }
-    
-    
-
 }
 

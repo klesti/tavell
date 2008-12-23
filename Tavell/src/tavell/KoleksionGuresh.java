@@ -9,6 +9,14 @@ public class KoleksionGuresh extends Stack {
         
     }
 
+    public int getPozicioni() {
+        return this.pozicioni;
+    }
+    
+    public void setPozicioni(int val){
+        this.pozicioni = val;
+    }
+    
     public void push(Gur g) {
         g.setPozicioni(this.pozicioni);
         super.push(g);
@@ -37,11 +45,5 @@ public class KoleksionGuresh extends Stack {
         for(int i=0;i<k.size();i++){
             this.push(k.get(i));
         }
-    }
-    
-    
-    //Get nr Guret e pare
-    public KoleksionGuresh getDisa(int nr) {
-        return this;
-    }
+    }   
 }
