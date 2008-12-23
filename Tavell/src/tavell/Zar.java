@@ -1,5 +1,7 @@
 package tavell;
 
+import java.util.*;
+
 public class Zar 
 {
     private int vlera;
@@ -21,7 +23,7 @@ public class Zar
 
     public void hidh () 
     {
-        this.vlera = (int)(Math.random() * 5 + 1);
+        this.vlera = new Random().nextInt(5) + 1;
     }
 }
 
