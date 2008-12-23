@@ -12,6 +12,13 @@ public class Levizje
         this.nga = 0;
         this.tek = 0;
     }
+    
+    public Levizje (Lojtar l, int nga, int tek)
+    {
+        this.lojtari = l;
+        this.nga = nga;
+        this.tek = tek;
+    }
 
     public Lojtar getLojtari () 
     {
