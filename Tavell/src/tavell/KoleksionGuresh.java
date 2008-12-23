@@ -23,4 +23,19 @@ public class KoleksionGuresh extends Stack {
     public Gur get(int i) {
         return (Gur)super.get(i);
     }
+    
+    public KoleksionGuresh pop(int nr){
+        KoleksionGuresh tmp = new KoleksionGuresh();
+        while(nr >0) {
+            tmp.push(this.pop());
+            nr--;
+        }
+        return tmp;
+    }
+    
+    public void push(KoleksionGuresh k){
+        for(int i=0;i<k.size();i++){
+            this.push(k.get(i));
+        }
+    }
 }
