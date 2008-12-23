@@ -38,4 +38,10 @@ public class KoleksionGuresh extends Stack {
             this.push(k.get(i));
         }
     }
+    
+    
+    //Get nr Guret e pare
+    public KoleksionGuresh getDisa(int nr) {
+        return this;
+    }
 }
