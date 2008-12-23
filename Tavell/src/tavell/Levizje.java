@@ -8,9 +8,7 @@ public class Levizje
 
     public Levizje () 
     {
-        this.lojtari = new Lojtar();
-        this.nga = 0;
-        this.tek = 0;
+        
     }
     
     public Levizje (Lojtar l, int nga, int tek)
