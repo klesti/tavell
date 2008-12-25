@@ -112,6 +112,11 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         jTextField4.setText("120");
 
         jButton1.setText("Anullo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("OK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -203,8 +208,12 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+jTextField2.getText()+" \n Lojtari 2: "+jTextField2.getText()+" \n Piket :"+jTextField4.getText());
+    JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+jTextField2.getText()+" \n Lojtari 2: "+jTextField3.getText()+" \n Piket :"+jTextField4.getText());
 }//GEN-LAST:event_jButton2ActionPerformed
+
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    System.exit(0);
+}//GEN-LAST:event_jButton1ActionPerformed
 
 private JRadioButton getSelected() {
     for (Enumeration e = buttonGroup1.getElements() ; e.hasMoreElements() ;) {
