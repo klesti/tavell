@@ -17,7 +17,6 @@ public class Fushe extends Canvas {
     private SpriteCache sprites;
     public static final String background = "background.png";
     private Tavell t;
-    private Qyl q;
     
     public Fushe() {
         Lojtar l1 = new Lojtar();

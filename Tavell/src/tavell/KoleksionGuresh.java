@@ -39,9 +39,9 @@ public class KoleksionGuresh extends Stack {
         } else if (pozicioni>=19 && pozicioni<=24) {
            x = (Fushe.WIDTH/2+48)+48*(pozicioni-19);
         } else if (pozicioni>=7&&pozicioni<=12) {
-           x = (Fushe.WIDTH/2-48)+48*(pozicioni-7);
+           x = (Fushe.WIDTH/2-96)-48*(pozicioni-7);
         } else {
-           x = (Fushe.WIDTH-96)-48*(pozicioni-1);  
+           x = (Fushe.WIDTH-96-48)-48*(pozicioni-1);  
         }
         return new Point(x,y);
     }
