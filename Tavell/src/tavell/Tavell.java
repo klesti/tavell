@@ -15,6 +15,7 @@ public class Tavell extends Loje {
         KoleksionGuresh l2 = lojtaret[1].getNeLoje();
         Gur g;
         
+               
         //Krijojme konfiguracionin fillestar per lojen tavell
         //---Dyshet --
         for (int i=0;i<2;i++) {

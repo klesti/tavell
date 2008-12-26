@@ -8,6 +8,10 @@ public class Lojtar {
     private KoleksionGuresh tePerfunduar;
 
     public Lojtar () {
+        neLoje = new KoleksionGuresh();
+        jashteLoje = new KoleksionGuresh();
+        tePerfunduar = new KoleksionGuresh();
+        mbushNeLoje();
     }
 
     public String getEmri () {

@@ -16,6 +16,11 @@ abstract public class Loje {
           Stivat[25..26] jane guret e perfunduar
          */
         stivat = new KoleksionGuresh[27]; 
+        //Inicializo Stivat
+        for (int i=0;i<27;i++) {
+            stivat[i] = new KoleksionGuresh(i);
+        }
+        //Fund inicializimi
         lojtaret = l;
         zaret = new CiftZaresh();
         levizjet = new KoleksionLevizjesh();
