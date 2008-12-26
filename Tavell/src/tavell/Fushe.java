@@ -31,10 +31,8 @@ public class Fushe extends Canvas {
     
     public void paraqitGuret(Graphics g) {
         KoleksionGuresh stivat[] = t.getStivat();
-        int k = 0;
         for (int i=1; i<=24; i++) {
             for (int j=0;j<stivat[i].size();j++) {
-                //System.out.println(stivat[i].get(j).getKoordinata().toString());
                 try {
                     stivat[i].get(j).paraqit(g, this);
                 }
@@ -48,7 +46,7 @@ public class Fushe extends Canvas {
     @Override
     public void paint(Graphics g) {
         g.drawImage(sprites.getSprite(background),0,0,this);
-        paraqitGuret(g);
+        paraqitGuret(g);     
     }
 
 }

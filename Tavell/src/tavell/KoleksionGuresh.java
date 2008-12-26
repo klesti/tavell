@@ -26,10 +26,9 @@ public class KoleksionGuresh extends Stack {
     public Point koordinatatERradhes() {
         int x,y;
         int i = size();
-        
-        //Y
+         //Y
         if (pozicioni>=1 && pozicioni <=12) {
-            y = (Fushe.HEIGHT-23)-(i+1)*48;
+            y = (Fushe.HEIGHT-23)-(i+1)*48;         
         } else {
             y = 23+i*48;
         }
