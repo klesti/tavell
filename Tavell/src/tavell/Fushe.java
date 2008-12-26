@@ -25,7 +25,7 @@ public class Fushe extends Canvas {
         sprites = new SpriteCache();
         setBounds(0,0,WIDTH,HEIGHT);
     }
-    
+    @Override
     public void paint(Graphics g) {
         g.drawImage(sprites.getSprite(background),0,0,this);
     }
