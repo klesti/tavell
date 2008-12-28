@@ -1,5 +1,7 @@
 package tavell;
 
+import java.awt.Graphics;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList; 
 
 public class CiftZaresh 
@@ -8,9 +10,9 @@ public class CiftZaresh
 
     public CiftZaresh ()
     {
-        this.zaret = new ArrayList(2);
+        this.zaret = new ArrayList<Zar>(2);
         this.zaret.add(new Zar());
-        this.zaret.add(new Zar());
+        this.zaret.add(new Zar());        
     }
 
     public ArrayList<Zar> getZaret () 
@@ -25,8 +27,14 @@ public class CiftZaresh
     
     public void setZaret (Zar nje, Zar dy)
     {
-        this.zaret.set(0, nje);
-        this.zaret.set(1, dy);
+        if(this.zaret.size()==0){
+            this.zaret.add(nje);
+            this.zaret.add(dy);
+        }
+        else {
+            this.zaret.set(0, nje);
+            this.zaret.set(1, dy);
+        }
     }
     
     public void setZaret (int nje, int dy)
@@ -36,9 +44,16 @@ public class CiftZaresh
     }
 
     public void hidhZaret () 
-    {
-        this.zaret.get(0).hidh();
+    {        
+        this.zaret.get(0).hidh();       
         this.zaret.get(1).hidh();
+    }        
+    
+    public void paraqit(Graphics g, ImageObserver obs,int x,int y) {
+        this.zaret.get(0).setNgjyre("blue");
+        this.zaret.get(0).paraqit(g, obs, x, y);
+        this.zaret.get(1).setNgjyre("blue");
+        this.zaret.get(1).paraqit(g, obs, x-58, y);
     }
 }
 
