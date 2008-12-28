@@ -27,7 +27,8 @@ public class TestLoje extends JFrame {
         panel.setLayout(null);
         panel.add(fusha);        
         
-        setBounds(0,0,900,700);
+        setBounds(0,0,1100,700);
+        setResizable(false);        
         setVisible(true);        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

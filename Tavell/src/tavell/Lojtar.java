@@ -3,14 +3,17 @@ package tavell;
 public class Lojtar {
 
     private String emri;
+    private int numri;
     private KoleksionGuresh neLoje;
     private KoleksionGuresh jashteLoje;
     private KoleksionGuresh tePerfunduar;
 
-    public Lojtar () {
+    public Lojtar (String emri,int numri) {
         neLoje = new KoleksionGuresh();
         jashteLoje = new KoleksionGuresh();
         tePerfunduar = new KoleksionGuresh();
+        this.emri = emri;
+        this.numri = numri;
         mbushNeLoje();
     }
 
@@ -45,6 +48,14 @@ public class Lojtar {
     public void setTePerfunduar (KoleksionGuresh val) {
         this.tePerfunduar = val;
     }
+    
+        public int getNumri() {
+        return numri;
+    }
+
+    public void setNumri(int numri) {
+        this.numri = numri;
+    }
 
     public boolean kaJashteLoje () {
         return !jashteLoje.isEmpty();
@@ -53,8 +64,11 @@ public class Lojtar {
     public void mbushNeLoje() {
         for(int i=0;i<15;i++){
             Gur g = new Gur();
+            g.setLojtari(this);
             neLoje.push(g);
         }    
     }
+
+
 }
 

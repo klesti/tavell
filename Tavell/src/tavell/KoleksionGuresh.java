@@ -1,6 +1,8 @@
 package tavell;
 
+import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.image.ImageObserver;
 import java.util.Stack;
         
 public class KoleksionGuresh extends Stack {
@@ -24,13 +26,29 @@ public class KoleksionGuresh extends Stack {
     
     //Percakto koordinatat e gurit ne ekran
     public Point koordinatatERradhes() {
-        int x,y;
+        int x,y,start,corrector;
         int i = size();
          //Y
         if (pozicioni>=1 && pozicioni <=12) {
-            y = (Fushe.HEIGHT-23)-(i+1)*48;         
+            start = Fushe.HEIGHT-23;
+            corrector = 0;
+            if (i>5) {
+                if (i<=10) start -= 24;
+                else if (i>10) start -= 48;
+                corrector = 5*(int)(i/5)+1;
+            }
+            y = start-(i-corrector+1)*48; 
+            System.out.println(String.valueOf(Fushe.HEIGHT-23-y));
+           
         } else {
-            y = 23+i*48;
+            start = 23;
+            corrector = 0;
+            if (i>5) {
+                if (i<=10) start+= 24;
+                else if (i>10) start += 48;
+                corrector = 5*(int)(i/5)+1;
+            }
+            y = start+(i-corrector)*48;
         }
         //X
         if (pozicioni>=13 && pozicioni<=18) {
@@ -49,7 +67,7 @@ public class KoleksionGuresh extends Stack {
         if (pozicioni!=0) {
             g.setPozicioni(this.pozicioni);
             g.setKoordinata(koordinatatERradhes());
-        }
+        }       
         
         super.push(g);
     }
@@ -81,5 +99,9 @@ public class KoleksionGuresh extends Stack {
         for(int i=0;i<k.size();i++){
             this.push(k.get(i));
         }
-    }   
+    }
+    
+    public void paraqit(Graphics g, ImageObserver obs) {
+        
+    }
 }

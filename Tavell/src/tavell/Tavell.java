@@ -19,7 +19,7 @@ public class Tavell extends Loje {
         //Krijojme konfiguracionin fillestar per lojen tavell
         //---Dyshet --
         for (int i=0;i<2;i++) {
-            g = l1.get(0);
+            g = l1.get(i);
             stivat[1].push(g);
             g = l2.get(i);
             stivat[24].push(g);

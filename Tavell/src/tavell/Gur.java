@@ -12,7 +12,10 @@ public class Gur {
 
     private boolean iKapur;
     
-    public static String img = "blueChip.gif";
+    private Lojtar lojtari;
+    
+    public static String img1 = "blueChip.gif";
+    public static String img2 = "whiteChip.gif";
     
     private SpriteCache sprites;
     
@@ -45,10 +48,25 @@ public class Gur {
         this.pozicioni = val;
     }
     
+        public Lojtar getLojtari() {
+        return lojtari;
+    }
+
+    public void setLojtari(Lojtar lojtari) {
+        this.lojtari = lojtari;
+    }
+    
+    private String getImazhi() {
+        if (lojtari.getNumri()%2==0) {
+            return img1;
+        } else {
+            return img2;
+        }
+    }
     public void paraqit(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
-            g.drawImage(sprites.getSprite(img), koordinata.x, koordinata.y, obs);
+            g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);
         }
     }
 
