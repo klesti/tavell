@@ -37,6 +37,11 @@ public class Fushe extends Canvas {
         stivat[1].peek().leviz(stivat,26);
         stivat[12].peek().leviz(stivat,26);
         stivat[12].peek().leviz(stivat,26);
+        
+        stivat[12].peek().leviz(stivat, 0); //Guri u vra
+        stivat[13].peek().leviz(stivat, 0); //Guri u vra
+        stivat[13].peek().leviz(stivat, 0); //Guri u vra
+        
         /*
         stivat[24].peek().leviz(stivat, 25);
         stivat[24].peek().leviz(stivat, 25);
@@ -44,7 +49,6 @@ public class Fushe extends Canvas {
         stivat[12].peek().leviz(stivat, 26);
             */
          // Fund Simulim
-        System.out.println(String.valueOf(lojtaret[0].getNeLoje().size()));
         sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());
@@ -52,7 +56,7 @@ public class Fushe extends Canvas {
     
     public void paraqitGuret(Graphics g) {
         KoleksionGuresh stivat[] = l.getStivat();
-        for (int i=1; i<=26; i++) {
+        for (int i=0; i<=26; i++) {
             stivat[i].paraqit(g, this);
         }
     }

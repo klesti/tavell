@@ -20,7 +20,8 @@ abstract public class Loje {
          */
         stivat = new KoleksionGuresh[27]; 
         //Inicializo Stivat
-        for (int i=0;i<=24;i++) {
+        stivat[0] = new KoleksionGureshJashteLoje(0);
+        for (int i=1;i<=24;i++) {
             stivat[i] = new KoleksionGuresh(i);
         }
         stivat[25] = new KoleksionGureshTePerfunduar(25,this, lojtaret[0]);
