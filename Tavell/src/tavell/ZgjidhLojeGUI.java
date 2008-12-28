@@ -6,22 +6,30 @@
 
 package tavell;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Enumeration;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+
 /**
  *
  * @author  Arbri
  */
-public class ZgjidhLojeGUI extends javax.swing.JFrame {
-    private SpriteCache sprites;    
+public class ZgjidhLojeGUI extends javax.swing.JFrame {       
     
     /** Creates new form ZgjidhLojeGUI */
     public ZgjidhLojeGUI() {
-        initComponents();
-        sprites = new SpriteCache();
-        
-        
+        initComponents();              
+        extraInitComponents();        
+        //Selecct default avatars        
+        avatar1MouseClicked();
+        avatar4MouseClicked();
     }
     
     
@@ -35,219 +43,359 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
+        zgjidhLojenPanel = new javax.swing.JPanel();
+        tavellRd = new javax.swing.JRadioButton();
+        burgRd = new javax.swing.JRadioButton();
+        qylRd = new javax.swing.JRadioButton();
+        teGjithaRd = new javax.swing.JRadioButton();
+        lojtaretPanel = new javax.swing.JPanel();
+        lojtari1Label = new javax.swing.JLabel();
+        lojtari2Label = new javax.swing.JLabel();
+        lojtari1Txt = new javax.swing.JTextField();
+        lojtari2Txt = new javax.swing.JTextField();
+        pikeLabel = new javax.swing.JLabel();
+        pikeTxt = new javax.swing.JTextField();
+        avatar1Panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        avatar2Panel = new javax.swing.JPanel();
+        avatar3Panel = new javax.swing.JPanel();
+        avatar4Panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        canvas1 = new java.awt.Canvas();
-        canvas2 = new java.awt.Canvas();
-        canvas3 = new java.awt.Canvas();
-        canvas4 = new java.awt.Canvas();
-
-        jTextField1.setText("jTextField1");
+        anulloButon = new javax.swing.JButton();
+        okButon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zgjidh Lojen");
         setResizable(false);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Zgjidh Lojen"));
+        zgjidhLojenPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Zgjidh Lojen"));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Tavell");
+        buttonGroup1.add(tavellRd);
+        tavellRd.setSelected(true);
+        tavellRd.setText("Tavell");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Burg");
+        buttonGroup1.add(burgRd);
+        burgRd.setText("Burg");
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Qyl");
+        buttonGroup1.add(qylRd);
+        qylRd.setText("Qyl");
 
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("Te gjitha");
+        buttonGroup1.add(teGjithaRd);
+        teGjithaRd.setText("Te gjitha");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout zgjidhLojenPanelLayout = new javax.swing.GroupLayout(zgjidhLojenPanel);
+        zgjidhLojenPanel.setLayout(zgjidhLojenPanelLayout);
+        zgjidhLojenPanelLayout.setHorizontalGroup(
+            zgjidhLojenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zgjidhLojenPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
+                .addGroup(zgjidhLojenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(teGjithaRd)
+                    .addComponent(qylRd)
+                    .addComponent(burgRd)
+                    .addComponent(tavellRd))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        zgjidhLojenPanelLayout.setVerticalGroup(
+            zgjidhLojenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zgjidhLojenPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(tavellRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(burgRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(qylRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(teGjithaRd)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Lojtaret"));
+        lojtaretPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Lojtaret"));
 
-        jLabel1.setText("Lojtari 1:");
+        lojtari1Label.setText("Lojtari 1:");
 
-        jLabel2.setText("Lojtari 2:");
+        lojtari2Label.setText("Lojtari 2:");
 
-        jTextField2.setText("Lojtari1");
+        lojtari1Txt.setText("Lojtari1");
 
-        jTextField3.setText("Lojtari2");
+        lojtari2Txt.setText("Lojtari2");
 
-        jLabel3.setText("Pike:");
+        pikeLabel.setText("Pike:");
 
-        jTextField4.setText("120");
+        pikeTxt.setText("120");
 
-        jButton1.setText("Anullo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("OK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        canvas1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                canvas1MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(avatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(canvas4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(canvas3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        javax.swing.GroupLayout avatar1PanelLayout = new javax.swing.GroupLayout(avatar1Panel);
+        avatar1Panel.setLayout(avatar1PanelLayout);
+        avatar1PanelLayout.setHorizontalGroup(
+            avatar1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        avatar1PanelLayout.setVerticalGroup(
+            avatar1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 25, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("Avatar:");
+
+        javax.swing.GroupLayout avatar2PanelLayout = new javax.swing.GroupLayout(avatar2Panel);
+        avatar2Panel.setLayout(avatar2PanelLayout);
+        avatar2PanelLayout.setHorizontalGroup(
+            avatar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        avatar2PanelLayout.setVerticalGroup(
+            avatar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 25, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout avatar3PanelLayout = new javax.swing.GroupLayout(avatar3Panel);
+        avatar3Panel.setLayout(avatar3PanelLayout);
+        avatar3PanelLayout.setHorizontalGroup(
+            avatar3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        avatar3PanelLayout.setVerticalGroup(
+            avatar3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 24, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout avatar4PanelLayout = new javax.swing.GroupLayout(avatar4Panel);
+        avatar4Panel.setLayout(avatar4PanelLayout);
+        avatar4PanelLayout.setHorizontalGroup(
+            avatar4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        avatar4PanelLayout.setVerticalGroup(
+            avatar4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 24, Short.MAX_VALUE)
+        );
+
+        jLabel2.setText("Avatar:");
+
+        anulloButon.setText("Anullo");
+        anulloButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anulloButonActionPerformed(evt);
+            }
+        });
+
+        okButon.setText("OK");
+        okButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout lojtaretPanelLayout = new javax.swing.GroupLayout(lojtaretPanel);
+        lojtaretPanel.setLayout(lojtaretPanelLayout);
+        lojtaretPanelLayout.setHorizontalGroup(
+            lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lojtaretPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                        .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lojtari1Label)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                                .addComponent(avatar1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(avatar2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lojtari1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                        .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lojtari2Label)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pikeLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(avatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(canvas3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(canvas4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pikeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                                .addComponent(avatar3Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(avatar4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lojtari2Txt, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                                .addComponent(anulloButon)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addComponent(okButon)))))
                 .addContainerGap())
         );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        lojtaretPanelLayout.setVerticalGroup(
+            lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lojtari1Label)
+                    .addComponent(lojtari1Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                        .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(avatar1Panel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1))
+                        .addGap(11, 11, 11))
+                    .addGroup(lojtaretPanelLayout.createSequentialGroup()
+                        .addComponent(avatar2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lojtari2Label)
+                    .addComponent(lojtari2Txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(avatar3Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avatar4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pikeLabel)
+                    .addComponent(pikeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(lojtaretPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(anulloButon)
+                    .addComponent(okButon)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lojtaretPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lojtaretPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+jTextField2.getText()+" \n Lojtari 2: "+jTextField3.getText()+" \n Piket :"+jTextField4.getText());
-}//GEN-LAST:event_jButton2ActionPerformed
+    
+private void extraInitComponents(){
+    //Extra initializations
+        javax.swing.GroupLayout avatar1PanelLayout = new javax.swing.GroupLayout(avatar1Panel);
+        avatar1Panel.setLayout(avatar1PanelLayout);
+        avatar1PanelLayout.setHorizontalGroup(
+            avatar1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+        avatar1PanelLayout.setVerticalGroup(
+            avatar1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+        );
+        
+        javax.swing.GroupLayout avatar2PanelLayout = new javax.swing.GroupLayout(avatar2Panel);
+        avatar2Panel.setLayout(avatar2PanelLayout);
+        avatar2PanelLayout.setHorizontalGroup(
+            avatar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+        avatar2PanelLayout.setVerticalGroup(
+            avatar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar2, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+        );
 
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        javax.swing.GroupLayout avatar3PanelLayout = new javax.swing.GroupLayout(avatar3Panel);
+        avatar3Panel.setLayout(avatar3PanelLayout);
+        avatar3PanelLayout.setHorizontalGroup(
+            avatar3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+        avatar3PanelLayout.setVerticalGroup(
+            avatar3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout avatar4PanelLayout = new javax.swing.GroupLayout(avatar4Panel);
+        avatar4Panel.setLayout(avatar4PanelLayout);
+        avatar4PanelLayout.setHorizontalGroup(
+            avatar4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+        avatar4PanelLayout.setVerticalGroup(
+            avatar4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(avatar4, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+        );   
+        
+        avatar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                avatar1MouseClicked();
+            }            
+        });
+        
+        avatar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                avatar2MouseClicked();
+            }            
+        });
+        
+        avatar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                avatar3MouseClicked();
+            }            
+        });
+        
+        avatar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                avatar4MouseClicked();
+            }            
+        });
+}
+    
+private void okButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButonActionPerformed
+    JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+lojtari1Txt.getText()+" \n Lojtari 2: "+lojtari2Txt.getText()+" \n Piket :"+pikeTxt.getText()+"\n Avatar 1: "+choosenAvatar1.getFileName()+"\n Avatar2: "+choosenAvatar2.getFileName());
+}//GEN-LAST:event_okButonActionPerformed
+
+private void anulloButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anulloButonActionPerformed
     System.exit(0);
-}//GEN-LAST:event_jButton1ActionPerformed
+}//GEN-LAST:event_anulloButonActionPerformed
 
-private void canvas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvas1MouseClicked
-    //canvas1.prepareImage(new ImageIO(), rootPane);
-}//GEN-LAST:event_canvas1MouseClicked
+private void avatar1MouseClicked() {
+    avatar1Panel.setBorder(new LineBorder(Color.black));
+    avatar2Panel.setBorder(null);
+    choosenAvatar1 = avatar1;
+}
+
+private void avatar2MouseClicked() {
+    avatar2Panel.setBorder(new LineBorder(Color.black));
+    avatar1Panel.setBorder(null);
+    choosenAvatar1 = avatar2;
+}
+
+private void avatar3MouseClicked() {
+    avatar3Panel.setBorder(new LineBorder(Color.black));
+    avatar4Panel.setBorder(null);
+    choosenAvatar2 = avatar3;
+}
+
+private void avatar4MouseClicked() {
+    avatar4Panel.setBorder(new LineBorder(Color.black));
+    avatar3Panel.setBorder(null);
+    choosenAvatar2 = avatar4;
+}
 
 private JRadioButton getSelected() {
     for (Enumeration e = buttonGroup1.getElements() ; e.hasMoreElements() ;) {
@@ -273,27 +421,33 @@ private JRadioButton getSelected() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton anulloButon;
+    private javax.swing.JPanel avatar1Panel;
+    private javax.swing.JPanel avatar2Panel;
+    private javax.swing.JPanel avatar3Panel;
+    private javax.swing.JPanel avatar4Panel;
+    private javax.swing.JRadioButton burgRd;
     private javax.swing.ButtonGroup buttonGroup1;
-    private java.awt.Canvas canvas1;
-    private java.awt.Canvas canvas2;
-    private java.awt.Canvas canvas3;
-    private java.awt.Canvas canvas4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel lojtaretPanel;
+    private javax.swing.JLabel lojtari1Label;
+    private javax.swing.JTextField lojtari1Txt;
+    private javax.swing.JLabel lojtari2Label;
+    private javax.swing.JTextField lojtari2Txt;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JButton okButon;
+    private javax.swing.JLabel pikeLabel;
+    private javax.swing.JTextField pikeTxt;
+    private javax.swing.JRadioButton qylRd;
+    private javax.swing.JRadioButton tavellRd;
+    private javax.swing.JRadioButton teGjithaRd;
+    private javax.swing.JPanel zgjidhLojenPanel;
     // End of variables declaration//GEN-END:variables
-    private AvatarImage avatar1 = new AvatarImage("male.jpg");
+    private AvatarImage avatar1= new AvatarImage("male.jpg");    
+    private AvatarImage avatar2 = new AvatarImage("female.jpg");    
+    private AvatarImage avatar3 = new AvatarImage("male.jpg");
+    private AvatarImage avatar4 = new AvatarImage("female.jpg");
+    private AvatarImage choosenAvatar1;
+    private AvatarImage choosenAvatar2;
 }
