@@ -32,21 +32,20 @@ public class KoleksionGuresh extends Stack {
         if (pozicioni>=1 && pozicioni <=12) {
             start = Fushe.HEIGHT-23;
             corrector = 0;
-            if (i>5) {
-                if (i<=10) start -= 24;
-                else if (i>10) start -= 48;
-                corrector = 5*(int)(i/5)+1;
+            if (i>4) {
+                if (i<10) start -= 24;
+                else  start -= 48;
+                corrector = 5*(int)(i/5);
             }
             y = start-(i-corrector+1)*48; 
-            System.out.println(String.valueOf(Fushe.HEIGHT-23-y));
-           
+            
         } else {
             start = 23;
             corrector = 0;
-            if (i>5) {
-                if (i<=10) start+= 24;
-                else if (i>10) start += 48;
-                corrector = 5*(int)(i/5)+1;
+            if (i>4) {
+                if (i<10) start+= 24;
+                else  start += 48;
+                corrector = 5*(int)(i/5);
             }
             y = start+(i-corrector)*48;
         }

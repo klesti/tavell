@@ -6,7 +6,6 @@
 package tavell;
 import java.awt.Canvas;
 import java.awt.Graphics;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
