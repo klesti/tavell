@@ -9,8 +9,8 @@ public class CiftZaresh
     public CiftZaresh ()
     {
         this.zaret = new ArrayList(2);
-        this.zaret.set(0, new Zar());
-        this.zaret.set(1, new Zar());
+        this.zaret.add(new Zar());
+        this.zaret.add(new Zar());
     }
 
     public ArrayList<Zar> getZaret () 
