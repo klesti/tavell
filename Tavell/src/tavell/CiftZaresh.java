@@ -9,6 +9,8 @@ public class CiftZaresh
     public CiftZaresh ()
     {
         this.zaret = new ArrayList(2);
+        this.zaret.set(0, new Zar());
+        this.zaret.set(1, new Zar());
     }
 
     public ArrayList<Zar> getZaret () 
@@ -30,7 +32,7 @@ public class CiftZaresh
     public void setZaret (int nje, int dy)
     {
         this.zaret.get(0).setVlera(nje);
-        this.zaret.get(1).setVlera(nje);
+        this.zaret.get(1).setVlera(dy);
     }
 
     public void hidhZaret () 
