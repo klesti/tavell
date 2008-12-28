@@ -27,22 +27,33 @@ public class Fushe extends Canvas {
         l2.setEmri("Arber Ceni");
         Lojtar lojtaret[] = {l1,l2};
         l = new Tavell(lojtaret);
-        sprites = new SpriteCache();
+        //Simulo Levizje Guri              
+        
+        KoleksionGuresh[] stivat = l.getStivat();
+        
+        stivat[24].peek().leviz(stivat,25);
+        stivat[24].peek().leviz(stivat,25);
+        stivat[13].peek().leviz(stivat, 25);
+        stivat[1].peek().leviz(stivat,26);
+        stivat[12].peek().leviz(stivat,26);
+        stivat[12].peek().leviz(stivat,26);
+        /*
+        stivat[24].peek().leviz(stivat, 25);
+        stivat[24].peek().leviz(stivat, 25);
+        stivat[12].peek().leviz(stivat, 26);
+        stivat[12].peek().leviz(stivat, 26);
+            */
+         // Fund Simulim
+        
+        sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());
     }
     
     public void paraqitGuret(Graphics g) {
         KoleksionGuresh stivat[] = l.getStivat();
-        for (int i=1; i<=24; i++) {
-            for (int j=0;j<stivat[i].size();j++) {
-                try {
-                    stivat[i].get(j).paraqit(g, this);
-                }
-                catch (Exception e) {
-                    
-                }
-            }     
+        for (int i=1; i<=26; i++) {
+            stivat[i].paraqit(g, this);
         }
     }
     
@@ -54,7 +65,7 @@ public class Fushe extends Canvas {
     
     public class Listener extends MouseAdapter {
         public void mouseClicked(MouseEvent e) {
-                        
+             
         }
     }   
     

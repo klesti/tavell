@@ -6,7 +6,7 @@ import java.awt.image.ImageObserver;
 import java.util.Stack;
         
 public class KoleksionGuresh extends Stack {
-    private int pozicioni;
+    protected int pozicioni;
     
     public KoleksionGuresh (int poz) {
         pozicioni = poz;
@@ -101,6 +101,12 @@ public class KoleksionGuresh extends Stack {
     }
     
     public void paraqit(Graphics g, ImageObserver obs) {
-        
+        for (int i=0; i<size(); i++) {
+            try {
+                get(i).paraqit(g, obs);
+            } catch(Exception e) {
+                
+            }
+        }
     }
 }

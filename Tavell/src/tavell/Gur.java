@@ -12,14 +12,20 @@ public class Gur {
 
     private boolean iKapur;
     
+    private boolean iPerfunduar;
+    
     private Lojtar lojtari;
     
-    public static String img1 = "blueChip.gif";
-    public static String img2 = "whiteChip.gif";
+    public static String img1 = "whiteChip.gif";
+    public static String img2 = "blueChip.gif";    
+    public static String imgThin1 = "whiteChipThin.gif";
+    public static String imgThin2 = "blueChipThin.gif";        
     
     private SpriteCache sprites;
     
     public Gur () {
+        iKapur = false;
+        iPerfunduar = false;
         sprites = new SpriteCache();
         koordinata = new Point();
     }
@@ -56,13 +62,29 @@ public class Gur {
         this.lojtari = lojtari;
     }
     
+    public boolean getIPerfunduar() {
+        return iPerfunduar;
+    }
+    
+    public void setIPerfunduar(boolean val) {
+        iPerfunduar = val;
+    }
+    
     private String getImazhi() {
-        if (lojtari.getNumri()%2==0) {
+        if (lojtari.getNumri()==1) {
+            if (iPerfunduar) return imgThin1;
             return img1;
         } else {
+            if (iPerfunduar) return imgThin2;
             return img2;
         }
     }
+    
+    public void leviz(KoleksionGuresh[] stivat,int tek) {
+        Gur g = stivat[pozicioni].pop();
+        stivat[tek].push(g);
+    }
+    
     public void paraqit(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
