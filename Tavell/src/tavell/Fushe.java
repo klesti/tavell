@@ -44,7 +44,7 @@ public class Fushe extends Canvas {
         stivat[12].peek().leviz(stivat, 26);
             */
          // Fund Simulim
-        
+        System.out.println(String.valueOf(lojtaret[0].getNeLoje().size()));
         sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());

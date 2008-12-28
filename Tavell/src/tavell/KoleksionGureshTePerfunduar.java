@@ -11,9 +11,11 @@ public class KoleksionGureshTePerfunduar extends KoleksionGuresh {
     private int startY;
     private int startX;
     private int direction;
-            
+    private Lojtar lojtari;
+    
     public KoleksionGureshTePerfunduar(int poz,Loje l,Lojtar lojtar) {
-        super(poz);       
+        super(poz);
+        lojtari = lojtar;
         if (l instanceof Qyl && lojtar.getNumri()==2) {
             startX = 24;
         } else {
@@ -41,6 +43,9 @@ public class KoleksionGureshTePerfunduar extends KoleksionGuresh {
         g.setIPerfunduar(true);
         g.setKoordinata(koordinatatERradhes());
         g.setPozicioni(pozicioni);
+    //Zhvendos gurin ne stivat e lojtarit
+        lojtari.getNeLoje().remove(g);
+        lojtari.getTePerfunduar().push(g);
         super.push(g);
     }
 
