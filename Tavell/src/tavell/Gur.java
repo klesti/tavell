@@ -107,7 +107,7 @@ public class Gur
         }
     }
     
-    public boolean neReth(Point P)
+    public boolean neRreth(Point P)
     {
         if (P.distance(this.qendra) > rrezja)
             return false;
