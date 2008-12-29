@@ -82,7 +82,7 @@ public class Fushe extends Canvas {
         ngjyrosTrekendesh(g);
         paraqitGuret(g);   
         //paraqitZar(g);
-        paraqitZaret(g);
+        paraqitZaret(g);        
     }
     
     public void ngjyrosTrekendesh(Graphics g) {
@@ -107,9 +107,9 @@ public class Fushe extends Canvas {
             Point pika = new Point(e.getX(),e.getY());
             String s = String.valueOf(shtyllaKuNdodhet(pika));
             System.out.println(s);
-            Point p1 = new Point(96,Fushe.HEIGHT-24);
-            Point p2 = new Point(96+48,Fushe.HEIGHT-24);
-            Point p3 = new Point(96+24,Fushe.HEIGHT-(24+260));
+            Point p1 = new Point(96,24);
+            Point p2 = new Point(96+48,24);
+            Point p3 = new Point(96+24,24+260);
             if (neTrekendesh(pika,p1,p2,p3)) {
                 System.out.println("Ne trekendeshin e pare");
             } else {
