@@ -5,6 +5,7 @@
 
 package tavell;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -78,9 +79,26 @@ public class Fushe extends Canvas {
     @Override
     public void paint(Graphics g) {
         g.drawImage(sprites.getSprite(background),0,0,this);
+        ngjyrosTrekendesh(g);
         paraqitGuret(g);   
         //paraqitZar(g);
         paraqitZaret(g);
+    }
+    
+    public void ngjyrosTrekendesh(Graphics g) {
+        Point p1 = new Point(96,24);
+        Point p2 = new Point(96+48,24);
+        Point p3 = new Point(96+24,24+260);
+        g.setColor(Color.yellow);
+        for (int i=96;i<96+48;i++) {
+            for (int j=24;j<24+360;j++) {
+                Point pika = new Point(i,j);
+                if (neTrekendesh(pika, p1, p2, p3)) {
+                    g.drawLine(i, j, i, j);
+                }
+                
+            }
+        }
     }
     
     public class Listener extends MouseAdapter {
@@ -89,9 +107,9 @@ public class Fushe extends Canvas {
             Point pika = new Point(e.getX(),e.getY());
             String s = String.valueOf(shtyllaKuNdodhet(pika));
             System.out.println(s);
-            Point p1 = new Point(96,24);
-            Point p2 = new Point(96+48,24);
-            Point p3 = new Point(96+24,24+260);
+            Point p1 = new Point(96,Fushe.HEIGHT-24);
+            Point p2 = new Point(96+48,Fushe.HEIGHT-24);
+            Point p3 = new Point(96+24,Fushe.HEIGHT-(24+260));
             if (neTrekendesh(pika,p1,p2,p3)) {
                 System.out.println("Ne trekendeshin e pare");
             } else {
