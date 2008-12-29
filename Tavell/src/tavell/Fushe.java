@@ -86,8 +86,17 @@ public class Fushe extends Canvas {
     public class Listener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-             String s = String.valueOf(shtyllaKuNdodhet(new Point(e.getX(),e.getY())));
-             System.out.println(s);
+            Point pika = new Point(e.getX(),e.getY());
+            String s = String.valueOf(shtyllaKuNdodhet(pika));
+            System.out.println(s);
+            Point p1 = new Point(96,24);
+            Point p2 = new Point(96+48,24);
+            Point p3 = new Point(96+24,24+260);
+            if (neTrekendesh(pika,p1,p2,p3)) {
+                System.out.println("Ne trekendeshin e pare");
+            } else {
+                System.out.println("Jashte trekendeshit te pare");
+            }            
         }
     }   
     
