@@ -4,18 +4,16 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.ImageObserver;
 
-public class Gur {
-
+public class Gur 
+{
     private Point koordinata;
-
     private int pozicioni;
-
-    private boolean iKapur;
-    
-    private boolean iPerfunduar;
-    
+    private boolean iKapur;    
+    private boolean iPerfunduar;    
     private Lojtar lojtari;
-    
+    private Point qendra;
+    private static final int rrezja = 24;
+
     public static String img1 = "whiteChip.gif";
     public static String img2 = "blueChip.gif";    
     public static String imgThin1 = "whiteChipThin.gif";
@@ -23,11 +21,13 @@ public class Gur {
     
     private SpriteCache sprites;
     
-    public Gur () {
+    public Gur () 
+    {
         iKapur = false;
         iPerfunduar = false;
         sprites = new SpriteCache();
         koordinata = new Point();
+        qendra = new Point();
     }
 
     public boolean getIKapur () {
@@ -44,6 +44,7 @@ public class Gur {
 
     public void setKoordinata (Point val) {
         this.koordinata = val;
+        this.setQendra(val.x + rrezja, val.y + rrezja);
     }
 
     public int getPozicioni () {
@@ -60,6 +61,20 @@ public class Gur {
 
     public void setLojtari(Lojtar lojtari) {
         this.lojtari = lojtari;
+    }
+    
+    public Point getQendra() {
+        return qendra;
+    }
+
+    public void setQendra(Point qendra) {
+        this.qendra = qendra;
+    }
+    
+    public void setQendra(int x, int y)
+    {
+        this.qendra.x = x;
+        this.qendra.y = y;
     }
     
     public boolean getIPerfunduar() {
@@ -91,6 +106,13 @@ public class Gur {
             g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);
         }
     }
-
+    
+    public boolean neReth(Point P)
+    {
+        if (P.distance(this.qendra) > rrezja)
+            return false;
+        else 
+            return true;
+    }
 }
 
