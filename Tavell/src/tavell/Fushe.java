@@ -86,7 +86,8 @@ public class Fushe extends Canvas {
     public class Listener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-             
+             String s = String.valueOf(shtyllaKuNdodhet(new Point(e.getX(),e.getY())));
+             System.out.println(s);
         }
     }   
     
@@ -101,6 +102,36 @@ public class Fushe extends Canvas {
             return true;
         else
             return false;        
+    }
+    
+    public int shtyllaKuNdodhet(Point p) {
+        int shtylla=-1; // Kthen -1 nqs pika nuk ndodhet ne asnje shtylle
+        //-----------------Pjesa lart majtas----------------------------
+        if ((p.x>=96 && p.x<=Fushe.WIDTH/2-48) && (p.y<=Fushe.HEIGHT/2)) {
+             shtylla = 13 + (int)Math.ceil((p.x - 96) / 48);
+        }  
+        //-----------------Pjesa poshte majtas----------------------------
+        else if ((p.x>=96 && p.x<=Fushe.WIDTH/2-48) && (p.y>Fushe.HEIGHT/2)) {
+            shtylla = 12 - (int)Math.ceil((p.x - 96) / 48);
+        }
+        //-----------------Pjesa lart djathtas----------------------------
+        else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y<Fushe.HEIGHT/2)) {
+            shtylla = 19 + (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
+        } 
+        //-----------------Pjesa poshte djathtas----------------------------
+        else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y>Fushe.HEIGHT/2)) {
+            shtylla = 6 - (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
+        }
+        //-----------------Pjesa lart ne mes (te vrare)----------------------------
+        else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH+24) && (p.y<Fushe.HEIGHT/2)) {
+            shtylla = 25;
+        }
+        //-----------------Pjesa poshte ne mes (te vrare)----------------------------
+        else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH+24) && (p.y>Fushe.HEIGHT/2)) {
+            shtylla = 26;
+        }
+        
+        return shtylla;
     }
 
 }

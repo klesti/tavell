@@ -49,7 +49,7 @@ public class Lojtar {
         this.tePerfunduar = val;
     }
     
-        public int getNumri() {
+    public int getNumri() {
         return numri;
     }
 
