@@ -68,6 +68,17 @@ public class Lojtar {
             neLoje.push(g);
         }    
     }
+    
+    public int getPips() {
+        int pips=0;
+        for(int i=0;i<neLoje.size();i++){
+            pips+=25-neLoje.get(i).getPozicioni();
+        }
+        for (int i=0;i<jashteLoje.size();i++){
+            pips+=25;
+        }
+        return pips;
+    }
 
 
 }
