@@ -102,7 +102,7 @@ public class Fushe extends Canvas {
     
     public boolean neTrekendesh(Point P, Point P1, Point P2, Point P3)
     {
-        int b0 = ((P2.x - P1.x) * (P3.y - P1.y) - (P3.x - P1.x) * (P2.y - P1.y));
+        double b0 = ((P2.x - P1.x) * (P3.y - P1.y) - (P3.x - P1.x) * (P2.y - P1.y));
         double b1 = (((P2.x - P.x) * (P3.y - P.y) - (P3.x - P.x) * (P2.y - P.y)) / b0);
         double b2 = (((P3.x - P.x) * (P1.y - P.y) - (P1.x - P.x) * (P3.y - P.y)) / b0);
         double b3 = 1 - b1 - b2;
