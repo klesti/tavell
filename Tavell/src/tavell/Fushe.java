@@ -6,6 +6,7 @@
 package tavell;
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -83,10 +84,23 @@ public class Fushe extends Canvas {
     }
     
     public class Listener extends MouseAdapter {
+        @Override
         public void mouseClicked(MouseEvent e) {
              
         }
     }   
     
+    public boolean neTrekendesh(Point P, Point P1, Point P2, Point P3)
+    {
+        int b0 = ((P2.x - P1.x) * (P3.y - P1.y) - (P3.x - P1.x) * (P2.y - P1.y));
+        double b1 = (((P2.x - P.x) * (P3.y - P.y) - (P3.x - P.x) * (P2.y - P.y)) / b0);
+        double b2 = (((P3.x - P.x) * (P1.y - P.y) - (P1.x - P.x) * (P3.y - P.y)) / b0);
+        double b3 = 1 - b1 - b2;
+
+        if ((b1 > 0) && (b2 > 0) && (b3 > 0))
+            return true;
+        else
+            return false;        
+    }
 
 }
