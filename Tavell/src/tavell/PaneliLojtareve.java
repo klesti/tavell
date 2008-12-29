@@ -126,4 +126,12 @@ public class PaneliLojtareve extends JPanel{
         //-------------FUND PANELI LOJTAREVE----------------------        
        
     }
+    
+    public void setPips1(int pips){
+        this.pips1.setText(String.valueOf(pips));
+    }
+    
+    public void setPips2(int pips){
+        this.pips2.setText(String.valueOf(pips));       
+    }
 }

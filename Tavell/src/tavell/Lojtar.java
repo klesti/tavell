@@ -72,14 +72,20 @@ public class Lojtar {
     public int getPips() {
         int pips=0;
         for(int i=0;i<neLoje.size();i++){
-            pips+=25-neLoje.get(i).getPozicioni();
+            if(this.numri==1)
+                pips+=neLoje.get(i).getPozicioni();
+            else if(this.numri==2)
+                pips+=25-neLoje.get(i).getPozicioni();
         }
         for (int i=0;i<jashteLoje.size();i++){
             pips+=25;
         }
         return pips;
     }
-
-
+    
+    public int getDrejtimi(){
+        if(this.numri==1) return -1;
+        else return +1;
+    }
 }
 
