@@ -4,6 +4,7 @@ public class Lojtar {
 
     private String emri;
     private int numri;
+    private int pike;
     private KoleksionGuresh neLoje;
     private KoleksionGuresh jashteLoje;
     private KoleksionGuresh tePerfunduar;
@@ -14,6 +15,7 @@ public class Lojtar {
         tePerfunduar = new KoleksionGuresh();
         this.emri = emri;
         this.numri = numri;
+        pike = 0;
         mbushNeLoje();
     }
 
@@ -56,6 +58,15 @@ public class Lojtar {
     public void setNumri(int numri) {
         this.numri = numri;
     }
+    
+    
+    public int getPike() {
+        return pike;
+    }
+
+    public void setPike(int pike) {
+        this.pike = pike;
+    }
 
     public boolean kaJashteLoje () {
         return !jashteLoje.isEmpty();
@@ -87,5 +98,6 @@ public class Lojtar {
         if(this.numri==1) return -1;
         else return +1;
     }
+
 }
 
