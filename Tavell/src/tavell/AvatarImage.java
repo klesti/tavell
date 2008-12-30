@@ -24,7 +24,7 @@ public class AvatarImage extends Canvas{
     }
     
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         g.drawImage(sprites.getSprite(this.fileName), 0, 0, 40,40,this);
     }
     

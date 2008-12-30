@@ -79,31 +79,12 @@ public class Fushe extends Canvas {
     @Override
     public void paint(Graphics g) {
         g.drawImage(sprites.getSprite(background),0,0,this);
-        ngjyrosTrekendesh(g);
         paraqitGuret(g);   
         //paraqitZar(g);
         paraqitZaret(g);        
     }
     
-    public void ngjyrosTrekendesh(Graphics g) {
-        Trekendesh treKend;
-        Point p1 = new Point(96,24);
-        Point p2 = new Point(96+48,24);
-        Point p3 = new Point(96+24,24+260);
-        treKend = new Trekendesh(p1, p2, p3);
-        g.setColor(Color.yellow);
-        for (int i=96;i<96+48;i++) {
-            for (int j=24;j<24+360;j++) {
-                Point pika = new Point(i,j);
-                if (treKend.neTrekendesh(pika)) {
-                    g.drawLine(i, j, i, j);
-                }
-                
-            }
-        }
-    }
-    
-    public class Listener extends MouseAdapter {
+     public class Listener extends MouseAdapter {
         Trekendesh treKend;
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -125,7 +106,7 @@ public class Fushe extends Canvas {
     public int shtyllaKuNdodhet(Point p) {
         int shtylla=-1; // Kthen -1 nqs pika nuk ndodhet ne asnje shtylle
         //-----------------Pjesa lart majtas----------------------------
-        if ((p.x>=96 && p.x<=Fushe.WIDTH/2-48) && (p.y<=Fushe.HEIGHT/2)) {
+        if ((p.x >=96 && p.x <= Fushe.WIDTH / 2 - 48) && (p.y <= Fushe.HEIGHT / 2)) {
              shtylla = 13 + (int)Math.ceil((p.x - 96) / 48);
         }  
         //-----------------Pjesa poshte majtas----------------------------

@@ -15,7 +15,7 @@ import javax.swing.*;
  */
 public class TestLoje extends JFrame {
     private JPanel panel;
-    private Fushe fusha;    
+    private Fushe fusha;
     
     public TestLoje() {
         setTitle("Test Tavell");

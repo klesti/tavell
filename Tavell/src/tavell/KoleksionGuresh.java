@@ -7,13 +7,16 @@ import java.util.Stack;
         
 public class KoleksionGuresh extends Stack {
     protected int pozicioni;
+    private Trekendesh trekendeshi;
     
     public KoleksionGuresh (int poz) {
-        pozicioni = poz;
+        trekendeshi = new Trekendesh();
+        setPozicioni(poz);        
     }
     
     public KoleksionGuresh() {
-        pozicioni = 0;        
+        trekendeshi = new Trekendesh();
+        setPozicioni(0); 
     }
 
     public int getPozicioni() {
@@ -22,6 +25,38 @@ public class KoleksionGuresh extends Stack {
     
     public void setPozicioni(int val){
         this.pozicioni = val;
+        Point cepi = cepiMajteTrekendeshit();
+        if (cepi.x!=0 && cepi.y!=0) {
+            trekendeshi.setPikaA(cepi);
+            trekendeshi.setPikaB(new Point(cepi.x+48,cepi.y));
+            trekendeshi.setPikaC(new Point(cepi.x+24,cepi.y+trekendeshi.getDrejtimi()*260));
+        }
+    }
+    
+    public Trekendesh getTrekendeshi() {
+        return trekendeshi;
+    }
+
+    public void setTrekendeshi(Trekendesh trekendeshi) {
+        this.trekendeshi = trekendeshi;        
+    }
+    
+    public Point cepiMajteTrekendeshit() {
+        int x=0,y=0;
+        if (pozicioni>=13 && pozicioni<=18) {
+            x = 96+48*(pozicioni-13);
+            y = 23;
+        } else if (pozicioni>=7 && pozicioni<=12) {
+            x = 96+48*(12-pozicioni);
+            y = Fushe.HEIGHT-23;         
+        } else if (pozicioni>=19 && pozicioni <=24) {
+            x = Fushe.WIDTH/2+48+48*(pozicioni-19);
+            y = 23;
+        } else if (pozicioni>=1 && pozicioni<=6) {
+            x = Fushe.WIDTH/2+48+48*(6-pozicioni);
+            y = Fushe.HEIGHT-23;
+        }
+        return new Point(x,y);
     }
     
     //Percakto koordinatat e gurit ne ekran
@@ -101,6 +136,9 @@ public class KoleksionGuresh extends Stack {
     }
     
     public void paraqit(Graphics g, ImageObserver obs) {
+        if (this instanceof KoleksionGuresh) {
+            trekendeshi.ngjyros(g, java.awt.Color.yellow);
+        }
         for (int i=0; i<size(); i++) {
             try {
                 get(i).paraqit(g, obs);
@@ -109,4 +147,6 @@ public class KoleksionGuresh extends Stack {
             }
         }
     }
+
+
 }
