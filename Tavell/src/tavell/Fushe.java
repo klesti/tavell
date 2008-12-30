@@ -86,14 +86,16 @@ public class Fushe extends Canvas {
     }
     
     public void ngjyrosTrekendesh(Graphics g) {
+        Trekendesh treKend;
         Point p1 = new Point(96,24);
         Point p2 = new Point(96+48,24);
         Point p3 = new Point(96+24,24+260);
+        treKend = new Trekendesh(p1, p2, p3);
         g.setColor(Color.yellow);
         for (int i=96;i<96+48;i++) {
             for (int j=24;j<24+360;j++) {
                 Point pika = new Point(i,j);
-                if (neTrekendesh(pika, p1, p2, p3)) {
+                if (treKend.neTrekendesh(pika)) {
                     g.drawLine(i, j, i, j);
                 }
                 
@@ -102,6 +104,7 @@ public class Fushe extends Canvas {
     }
     
     public class Listener extends MouseAdapter {
+        Trekendesh treKend;
         @Override
         public void mouseClicked(MouseEvent e) {
             Point pika = new Point(e.getX(),e.getY());
@@ -110,25 +113,13 @@ public class Fushe extends Canvas {
             Point p1 = new Point(96,24);
             Point p2 = new Point(96+48,24);
             Point p3 = new Point(96+24,24+260);
-            if (neTrekendesh(pika,p1,p2,p3)) {
+            treKend = new Trekendesh(p1, p2, p3);
+            if (treKend.neTrekendesh(pika)) {
                 System.out.println("Ne trekendeshin e pare");
             } else {
                 System.out.println("Jashte trekendeshit te pare");
             }            
         }
-    }   
-    
-    public boolean neTrekendesh(Point P, Point P1, Point P2, Point P3)
-    {
-        double b0 = ((P2.x - P1.x) * (P3.y - P1.y) - (P3.x - P1.x) * (P2.y - P1.y));
-        double b1 = (((P2.x - P.x) * (P3.y - P.y) - (P3.x - P.x) * (P2.y - P.y)) / b0);
-        double b2 = (((P3.x - P.x) * (P1.y - P.y) - (P1.x - P.x) * (P3.y - P.y)) / b0);
-        double b3 = 1 - b1 - b2;
-
-        if ((b1 > 0) && (b2 > 0) && (b3 > 0))
-            return true;
-        else
-            return false;        
     }
     
     public int shtyllaKuNdodhet(Point p) {
