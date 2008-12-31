@@ -22,15 +22,33 @@ import javax.swing.border.LineBorder;
  *
  * @author  Arbri
  */
-public class ZgjidhLojeGUI extends javax.swing.JFrame {       
+public class ZgjidhLojeGUI extends javax.swing.JFrame { 
+    
+    /** Deklarimi i variableve */
+    
+    //Do mbajne reference te objekete perkatese te klasa Program.java
+    private Lojtar lojtari1;
+    private Lojtar lojtari2;
+    private AvatarImage avat1;
+    private AvatarImage avat2;
+    private Loje loja;    
+    private Program prog;
     
     /** Creates new form ZgjidhLojeGUI */
-    public ZgjidhLojeGUI() {
-        initComponents();              
+    public ZgjidhLojeGUI(Program p) {
+        initComponents();
+        displayInCenter();
         extraInitComponents();        
         //Selecct default avatars        
         avatar1MouseClicked();
         avatar4MouseClicked();
+        //Vendos referencen tek objektet e Program.java
+        /*this.lojtari1= l1;
+        this.lojtari2 = l2;
+        this.avatar1 = av1;
+        this.avatar2 = av2;
+        this.loja = l;*/
+        this.prog = p;
     }
     
     
@@ -68,6 +86,7 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zgjidh Lojen");
+        setBounds(new java.awt.Rectangle(300, 300, 0, 0));
         setResizable(false);
 
         zgjidhLojenPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Zgjidh Lojen"));
@@ -378,7 +397,25 @@ private void extraInitComponents(){
 }
     
 private void okButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButonActionPerformed
-    JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+lojtari1Txt.getText()+" \n Lojtari 2: "+lojtari2Txt.getText()+" \n Piket :"+pikeTxt.getText()+"\n Avatar 1: "+choosenAvatar1.getFileName()+"\n Avatar2: "+choosenAvatar2.getFileName());
+    //JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+lojtari1Txt.getText()+" \n Lojtari 2: "+lojtari2Txt.getText()+" \n Piket :"+pikeTxt.getText()+"\n Avatar 1: "+choosenAvatar1.getFileName()+"\n Avatar2: "+choosenAvatar2.getFileName());
+    prog.setAvatar1(choosenAvatar1);
+    prog.setAvatar2(choosenAvatar2);
+    this.lojtari1 = new Lojtar(lojtari1Txt.getText(), 1);
+    this.lojtari2 = new Lojtar(lojtari2Txt.getText(), 2);
+    prog.setLojtari1(this.lojtari1);
+    prog.setLojtari2(this.lojtari2);
+    Lojtar l [] = {this.lojtari1, this.lojtari2};
+    //Percaktimi se cila loje eshte
+    String selectedGame = getSelected().getText();
+    if(selectedGame.equalsIgnoreCase("Tavell"))
+        prog.setLoja(new Tavell(l,Integer.parseInt(pikeTxt.getText())));
+    else if (selectedGame.equalsIgnoreCase("Qyl"))
+        prog.setLoja(new Qyl(l,Integer.parseInt(pikeTxt.getText())));
+    else if (selectedGame.equalsIgnoreCase("Burg"))
+        prog.setLoja(new Burg(l,Integer.parseInt(pikeTxt.getText())));
+    else 
+        JOptionPane.showMessageDialog(this, "Loja e zgjedhur: "+getSelected().getText()+" \n Lojtari 1: "+lojtari1Txt.getText()+" \n Lojtari 2: "+lojtari2Txt.getText()+" \n Piket :"+pikeTxt.getText()+"\n Avatar 1: "+choosenAvatar1.getFileName()+"\n Avatar2: "+choosenAvatar2.getFileName());    
+    this.dispose();
 }//GEN-LAST:event_okButonActionPerformed
 
 private void anulloButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anulloButonActionPerformed
@@ -419,18 +456,16 @@ private JRadioButton getSelected() {
     return null;   
 }
 
+private void displayInCenter(){
+    final java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize() ;
+    final int wScreen = screenSize.width ;
+    final int hScreen = screenSize.height ;
+    
+    int w = this.getWidth() ;
+    int h = this.getHeight() ;
+    this.setLocation((wScreen-w)/2, (hScreen-h)/2) ;
 
-
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ZgjidhLojeGUI().setVisible(true);
-            }
-        });
-    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anulloButon;

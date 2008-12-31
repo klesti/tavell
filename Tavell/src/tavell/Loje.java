@@ -9,9 +9,12 @@ abstract public class Loje {
     protected KoleksionLevizjesh levizjet;
     
     protected Lojtar[] lojtaret;
+    
+    protected int piket;
 
-    public Loje (Lojtar[] l) {
+    public Loje (Lojtar[] l, int p) {
         lojtaret = l;
+        piket = p;
         zaret = new CiftZaresh();
         levizjet = new KoleksionLevizjesh();        
         /*
@@ -60,6 +63,14 @@ abstract public class Loje {
 
     public void setLojtaret(Lojtar[] lojtaret) {
         this.lojtaret = lojtaret;
+    }
+    
+    public int getPiket() {
+        return this.piket;
+    }
+    
+    public void setPiket(int p){
+        this.piket = p;
     }
     
     public void ruaj () {

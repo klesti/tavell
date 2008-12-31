@@ -18,7 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new TestLoje();
+        //new TestLoje();
+        new Program();
         
         /*//Try catch duhet per te vendosur Look and Feel si i sistemit te operimit
         try {	    

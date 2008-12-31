@@ -22,13 +22,49 @@ public class Fushe extends Canvas {
     public static final String background = "background.png";
     private Loje l;
     
+    public Fushe(Lojtar l1, Lojtar l2, Loje l) {
+        //Lojtar l1 = new Lojtar("Klesti Hoxha",1);
+        //Lojtar l2 = new Lojtar("Arber Ceni",2);
+        
+        //l2.setEmri("Arber Ceni");
+        Lojtar lojtaret[] = {l1,l2};
+        //l = new Tavell(lojtaret);
+        //Simulo Levizje Guri              
+        this.l = l;
+        
+        KoleksionGuresh[] stivat = l.getStivat();
+        
+        stivat[24].peek().leviz(stivat,25);
+        stivat[24].peek().leviz(stivat,25);
+        stivat[13].peek().leviz(stivat, 25);
+        stivat[1].peek().leviz(stivat,26);
+        stivat[12].peek().leviz(stivat,26);
+        stivat[12].peek().leviz(stivat,26);
+        
+        stivat[12].peek().leviz(stivat, 0); //Guri u vra
+        stivat[13].peek().leviz(stivat, 0); //Guri u vra
+        stivat[13].peek().leviz(stivat, 0); //Guri u vra
+        
+        /*
+        stivat[24].peek().leviz(stivat, 25);
+        stivat[24].peek().leviz(stivat, 25);
+        stivat[12].peek().leviz(stivat, 26);
+        stivat[12].peek().leviz(stivat, 26);
+            */
+         // Fund Simulim
+        sprites = new SpriteCache();      
+        setBounds(0,0,WIDTH,HEIGHT);
+        addMouseListener(new Listener());
+    }
+    
     public Fushe() {
         Lojtar l1 = new Lojtar("Klesti Hoxha",1);
         Lojtar l2 = new Lojtar("Arber Ceni",2);
         
         l2.setEmri("Arber Ceni");
         Lojtar lojtaret[] = {l1,l2};
-        l = new Tavell(lojtaret);
+        l = new Qyl(lojtaret,24);
+        
         //Simulo Levizje Guri              
         
         KoleksionGuresh[] stivat = l.getStivat();

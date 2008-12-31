@@ -3,8 +3,8 @@ package tavell;
 
 public class Burg extends Loje {
 
-    public Burg (Lojtar[] l) {
-        super(l);
+    public Burg (Lojtar[] l, int p) {
+        super(l,p);
         this.vendosGuret();
     }
 
