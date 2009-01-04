@@ -5,6 +5,7 @@
 
 package tavell;
 
+import java.awt.image.BufferStrategy;
 import javax.swing.*;
 
 /**
@@ -22,6 +23,7 @@ public class Program extends JFrame{
     private JPanel panel;
     private PaneliLojtareve paneliLojtareve;
     private Fushe fusha; 
+    public static BufferStrategy strategy;
     
     public Program(){
         ZgjidhLojeGUI zgjidh = new ZgjidhLojeGUI(this);
@@ -32,20 +34,21 @@ public class Program extends JFrame{
         //System.out.println("Loja e zgjedhur: "+loja.getClass().getName()+" \n Lojtari 1: "+lojtari1.getEmri()+" \n Lojtari 2: "+lojtari2.getEmri()+" \n Piket :"+String.valueOf(loja.getPiket())+"\n Avatar 1: "+avatar1.getFileName()+"\n Avatar2: "+avatar2.getFileName());
         setTitle("Tavell");
         
-        panel = (JPanel)getContentPane();
+        panel = (JPanel)this.getContentPane();
+        paneliLojtareve = new PaneliLojtareve(lojtari1,lojtari2,avatar1,avatar2);        
         fusha = new Fushe(this.lojtari1, this.lojtari2, this.loja);
-        fusha.setBounds(0,0,Fushe.WIDTH,Fushe.HEIGHT);
         panel.setPreferredSize(new java.awt.Dimension(Fushe.WIDTH,Fushe.HEIGHT));
         panel.setLayout(null);
-        paneliLojtareve = new PaneliLojtareve(lojtari1,lojtari2,avatar1,avatar2);
+        panel.add(paneliLojtareve);
+        panel.add(fusha);            
         
-        panel.add(fusha);
-        panel.add(paneliLojtareve);       
+        this.setBounds(0,0,1100,700);        
+        this.setVisible(true);            
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);     
         
-        setBounds(0,0,1100,700);
-        setResizable(false);        
-        setVisible(true);        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fusha.createBufferStrategy(2);
+        strategy = fusha.getBufferStrategy();
     }
     
     public void setLojtari1(Lojtar l){
@@ -87,5 +90,4 @@ public class Program extends JFrame{
     public Loje getLoja(){
         return this.loja;
     }
-    
 }
