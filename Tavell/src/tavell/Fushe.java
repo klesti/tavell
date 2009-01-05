@@ -5,6 +5,7 @@
 
 package tavell;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -21,36 +22,10 @@ public class Fushe extends Canvas {
     public static final String background = "background.png";
     private Loje l;
     
-    public Fushe(Lojtar l1, Lojtar l2, Loje l) {
-        //Lojtar l1 = new Lojtar("Klesti Hoxha",1);
-        //Lojtar l2 = new Lojtar("Arber Ceni",2);
-        
-        //l2.setEmri("Arber Ceni");
-        Lojtar lojtaret[] = {l1,l2};
-        //l = new Tavell(lojtaret);
-        //Simulo Levizje Guri              
+    public Fushe(Lojtar l1, Lojtar l2, Loje l) {        
         this.l = l;
-        
-        KoleksionGuresh[] stivat = l.getStivat();
-        
-        stivat[24].peek().leviz(stivat,25);
-        stivat[24].peek().leviz(stivat,25);
-        stivat[13].peek().leviz(stivat, 25);
-        stivat[1].peek().leviz(stivat,26);
-        stivat[12].peek().leviz(stivat,26);
-        stivat[12].peek().leviz(stivat,26);
-        
-        stivat[12].peek().leviz(stivat, 0); //Guri u vra
-        stivat[13].peek().leviz(stivat, 0); //Guri u vra
-        stivat[13].peek().leviz(stivat, 0); //Guri u vra
-        
-        /*
-        stivat[24].peek().leviz(stivat, 25);
-        stivat[24].peek().leviz(stivat, 25);
-        stivat[12].peek().leviz(stivat, 26);
-        stivat[12].peek().leviz(stivat, 26);
-            */
-         // Fund Simulim
+        Lojtar[] lojtaret = {l1,l2};
+        l.setLojtaret(lojtaret);
         sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());
@@ -58,39 +33,13 @@ public class Fushe extends Canvas {
     
     public Fushe() {
         Lojtar l1 = new Lojtar("Klesti Hoxha",1);
-        Lojtar l2 = new Lojtar("Arber Ceni",2);
-        
+        Lojtar l2 = new Lojtar("Arber Ceni",2);        
         l2.setEmri("Arber Ceni");
         Lojtar lojtaret[] = {l1,l2};
-        l = new Qyl(lojtaret,24);
-        
-        //Simulo Levizje Guri              
-        
-        KoleksionGuresh[] stivat = l.getStivat();
-        
-        stivat[24].peek().leviz(stivat,25);
-        stivat[24].peek().leviz(stivat,25);
-        stivat[13].peek().leviz(stivat, 25);
-        stivat[1].peek().leviz(stivat,26);
-        stivat[12].peek().leviz(stivat,26);
-        stivat[12].peek().leviz(stivat,26);
-        
-        stivat[12].peek().leviz(stivat, 0); //Guri u vra
-        stivat[13].peek().leviz(stivat, 0); //Guri u vra
-        stivat[13].peek().leviz(stivat, 0); //Guri u vra
-        
-        /*
-        stivat[24].peek().leviz(stivat, 25);
-        stivat[24].peek().leviz(stivat, 25);
-        stivat[12].peek().leviz(stivat, 26);
-        stivat[12].peek().leviz(stivat, 26);
-            */
-         // Fund Simulim
-       
+        l = new Tavell(lojtaret,24);      
         sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
-        addMouseListener(new Listener());
-        
+        addMouseListener(new Listener());        
     }
     
     public void paraqitGuret(Graphics g) {
@@ -124,21 +73,9 @@ public class Fushe extends Canvas {
     }
     
      public class Listener extends MouseAdapter {
-        Trekendesh treKend;
-        @Override
         public void mouseClicked(MouseEvent e) {
-            Point pika = new Point(e.getX(),e.getY());
-            String s = String.valueOf(shtyllaKuNdodhet(pika));
-            System.out.println(s);
-            Point p1 = new Point(96,24);
-            Point p2 = new Point(96+48,24);
-            Point p3 = new Point(96+24,24+260);
-            treKend = new Trekendesh(p1, p2, p3);
-            if (treKend.neTrekendesh(pika)) {
-                System.out.println("Ne trekendeshin e pare");
-            } else {
-                System.out.println("Jashte trekendeshit te pare");
-            }            
+           l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))].getTrekendeshi().setNgjyra(Color.yellow);
+           update(getGraphics());
         }
     }
     

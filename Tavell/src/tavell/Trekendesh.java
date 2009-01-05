@@ -14,18 +14,21 @@ public class Trekendesh
     private Point pikaB;
     private Point pikaC;
     private static final int lartesia = 360;
+    private Color ngjyra;
     
     public Trekendesh(Point pikaA, Point pikaB, Point pikaC) 
     {
         this.pikaA = pikaA;
         this.pikaB = pikaB;
         this.pikaC = pikaC;
+        ngjyra = null;
     }
     
     public Trekendesh() {
         pikaA = new Point();
         pikaB = new Point();
         pikaC = new Point();
+        ngjyra = null;
     }
     
     public Point getPikaA() 
@@ -58,6 +61,13 @@ public class Trekendesh
         this.pikaC = pikaC;
     }
 
+    public Color getNgjyra() {
+        return ngjyra;
+    }
+
+    public void setNgjyra(Color ngjyra) {
+        this.ngjyra = ngjyra;
+    }
     
     public int getDrejtimi() {
         if (pikaA.y==23) 
@@ -79,9 +89,12 @@ public class Trekendesh
             return false;        
     }
     
-    public void ngjyros(Graphics g,Color c) {
+    public void ngjyros(Graphics g) {
+        if (ngjyra==null) {
+            return; //Mos e ngjyros nqs nuk ka ngjyre
+        }
         Color oldColor = g.getColor();
-        g.setColor(c);
+        g.setColor(ngjyra);
         int start=0, stop=0;
         for (int i = pikaA.x; i < pikaB.x; i++) {  
             if (getDrejtimi()==1) {
@@ -100,5 +113,7 @@ public class Trekendesh
         }
         g.setColor(oldColor);
     }
+
+
     
 }

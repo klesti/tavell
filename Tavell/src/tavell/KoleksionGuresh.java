@@ -137,7 +137,7 @@ public class KoleksionGuresh extends Stack {
     
     public void paraqit(Graphics g, ImageObserver obs) {
         if (this instanceof KoleksionGuresh) {
-            trekendeshi.ngjyros(g, java.awt.Color.yellow);
+            trekendeshi.ngjyros(g);
         }
         for (int i=0; i<size(); i++) {
             try {
