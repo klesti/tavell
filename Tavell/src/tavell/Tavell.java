@@ -67,7 +67,21 @@ public class Tavell extends Loje {
                 levizjetTmp[i]=s.getPozicioni()+this.zaret.getZaret().get(1).getVlera();
                 i++;
             }
-        } 
+        }
+        else {
+            if(this.aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()-sa)){
+                levizjetTmp[i]=s.getPozicioni()-sa;
+                i++;
+            }
+            if(this.aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()-this.zaret.getZaret().get(0).getVlera())){
+                levizjetTmp[i]=s.getPozicioni()-this.zaret.getZaret().get(0).getVlera();
+                i++;
+            }
+            if(this.aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()-this.zaret.getZaret().get(1).getVlera())){
+                levizjetTmp[i]=s.getPozicioni()-this.zaret.getZaret().get(1).getVlera();
+                i++;
+            }
+        }
         return levizjetTmp;
     }
     

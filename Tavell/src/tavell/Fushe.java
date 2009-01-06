@@ -111,12 +111,21 @@ public class Fushe extends Canvas {
     
     public class Listener extends MouseAdapter {
         @Override
-        public void mouseClicked(MouseEvent e) {                      
+        public void mouseClicked(MouseEvent e) {
+            for(int i=0;i<l.getStivat().length;i++){
+                l.getStivat()[i].getTrekendeshi().setNgjyra(null);
+            }
+            //update(getGraphics());
            int tmp [] = l.getLevizjetELejuara(l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))]);
            for(int j=0;j<tmp.length && tmp[j]>0;j++){               
                l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow);  
            }
            update(getGraphics());
+        }
+        
+        @Override
+        public void mouseReleased(MouseEvent e){
+            
         }
     }
     
