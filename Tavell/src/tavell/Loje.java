@@ -81,5 +81,9 @@ abstract public class Loje {
     
     public void vendosGuret () {
     }
+    
+    public int[] getLevizjetELejuara(KoleksionGuresh s){
+        return new int[3];
+    }    
 }
 

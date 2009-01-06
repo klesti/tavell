@@ -36,7 +36,35 @@ public class Fushe extends Canvas {
         Lojtar l2 = new Lojtar("Arber Ceni",2);        
         l2.setEmri("Arber Ceni");
         Lojtar lojtaret[] = {l1,l2};
+
+        l = new Tavell(lojtaret,24);
+        
+        //Simulo Levizje Guri              
+        
+        KoleksionGuresh[] stivat = l.getStivat();
+        
+        stivat[24].peek().leviz(stivat,25);
+        stivat[24].peek().leviz(stivat,25);
+        stivat[13].peek().leviz(stivat, 25);
+        stivat[1].peek().leviz(stivat,26);
+        stivat[12].peek().leviz(stivat,26);
+        stivat[12].peek().leviz(stivat,26);
+        
+        stivat[12].peek().leviz(stivat, 0); //Guri u vra
+        stivat[13].peek().leviz(stivat, 0); //Guri u vra
+        stivat[13].peek().leviz(stivat, 0); //Guri u vra
+        
+        /*
+        stivat[24].peek().leviz(stivat, 25);
+        stivat[24].peek().leviz(stivat, 25);
+        stivat[12].peek().leviz(stivat, 26);
+        stivat[12].peek().leviz(stivat, 26);
+            */
+         // Fund Simulim
+       
+
         l = new Tavell(lojtaret,24);      
+
         sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());        
@@ -60,6 +88,7 @@ public class Fushe extends Canvas {
         CiftZaresh zaret = new CiftZaresh();        
         zaret.hidhZaret();
         zaret.paraqit(g, this, 3*WIDTH/4, HEIGHT/2-24);
+        l.setZaret(zaret);
     }
     
     @Override
@@ -82,9 +111,12 @@ public class Fushe extends Canvas {
     
     public class Listener extends MouseAdapter {
         @Override
-        public void mouseClicked(MouseEvent e) {
-           l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))].getTrekendeshi().setNgjyra(Color.yellow);           
-           update(getGraphics());           
+        public void mouseClicked(MouseEvent e) {                      
+           int tmp [] = l.getLevizjetELejuara(l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))]);
+           for(int j=0;j<tmp.length && tmp[j]>0;j++){               
+               l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow);  
+           }
+           update(getGraphics());
         }
     }
     

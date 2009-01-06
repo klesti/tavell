@@ -47,6 +47,37 @@ public class Tavell extends Loje {
        }
        //--Fund Peseshet
     }
+    
+    @Override
+    public int[] getLevizjetELejuara(KoleksionGuresh s){
+        int sa = this.zaret.getZaret().get(0).getVlera() + this.zaret.getZaret().get(1).getVlera();
+        int levizjetTmp[] = new int[3];
+        int i=0;
+        Gur g = s.peek();
+        if(g.getLojtari().getNumri()==2){
+            if(this.aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+sa)){
+                levizjetTmp[i]=s.getPozicioni()+sa;
+                i++;
+            }
+            if(this.aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+this.zaret.getZaret().get(0).getVlera())){
+                levizjetTmp[i]=s.getPozicioni()+this.zaret.getZaret().get(0).getVlera();
+                i++;
+            }
+            if(this.aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+this.zaret.getZaret().get(1).getVlera())){
+                levizjetTmp[i]=s.getPozicioni()+this.zaret.getZaret().get(1).getVlera();
+                i++;
+            }
+        } 
+        return levizjetTmp;
+    }
+    
+    
+    public boolean aEshteEMundurLevizja(int nga, int tek){
+        if(this.getStivat()[tek].size()<2){
+            return true;
+        }
+        else return false;
+    }
 
 }
 
