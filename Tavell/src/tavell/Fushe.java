@@ -72,13 +72,19 @@ public class Fushe extends Canvas {
         Program.strategy.show();
     }
     
-     public class Listener extends MouseAdapter {
+    @Override
+    public void update(Graphics g)
+    {
+        g = Program.strategy.getDrawGraphics();
+        super.update(g);
+        Program.strategy.show();
+    }
+    
+    public class Listener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-           l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))].getTrekendeshi().setNgjyra(Color.yellow);
-           Graphics g = Program.strategy.getDrawGraphics();
-           update(g);
-           Program.strategy.show();
+           l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))].getTrekendeshi().setNgjyra(Color.yellow);           
+           update(getGraphics());           
         }
     }
     
