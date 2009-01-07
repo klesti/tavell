@@ -65,6 +65,10 @@ public class CiftZaresh
             return false;
     }
     
+    public boolean janeHedhur() {
+        return (this.zaret.get(0).getVlera() == 0 && this.zaret.get(1).getVlera() == 0);
+    }
+    
     public void paraqit(Graphics g, ImageObserver obs,int x,int y) {
         this.zaret.get(0).setNgjyre("blue");
         this.zaret.get(0).paraqit(g, obs, x, y);
