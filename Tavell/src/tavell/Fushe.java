@@ -31,43 +31,7 @@ public class Fushe extends Canvas {
         addMouseListener(new Listener());
     }
     
-    public Fushe() {
-        Lojtar l1 = new Lojtar("Klesti Hoxha",1);
-        Lojtar l2 = new Lojtar("Arber Ceni",2);        
-        l2.setEmri("Arber Ceni");
-        Lojtar lojtaret[] = {l1,l2};
-
-        l = new Tavell(lojtaret,24);
-        
-        //Simulo Levizje Guri              
-        
-        KoleksionGuresh[] stivat = l.getStivat();
-        
-        stivat[24].peek().leviz(stivat,25);
-        stivat[24].peek().leviz(stivat,25);
-        stivat[13].peek().leviz(stivat, 25);
-        stivat[1].peek().leviz(stivat,26);
-        stivat[12].peek().leviz(stivat,26);
-        stivat[12].peek().leviz(stivat,26);
-        
-        stivat[12].peek().leviz(stivat, 0); //Guri u vra
-        stivat[13].peek().leviz(stivat, 0); //Guri u vra
-        stivat[13].peek().leviz(stivat, 0); //Guri u vra
-        
-        /*
-        stivat[24].peek().leviz(stivat, 25);
-        stivat[24].peek().leviz(stivat, 25);
-        stivat[12].peek().leviz(stivat, 26);
-        stivat[12].peek().leviz(stivat, 26);
-            */
-         // Fund Simulim
-       
-
-        l = new Tavell(lojtaret,24);      
-
-        sprites = new SpriteCache();      
-        setBounds(0,0,WIDTH,HEIGHT);
-        addMouseListener(new Listener());        
+    public Fushe() {    
     }
     
     public void paraqitGuret(Graphics g) {
@@ -78,15 +42,13 @@ public class Fushe extends Canvas {
     }
     
     public void paraqitZar(Graphics g){
-        Zar z = new Zar();
-        z.setNgjyre("blue");
+        Zar z = new Zar();        
         z.hidh();
         z.paraqit(g, this, 3*WIDTH/4, HEIGHT/2-24);
     }
     
     public void paraqitZaret(Graphics g){
-        CiftZaresh zaret = new CiftZaresh();        
-        zaret.hidhZaret();
+        CiftZaresh zaret = l.getZaret();        
         zaret.paraqit(g, this, 3*WIDTH/4, HEIGHT/2-24);
         l.setZaret(zaret);
     }
@@ -95,8 +57,7 @@ public class Fushe extends Canvas {
     public void paint(Graphics g) {
         g = Program.strategy.getDrawGraphics();
         g.drawImage(sprites.getSprite(background),0,0,this);
-        paraqitGuret(g);   
-        //paraqitZar(g);
+        paraqitGuret(g);
         paraqitZaret(g);        
         Program.strategy.show();
     }
@@ -109,54 +70,89 @@ public class Fushe extends Canvas {
         Program.strategy.show();
     }
     
+    public void rifresko() {
+        update(getGraphics());
+    }
+    /*
+     *   Mouse Listener
+     **/
     public class Listener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
-            for(int i=0;i<l.getStivat().length;i++){
-                l.getStivat()[i].getTrekendeshi().setNgjyra(null);
-            }
-            //update(getGraphics());
-           int tmp [] = l.getLevizjetELejuara(l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))]);
-           for(int j=0;j<tmp.length && tmp[j]>0;j++){               
-               l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow); 
+           cngjyrosTrekendeshat();
+           int poz = pozicioniKuNdodhet(e.getPoint());
+           if (poz>=1 && poz<=24) {
+               tregoLevizjetELejuara(poz);
+           } else if (poz==-2) { //Klikim mbi zaret
+               hidhZaret();
            }
            update(getGraphics());
         }
         
-        @Override
-        public void mouseReleased(MouseEvent e){
-            
-        }
-    }
-    
-    public int shtyllaKuNdodhet(Point p) {
-        int shtylla=-1; // Kthen -1 nqs pika nuk ndodhet ne asnje shtylle
-        //-----------------Pjesa lart majtas----------------------------
-        if ((p.x >=96 && p.x <= Fushe.WIDTH / 2 - 48) && (p.y <= Fushe.HEIGHT / 2)) {
-             shtylla = 13 + (int)Math.ceil((p.x - 96) / 48);
-        }  
-        //-----------------Pjesa poshte majtas----------------------------
-        else if ((p.x>=96 && p.x<=Fushe.WIDTH/2-48) && (p.y>Fushe.HEIGHT/2)) {
-            shtylla = 12 - (int)Math.ceil((p.x - 96) / 48);
-        }
-        //-----------------Pjesa lart djathtas----------------------------
-        else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y<Fushe.HEIGHT/2)) {
-            shtylla = 19 + (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
-        } 
-        //-----------------Pjesa poshte djathtas----------------------------
-        else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y>Fushe.HEIGHT/2)) {
-            shtylla = 6 - (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
-        }
-        //-----------------Pjesa lart ne mes (te vrare)----------------------------
-        else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH+24) && (p.y<Fushe.HEIGHT/2)) {
-            shtylla = 25;
-        }
-        //-----------------Pjesa poshte ne mes (te vrare)----------------------------
-        else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH+24) && (p.y>Fushe.HEIGHT/2)) {
-            shtylla = 26;
+        public void hidhZaret() {
+           l.getZaret().setZaret(0,0);
+           rifresko();
+           try { 
+             Thread.sleep(700);
+           } catch (InterruptedException ex) {}
+
+           l.getZaret().hidhZaret();    
         }
         
-        return shtylla;
+        public void cngjyrosTrekendeshat() {
+            for(int i=0;i<l.getStivat().length;i++){
+                l.getStivat()[i].getTrekendeshi().setNgjyra(null);
+            }        
+        }
+        
+        public void tregoLevizjetELejuara(int poz) {
+           int tmp [] = l.getLevizjetELejuara(l.getStivat()[poz]);
+           for (int j=0;j<tmp.length && tmp[j]>0;j++) {               
+               l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow); 
+           }
+        }
+        
+        public int pozicioniKuNdodhet(Point p) {
+            int pozicioni=-1; // Kthen -1 nqs pika nuk ndodhet ne asnje shtylle
+            //-----------------Pjesa lart majtas----------------------------
+            if ((p.x >=96 && p.x <= Fushe.WIDTH / 2 - 48) && (p.y <= Fushe.HEIGHT / 2 - 25)) {
+                 pozicioni = 13 + (int)Math.ceil((p.x - 96) / 48);
+            }  
+            //-----------------Pjesa poshte majtas----------------------------
+            else if ((p.x>=96 && p.x<=Fushe.WIDTH/2-48) && (p.y>Fushe.HEIGHT/2 + 25)) {
+                pozicioni = 12 - (int)Math.ceil((p.x - 96) / 48);
+            }
+            //-----------------Pjesa lart djathtas----------------------------
+            else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y< Fushe.HEIGHT/2 - 25)) {
+                pozicioni = 19 + (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
+            } 
+            //-----------------Pjesa poshte djathtas----------------------------
+            else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y>Fushe.HEIGHT/2 + 25)) {
+                pozicioni = 6 - (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
+            }
+            //-----------------Pjesa lart ne mes (te vrare)----------------------------
+            else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH/2+24) && (p.y<Fushe.HEIGHT/2)) {
+                pozicioni = 25;
+            }
+            //-----------------Pjesa poshte ne mes (te vrare)----------------------------
+            else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH/2+24) && (p.y>Fushe.HEIGHT/2)) {
+                pozicioni = 26;
+            } 
+            else if (p.x>=(3*WIDTH/4)-58 && p.x<=(3*WIDTH/4)+49 && p.y>=HEIGHT/2-24 && p.y<=HEIGHT/2-24+49) {
+                pozicioni = -2; //Klikim mbi zaret
+            }
+            
+            System.out.println(pozicioni);
+            
+            return pozicioni;
+        }     
+        
+        
     }
+    /*
+     *  End Mouse Listener
+     **/
+    
+
 
 }

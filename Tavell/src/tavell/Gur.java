@@ -96,8 +96,8 @@ public class Gur
     }
     
     public void leviz(KoleksionGuresh[] stivat,int tek) {
-        Gur g = stivat[pozicioni].pop();
-        stivat[tek].push(g);
+        stivat[pozicioni].pop();
+        stivat[tek].push(this);
     }
     
     public void paraqit(Graphics g,ImageObserver obs) {

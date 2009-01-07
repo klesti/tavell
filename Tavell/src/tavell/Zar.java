@@ -8,8 +8,8 @@ public class Zar
 {
     private int vlera;
     private SpriteCache sprites;    
-    public static String [] blueImg = {"blue1.gif","blue2.gif","blue3.gif","blue4.gif","blue5.gif","blue6.gif"};
-    public static String [] whiteImg = {"white1.gif","white2.gif","white3.gif","white4.gif","white5.gif","white6.gif"};
+    public static String [] blueImg = {"blue0.gif","blue1.gif","blue2.gif","blue3.gif","blue4.gif","blue5.gif","blue6.gif"};
+    public static String [] whiteImg = {"white0.gif","white1.gif","white2.gif","white3.gif","white4.gif","white5.gif","white6.gif"};
     private String ngjyre;
     private boolean uLuajt;
     
@@ -50,9 +50,9 @@ public class Zar
     
     public String getImazhi(){ 
         if(this.ngjyre.equalsIgnoreCase("blue"))
-            return blueImg[this.vlera-1];        
+            return blueImg[this.vlera];        
         else if(this.ngjyre.equalsIgnoreCase("white"))
-            return whiteImg[this.vlera-1];
+            return whiteImg[this.vlera];
         else return "";
     }
     

@@ -5,14 +5,6 @@ abstract public class Loje {
     protected CiftZaresh zaret;
     protected RadheLevizje radha;
 
-    public CiftZaresh getZaret() {
-        return zaret;
-    }
-
-    public void setZaret(CiftZaresh zaret) {
-        this.zaret = zaret;
-    }
-
     protected KoleksionGuresh[] stivat;
 
     protected KoleksionLevizjesh levizjet;
@@ -43,6 +35,14 @@ abstract public class Loje {
         stivat[26] = new KoleksionGureshTePerfunduar(26,this, lojtaret[1]);
         //Fund inicializimi
         
+    }
+    
+    public CiftZaresh getZaret() {
+        return zaret;
+    }
+
+    public void setZaret(CiftZaresh zaret) {
+        this.zaret = zaret;
     }
     
     public RadheLevizje getRadha() {
