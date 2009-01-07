@@ -3,6 +3,15 @@ package tavell;
 abstract public class Loje {
 
     protected CiftZaresh zaret;
+    protected RadheLevizje radha;
+
+    public CiftZaresh getZaret() {
+        return zaret;
+    }
+
+    public void setZaret(CiftZaresh zaret) {
+        this.zaret = zaret;
+    }
 
     protected KoleksionGuresh[] stivat;
 
@@ -36,6 +45,14 @@ abstract public class Loje {
         
     }
     
+    public RadheLevizje getRadha() {
+        return radha;
+    }
+
+    public void setRadha(RadheLevizje radha) {
+        this.radha = radha;
+    }
+    
     public KoleksionLevizjesh getLevizjet () {
         return levizjet;
     }
@@ -50,14 +67,6 @@ abstract public class Loje {
 
     public void setStivat (KoleksionGuresh[] val) {
         this.stivat = val;
-    }
-
-    public CiftZaresh getZaret () {
-        return zaret;
-    }
-
-    public void setZaret (CiftZaresh val) {
-        this.zaret = val;
     }
     
     public Lojtar[] getLojtaret() {
@@ -74,6 +83,15 @@ abstract public class Loje {
     
     public void setPiket(int p){
         this.piket = p;
+    }
+    
+    public void percaktoRadhen()
+    {
+        //ketu do jene disa rreshta qe bejne hedhjen e nga nje zari per secilin lojtar
+        //dhe keshtu percaktojne se kush e ka radhen
+        //dhe krijohet radha
+        radha = new RadheLevizje(/*ketu do jete lojtari qe ka radhen*/);
+        //radha.populloLevizjetERradhes(this);
     }
     
     public void ruaj () {

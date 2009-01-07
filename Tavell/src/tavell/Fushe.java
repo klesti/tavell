@@ -118,7 +118,7 @@ public class Fushe extends Canvas {
             //update(getGraphics());
            int tmp [] = l.getLevizjetELejuara(l.getStivat()[shtyllaKuNdodhet(new Point(e.getX(),e.getY()))]);
            for(int j=0;j<tmp.length && tmp[j]>0;j++){               
-               l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow);  
+               l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow); 
            }
            update(getGraphics());
         }
