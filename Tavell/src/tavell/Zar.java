@@ -59,6 +59,7 @@ public class Zar
     public void hidh () 
     {
         this.vlera = new Random().nextInt(5) + 1;
+        uLuajt = false;
     }
     
     public void paraqit(Graphics g, ImageObserver obs, int x, int y){        
