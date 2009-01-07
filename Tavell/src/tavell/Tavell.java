@@ -159,13 +159,13 @@ public class Tavell extends Loje {
     
     private boolean aKaGureJashteKuadratitTeFundit(Lojtar l){        
         if(l.getNumri()==1){
-            for(int i=7;i<=24;i++){
+            for(int i=7;i<=24 && this.getStivat()[i].size()>0;i++){
                 if(this.getStivat()[i].peek().getLojtari().getNumri()==l.getNumri()) return true;
             }
             return false;
         }
         else {
-            for(int i=1;i<=18;i++){
+            for(int i=1;i<=18 && this.getStivat()[i].size()>0;i++){
                 if(this.getStivat()[i].peek().getLojtari().getNumri()==l.getNumri()) return true;
             }
             return false;
