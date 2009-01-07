@@ -10,13 +10,16 @@ abstract public class Loje {
     
     protected Lojtar[] lojtaret;
     
+    protected Lojtar lojtariQePoLeviz;
+    
     protected int piket;
 
     public Loje (Lojtar[] l, int p) {
         lojtaret = l;
         piket = p;
         zaret = new CiftZaresh();
-        levizjet = new KoleksionLevizjesh();        
+        levizjet = new KoleksionLevizjesh();
+        lojtariQePoLeviz = lojtaret[0];
         /*
           Stivat[0] jane guret jashte loje, Stivat[1..24] jane guret ne loje, 
           Stivat[25..26] jane guret e perfunduar
@@ -83,7 +86,7 @@ abstract public class Loje {
     }
     
     public int[] getLevizjetELejuara(KoleksionGuresh s){
-        return new int[3];
+        return new int[5];
     }    
 }
 

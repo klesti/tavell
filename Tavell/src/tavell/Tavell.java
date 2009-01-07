@@ -57,7 +57,7 @@ public class Tavell extends Loje {
         //--Lojtari i pare
         if(g.getLojtari().getNumri()==2){
             //--Rasti kur bie dopio. Levizjet kryhen njera pas tjetres.
-            if(this.zaret.getZaret().get(0).getVlera()==this.zaret.getZaret().get(1).getVlera()){
+            if(this.zaret.eshteDopio()){
                 if(this.aMundTeShkojeTek(g,s.getPozicioni()+this.zaret.getZaret().get(0).getVlera())){
                     levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+this.zaret.getZaret().get(0).getVlera());
                     i++;
@@ -94,7 +94,7 @@ public class Tavell extends Loje {
         //--Lojtari dyte
         else {
             //Rasti kur bie dopio. Levizjet kryhen njera pas tjetres
-            if(this.zaret.getZaret().get(0).getVlera()==this.zaret.getZaret().get(1).getVlera()){
+            if(this.zaret.eshteDopio()){
                 if(this.aMundTeShkojeTek(g,s.getPozicioni()-this.zaret.getZaret().get(0).getVlera())){
                     levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-this.zaret.getZaret().get(0).getVlera());
                     i++;
@@ -146,15 +146,11 @@ public class Tavell extends Loje {
     
     public boolean aEshteEMundurLevizja(int nga, int tek){
         int hapi = Math.abs(tek-nga);
-        if(this.zaret.getZaret().get(0).getVlera()!=hapi && this.zaret.getZaret().get(1).getVlera()!=hapi
-                && this.zaret.getZaret().get(0).getVlera()+this.zaret.getZaret().get(1).getVlera()!= hapi) {
-            return false;
-        }
-        else {
-            if(this.getStivat()[tek].size()<2)
-                return true;
-            else return false;
-        }
+        int vlera1= zaret.getZaret().get(0).getVlera();
+        int vlera2= zaret.getZaret().get(1).getVlera();
+        
+        if(aTeLejojneZaret(hapi, vlera1, vlera2) && (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek))) return true;
+        else return false;
     }
     
     private boolean aKaGureJashteKuadratitTeFundit(Lojtar l){        
@@ -181,6 +177,22 @@ public class Tavell extends Loje {
         }
         else return sa;
     }
-
+    
+    private boolean aTeLejojneZaret(int hapi, int vlera1, int vlera2){
+        if(zaret.eshteDopio() && hapi%vlera1==0 && hapi<=4*vlera1) return true;
+        else if(!zaret.eshteDopio() && (hapi==vlera1 || hapi==vlera2 || hapi==vlera1+vlera2)) return true;
+        else return false;
+    }
+    
+    private boolean aEshteBoshStiva(int pozicioni){
+        return this.getStivat()[pozicioni].isEmpty();
+    }
+    
+    private boolean aKaNjeGurKundershtar(int pozicioni){
+        return (this.getStivat()[pozicioni].size()==1 && this.getStivat()[pozicioni].peek().getLojtari().getNumri() != lojtariQePoLeviz.getNumri());
+    }
+    
+    private boolean aJaneGureTeLojtarit(int pozicioni){
+        return (this.getStivat()[pozicioni].peek().getLojtari().getNumri() == lojtariQePoLeviz.getNumri());
+    }
 }
-
