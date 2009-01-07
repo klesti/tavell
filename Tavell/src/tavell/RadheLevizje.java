@@ -80,17 +80,47 @@ public class RadheLevizje {
         }
     }
     
-    /*public void rregjistroLevizje(int vlera) {
-    if (vlera == this.levzjetERradhes[0]) {
-    for (int j = 1; j < this.levzjetERradhes.length; j++)
-    this.levzjetERradhes[j-1] = this.levzjetERradhes[j];
-    this.levzjetERradhes[23] = 0;
+    public int rregjistroLevizje(int vlera) {
+        int nrLevizjeTeMbetura = 0;
+        for (int i = 0; i < this.levzjetERradhes.length; i++)
+            if (this.levzjetERradhes[i] == 0){
+                nrLevizjeTeMbetura = i+1;
+                break;
+            }
+        if (this.zaret.eshteDopio()) {
+            int shuma = 0;
+            for (int i = 0; i < nrLevizjeTeMbetura; i++) {
+                shuma += this.levzjetERradhes[i];
+                if (vlera == shuma){
+                    for (int j = i; j < nrLevizjeTeMbetura; j++){
+                        if (this.levzjetERradhes[i] == 0)
+                            break;
+                        this.levzjetERradhes[j-i] = this.levzjetERradhes[j+1];
+                    }                        
+                    for (int j = nrLevizjeTeMbetura - i; j < nrLevizjeTeMbetura; j++)
+                        this.levzjetERradhes[j-1] = 0;
+                    nrLevizjeTeMbetura = nrLevizjeTeMbetura - i - 1;
+                    break;
+                }
+            }
+        }
+        else {
+            if (vlera == this.levzjetERradhes[0]) {
+                this.levzjetERradhes[0] = this.levzjetERradhes[1];
+                this.levzjetERradhes[1] = 0;
+                nrLevizjeTeMbetura = 1;
+            }
+            else if (vlera == this.levzjetERradhes[1]) {
+                this.levzjetERradhes[1] = 0;
+                nrLevizjeTeMbetura = 1;
+            }
+            else {
+                this.levzjetERradhes[0] = 0;
+                this.levzjetERradhes[1] = 0;
+                nrLevizjeTeMbetura = 0;
+            }
+        }
+        return nrLevizjeTeMbetura;            
     }
-    for (int i = 0; i < this.levzjetERradhes.length; i++) {
-    if (this.levzjetERradhes[i] == 0)
-    break;
-    
-    }
-    }*/
 
 }
