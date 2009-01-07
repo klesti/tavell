@@ -11,11 +11,13 @@ public class Zar
     public static String [] blueImg = {"blue1.gif","blue2.gif","blue3.gif","blue4.gif","blue5.gif","blue6.gif"};
     public static String [] whiteImg = {"white1.gif","white2.gif","white3.gif","white4.gif","white5.gif","white6.gif"};
     private String ngjyre;
+    private boolean uLuajt;
     
     public Zar () 
     {
         this.vlera = 0;
         this.sprites = new SpriteCache();
+        this.uLuajt = false;
     }
 
     public int getVlera () 
@@ -34,6 +36,16 @@ public class Zar
     
     public void setNgjyre(String ngjyra){
         this.ngjyre = ngjyra;
+    }
+    
+    public boolean isULuajt() 
+    {
+        return uLuajt;
+    }
+
+    public void setULuajt(boolean uLuajt) 
+    {
+        this.uLuajt = uLuajt;
     }
     
     public String getImazhi(){ 

@@ -47,7 +47,23 @@ public class CiftZaresh
     {        
         this.zaret.get(0).hidh();       
         this.zaret.get(1).hidh();
-    }        
+    }
+    
+    public boolean uLuajten ()
+    {
+        if (this.zaret.get(0).isULuajt() && this.zaret.get(1).isULuajt())
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean eshteDopio()
+    {
+        if (this.zaret.get(0).getVlera() == this.zaret.get(1).getVlera())
+            return true;
+        else
+            return false;
+    }
     
     public void paraqit(Graphics g, ImageObserver obs,int x,int y) {
         this.zaret.get(0).setNgjyre("blue");
