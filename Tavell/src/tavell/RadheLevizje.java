@@ -105,25 +105,17 @@ public class RadheLevizje {
             }
         }
         else {
-            
-//        
-//            if (vlera == this.zaret.getZaret().get(0).getVlera())
-//                this.zaret.getZaret().get(0).setULuajt(true);
-//            else if (vlera == this.zaret.getZaret().get(1).getVlera())
-//                this.zaret.getZaret().get(1).setULuajt(true);
-//            if (vlera == this.levizjetERradhes[0]) {
-//                this.levizjetERradhes[0] = this.levizjetERradhes[1];
-//                this.levizjetERradhes[1] = 0;                
-//            }
-//            else if (vlera == this.levizjetERradhes[1]) {
-//                this.levizjetERradhes[1] = 0;
-//            }
-//            else {
-//                this.levizjetERradhes[0] = 0;
-//                this.levizjetERradhes[1] = 0;
-//                this.zaret.getZaret().get(0).setULuajt(true);
-//                this.zaret.getZaret().get(1).setULuajt(true);
-//            }
+            if (vlera == this.zaret.getZaret().get(0).getVlera())
+                this.zaret.getZaret().get(0).setULuajt(true);
+            else if (vlera == this.zaret.getZaret().get(1).getVlera())
+                this.zaret.getZaret().get(1).setULuajt(true);
+            if (vlera == this.levizjetERradhes[0]) {
+                this.levizjetERradhes[0] = this.levizjetERradhes[1];
+                this.levizjetERradhes[1] = 0;                
+            }
+            else if (vlera == this.levizjetERradhes[1]) {
+                this.levizjetERradhes[1] = 0;
+            }
         }           
     }
 
