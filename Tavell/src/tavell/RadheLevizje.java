@@ -14,11 +14,13 @@ public class RadheLevizje {
     private Lojtar lojtar;
     private CiftZaresh zaret;
     private int[] levizjetERradhes;
+    private int zgjedhurPerTuLevizur;
 
     public RadheLevizje() {
         //konstruktor i perkoheshem
         this.levizjetERradhes = new int[24];
         this.zaret = new CiftZaresh();
+        this.zgjedhurPerTuLevizur = -1;
     }
 
     public RadheLevizje(Lojtar lojtar, CiftZaresh zaret, int[] levzjetERradhes) {
@@ -57,6 +59,18 @@ public class RadheLevizje {
         this.zaret = zaret;
     }
     
+    public int getZgjedhurPerTuLevizur() {
+        return zgjedhurPerTuLevizur;
+    }
+
+    public void setZgjedhurPerTuLevizur(int zgjedhurPerTuLevizur) {
+        this.zgjedhurPerTuLevizur = zgjedhurPerTuLevizur;
+    }
+    
+    public boolean kaPerTuLevizur() {
+        return zgjedhurPerTuLevizur!=-1;
+    }
+        
     public void populloLevizjetERradhes(Loje l) {
         this.zaret.hidhZaret();
         int vlera1 = this.zaret.getZaret().get(0).getVlera();
@@ -118,7 +132,7 @@ public class RadheLevizje {
             else if (vlera == this.levizjetERradhes[1]) {
                 this.levizjetERradhes[1] = 0;
             }
-        }           
+        }
+        zgjedhurPerTuLevizur = -1;
     }
-
 }
