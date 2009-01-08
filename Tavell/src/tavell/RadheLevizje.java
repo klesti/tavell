@@ -18,6 +18,7 @@ public class RadheLevizje {
     public RadheLevizje() {
         //konstruktor i perkoheshem
         this.levizjetERradhes = new int[24];
+        this.zaret = new CiftZaresh();
     }
 
     public RadheLevizje(Lojtar lojtar, CiftZaresh zaret, int[] levzjetERradhes) {
@@ -29,6 +30,7 @@ public class RadheLevizje {
     public RadheLevizje(Lojtar lojtar) {
         this.lojtar = lojtar;
         this.levizjetERradhes = new int[24];
+        this.zaret = new CiftZaresh();
     }
 
     public int[] getLevizjetERradhes() {
