@@ -74,6 +74,8 @@ abstract public class Loje {
         this.piket = p;
     }
     
+    public abstract boolean leviz(int nga, int tek);
+    
     public void percaktoRadhen()
     {
         //ketu do jene disa rreshta qe bejne hedhjen e nga nje zari per secilin lojtar

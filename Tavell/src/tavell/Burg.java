@@ -22,6 +22,31 @@ public class Burg extends Loje {
             stivat[1].push(g);
         }
     }
+    
+   @Override
+    public boolean leviz(int nga, int tek) {
+        CiftZaresh zaret = radha.getZaret();        
+        
+        if (aEshteEMundurLevizja(nga, tek)) {
+            Gur g = stivat[nga].peek();
+            g.leviz(stivat, tek);
+            //Regjistro levizje
+            if (zaret.eshteDopio()) {
+                int nrLevizjeve = Math.abs(tek-nga)/zaret.getVlera1();
+                for (int i=0; i < nrLevizjeve; i++) {
+                    radha.rregjistroLevizje(zaret.getVlera1());
+                }
+            } else if (!zaret.eshteDopio() && zaret.getShuma()==nga + tek) {
+                radha.rregjistroLevizje(zaret.getVlera1());
+                radha.rregjistroLevizje(zaret.getVlera2());                
+            } else {
+                radha.rregjistroLevizje(zaret.getVlera1());
+            }
+            levizjet.add(new Levizje(radha.getLojtar(),nga,tek));
+            return true;
+        }
+        return false;
+    }
 
 }
 

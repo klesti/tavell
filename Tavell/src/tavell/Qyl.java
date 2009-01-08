@@ -22,6 +22,10 @@ public class Qyl extends Loje {
             stivat[12].push(g);
         }
     }
+    
+    public boolean leviz(int nga, int tek) {
+        return false;
+    }
 
 }
 

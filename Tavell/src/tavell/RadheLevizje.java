@@ -133,6 +133,5 @@ public class RadheLevizje {
                 this.levizjetERradhes[1] = 0;
             }
         }
-        zgjedhurPerTuLevizur = -1;
     }
 }

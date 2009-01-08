@@ -77,7 +77,7 @@ public class CiftZaresh
     }
     
     public int getVlera2() {
-        return zaret.get(0).getVlera();
+        return zaret.get(1).getVlera();
     }
     
     public boolean janeHedhur() {

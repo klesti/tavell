@@ -95,6 +95,14 @@ public class Gur
         }
     }
     
+    public boolean neRreth(Point P)
+    {
+        if (P.distance(this.qendra) > rrezja)
+            return false;
+        else 
+            return true;
+    }
+    
     public void leviz(KoleksionGuresh[] stivat,int tek) {
         stivat[pozicioni].pop();
         stivat[tek].push(this);
@@ -107,12 +115,5 @@ public class Gur
         }
     }
     
-    public boolean neRreth(Point P)
-    {
-        if (P.distance(this.qendra) > rrezja)
-            return false;
-        else 
-            return true;
-    }
 }
 

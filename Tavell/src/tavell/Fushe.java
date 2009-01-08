@@ -81,8 +81,14 @@ public class Fushe extends Canvas {
         public void mouseClicked(MouseEvent e) {
            cngjyrosTrekendeshat();
            int poz = pozicioniKuNdodhet(e.getPoint());
-           if (poz>=1 && poz<=24) {
-               tregoLevizjetELejuara(poz);
+           if (poz>=0 && poz<=24) {
+               if (l.getRadha().kaPerTuLevizur()) {
+                   l.leviz(l.getRadha().getZgjedhurPerTuLevizur(), poz);
+                   l.getRadha().setZgjedhurPerTuLevizur(-1);
+               } else {
+                   tregoLevizjetELejuara(poz);
+                   l.getRadha().setZgjedhurPerTuLevizur(poz); 
+               }
            } else if (poz==-2) { //Klikim mbi zaret
                hidhZaret();
            }
@@ -130,20 +136,15 @@ public class Fushe extends Canvas {
             else if ((p.x>=Fushe.WIDTH/2+48 && p.x<=Fushe.WIDTH-96) && (p.y>Fushe.HEIGHT/2 + 25)) {
                 pozicioni = 6 - (int)Math.ceil((p.x - Fushe.WIDTH/2-48) / 48);
             }
-            //-----------------Pjesa lart ne mes (te vrare)----------------------------
-            else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH/2+24) && (p.y<Fushe.HEIGHT/2)) {
-                pozicioni = 25;
+            //-----------------Pjesa ne mes (te vrare)----------------------------
+            else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH/2+24) && p.y>23 && p.y<HEIGHT-23) {
+                pozicioni = 0;
             }
-            //-----------------Pjesa poshte ne mes (te vrare)----------------------------
-            else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH/2+24) && (p.y>Fushe.HEIGHT/2)) {
-                pozicioni = 26;
-            } 
+
             else if (p.x>=(3*WIDTH/4)-58 && p.x<=(3*WIDTH/4)+49 && p.y>=HEIGHT/2-24 && p.y<=HEIGHT/2-24+49) {
                 pozicioni = -2; //Klikim mbi zaret
-            }
-            
+            }        
             System.out.println(pozicioni);
-            
             return pozicioni;
         }     
         
