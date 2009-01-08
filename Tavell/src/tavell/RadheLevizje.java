@@ -31,12 +31,12 @@ public class RadheLevizje {
         this.levizjetERradhes = new int[24];
     }
 
-    public int[] getLevzjetERradhes() {
+    public int[] getLevizjetERradhes() {
         return levizjetERradhes;
     }
 
-    public void setLevzjetERradhes(int[] levzjetERradhes) {
-        this.levizjetERradhes = levzjetERradhes;
+    public void setLevizjetERradhes(int[] levizjetERradhes) {
+        this.levizjetERradhes = levizjetERradhes;
     }
 
     public Lojtar getLojtar() {
@@ -61,10 +61,12 @@ public class RadheLevizje {
         int vlera2 = this.zaret.getZaret().get(1).getVlera();
         if (zaret.eshteDopio()) {
             if (l instanceof Qyl) {
+                int nrDopiosh = 0;
                 while (vlera1 <= 6){
-                    for (int i = 0; i <= 3; i++){
+                    for (int i = nrDopiosh; i <= nrDopiosh+3; i++){
                         this.levizjetERradhes[i] = vlera1;
                     }
+                    nrDopiosh += 4;
                     vlera1++;
                 }
             }
@@ -80,47 +82,49 @@ public class RadheLevizje {
         }
     }
     
-    public int rregjistroLevizje(int vlera) {
-        int nrLevizjeTeMbetura = 0;
+    public int nrLevizjeTeMbetura() {
         for (int i = 0; i < this.levizjetERradhes.length; i++)
-            if (this.levizjetERradhes[i] == 0){
-                nrLevizjeTeMbetura = i+1;
-                break;
-            }
+            if (this.levizjetERradhes[i] == 0)
+                return i+1;
+        return 0;
+    }
+    
+    public void rregjistroLevizje(int vlera) {
+        int nrLevMbet = this.nrLevizjeTeMbetura();
         if (this.zaret.eshteDopio()) {
-            int shuma = 0;
-            for (int i = 0; i < nrLevizjeTeMbetura; i++) {
-                shuma += this.levizjetERradhes[i];
-                if (vlera == shuma){
-                    for (int j = i; j < nrLevizjeTeMbetura; j++){
-                        if (this.levizjetERradhes[i] == 0)
-                            break;
-                        this.levizjetERradhes[j-i] = this.levizjetERradhes[j+1];
-                    }                        
-                    for (int j = nrLevizjeTeMbetura - i; j < nrLevizjeTeMbetura; j++)
-                        this.levizjetERradhes[j-1] = 0;
-                    nrLevizjeTeMbetura = nrLevizjeTeMbetura - i - 1;
-                    break;
-                }
+            for (int i = 0; i < nrLevMbet-1; i++){
+                this.levizjetERradhes[i] = this.levizjetERradhes[i+1];
+            }
+            int mbetja = nrLevMbet % 4;
+            if (mbetja == 3)
+                this.zaret.getZaret().get(0).setULuajt(true);
+            else if (mbetja == 1) {
+                this.zaret.getZaret().get(1).setULuajt(true);
+                if (nrLevMbet > 4)//rasti i qylit kur jane disa dopio
+                    this.zaret.setZaret(this.levizjetERradhes[0], this.levizjetERradhes[0]);                
             }
         }
         else {
-            if (vlera == this.levizjetERradhes[0]) {
-                this.levizjetERradhes[0] = this.levizjetERradhes[1];
-                this.levizjetERradhes[1] = 0;
-                nrLevizjeTeMbetura = 1;
-            }
-            else if (vlera == this.levizjetERradhes[1]) {
-                this.levizjetERradhes[1] = 0;
-                nrLevizjeTeMbetura = 1;
-            }
-            else {
-                this.levizjetERradhes[0] = 0;
-                this.levizjetERradhes[1] = 0;
-                nrLevizjeTeMbetura = 0;
-            }
-        }
-        return nrLevizjeTeMbetura;            
+            
+//        
+//            if (vlera == this.zaret.getZaret().get(0).getVlera())
+//                this.zaret.getZaret().get(0).setULuajt(true);
+//            else if (vlera == this.zaret.getZaret().get(1).getVlera())
+//                this.zaret.getZaret().get(1).setULuajt(true);
+//            if (vlera == this.levizjetERradhes[0]) {
+//                this.levizjetERradhes[0] = this.levizjetERradhes[1];
+//                this.levizjetERradhes[1] = 0;                
+//            }
+//            else if (vlera == this.levizjetERradhes[1]) {
+//                this.levizjetERradhes[1] = 0;
+//            }
+//            else {
+//                this.levizjetERradhes[0] = 0;
+//                this.levizjetERradhes[1] = 0;
+//                this.zaret.getZaret().get(0).setULuajt(true);
+//                this.zaret.getZaret().get(1).setULuajt(true);
+//            }
+        }           
     }
 
 }
