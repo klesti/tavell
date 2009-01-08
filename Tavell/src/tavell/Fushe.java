@@ -48,9 +48,9 @@ public class Fushe extends Canvas {
     }
     
     public void paraqitZaret(Graphics g){
-        CiftZaresh zaret = l.getZaret();        
+        CiftZaresh zaret = l.getRadha().getZaret();        
         zaret.paraqit(g, this, 3*WIDTH/4, HEIGHT/2-24);
-        l.setZaret(zaret);
+        l.getRadha().setZaret(zaret);
     }
     
     @Override
@@ -90,13 +90,13 @@ public class Fushe extends Canvas {
         }
         
         public void hidhZaret() {
-           l.getZaret().setZaret(0,0);
+           l.getRadha().getZaret().setZaret(0,0);
            rifresko();
            try { 
              Thread.sleep(700);
            } catch (InterruptedException ex) {}
 
-           l.getZaret().hidhZaret();    
+           l.getRadha().getZaret().hidhZaret();    
         }
         
         public void cngjyrosTrekendeshat() {
