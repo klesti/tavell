@@ -46,6 +46,8 @@ public class Zar
     public void setULuajt(boolean uLuajt) 
     {
         this.uLuajt = uLuajt;
+        if (uLuajt==true) 
+            vlera = 0;
     }
     
     public String getImazhi(){ 
