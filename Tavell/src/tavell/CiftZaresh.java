@@ -65,6 +65,10 @@ public class CiftZaresh
             return false;
     }
     
+    public int getShuma() {
+        return zaret.get(0).getVlera() + zaret.get(1).getVlera();
+    }
+    
     public boolean janeHedhur() {
         return (this.zaret.get(0).getVlera() == 0 && this.zaret.get(1).getVlera() == 0);
     }
