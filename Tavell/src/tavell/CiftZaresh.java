@@ -66,7 +66,18 @@ public class CiftZaresh
     }
     
     public int getShuma() {
-        return zaret.get(0).getVlera() + zaret.get(1).getVlera();
+        if (eshteDopio())
+            return 4*zaret.get(0).getVlera();
+        else 
+            return zaret.get(0).getVlera() + zaret.get(1).getVlera();           
+    }
+    
+    public int getVlera1() {
+        return zaret.get(0).getVlera();
+    }
+    
+    public int getVlera2() {
+        return zaret.get(0).getVlera();
     }
     
     public boolean janeHedhur() {
