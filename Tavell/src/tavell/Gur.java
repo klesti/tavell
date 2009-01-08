@@ -1,5 +1,6 @@
 package tavell;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.ImageObserver;
@@ -111,9 +112,19 @@ public class Gur
     public void paraqit(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
-            g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);
+            g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);            
         }
     }
     
+    public void vizato(Graphics g,ImageObserver obs) {
+        if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
+            koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
+            //g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);            
+            g.setColor(Color.black);
+            g.fillOval(koordinata.x, koordinata.y, 48, 48);
+            g.setColor(Color.LIGHT_GRAY);
+            g.fillOval(koordinata.x+10, koordinata.y+10, 28, 28);            
+        }
+    }  
 }
 
