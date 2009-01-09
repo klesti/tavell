@@ -101,7 +101,7 @@ public class RadheLevizje {
     public int nrLevizjeTeMbetura() {
         for (int i = 0; i < this.levizjetERradhes.length; i++)
             if (this.levizjetERradhes[i] == 0)
-                return i+1;
+                return i;
         return 0;
     }
     
@@ -127,7 +127,7 @@ public class RadheLevizje {
                 this.zaret.getZaret().get(1).setULuajt(true);
             if (vlera == this.levizjetERradhes[0]) {
                 this.levizjetERradhes[0] = this.levizjetERradhes[1];
-                this.levizjetERradhes[1] = 0;                
+                this.levizjetERradhes[1] = 0;
             }
             else if (vlera == this.levizjetERradhes[1]) {
                 this.levizjetERradhes[1] = 0;
