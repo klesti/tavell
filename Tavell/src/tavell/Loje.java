@@ -95,7 +95,7 @@ abstract public class Loje {
     }
     
     public int[] getLevizjetELejuara(KoleksionGuresh s){        
-        int sa = radha.getZaret().getZaret().get(0).getVlera() + radha.getZaret().getZaret().get(1).getVlera();
+        int sa = radha.getZaret().getShuma();
         int levizjetTmp[] = new int[5];
         int i=0;
         //Kontrollo a ka gure stiva
@@ -107,17 +107,17 @@ abstract public class Loje {
                 if(g.getLojtari().getNumri()==2){
                     //--Rasti kur bie dopio. Levizjet kryhen njera pas tjetres.                    
                     if(radha.getZaret().eshteDopio()){
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getZaret().get(0).getVlera())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getZaret().get(0).getVlera());
+                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getVlera2())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getVlera2());
                             i++;
-                            if(this.aMundTeShkojeTek(g,s.getPozicioni()+2*radha.getZaret().getZaret().get(1).getVlera())){
-                                levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+2*radha.getZaret().getZaret().get(1).getVlera());
+                            if(this.aMundTeShkojeTek(g,s.getPozicioni()+2*radha.getZaret().getVlera2())){
+                                levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+2*radha.getZaret().getVlera2());
                                 i++;
-                                if(this.aMundTeShkojeTek(g,s.getPozicioni()+3*radha.getZaret().getZaret().get(1).getVlera())){
-                                    levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+3*radha.getZaret().getZaret().get(1).getVlera());
+                                if(this.aMundTeShkojeTek(g,s.getPozicioni()+3*radha.getZaret().getVlera2())){
+                                    levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+3*radha.getZaret().getVlera2());
                                     i++;
                                     if(this.aMundTeShkojeTek(g,s.getPozicioni()+4*radha.getZaret().getZaret().get(1).getVlera())){
-                                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+4*radha.getZaret().getZaret().get(1).getVlera());
+                                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+4*radha.getZaret().getVlera2());
                                         i++;
                                     }
                                 }
@@ -130,12 +130,12 @@ abstract public class Loje {
                             levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+sa);
                             i++;
                         }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getZaret().get(0).getVlera())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getZaret().get(0).getVlera());
+                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getVlera1())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getVlera1());
                             i++;
                         }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getZaret().get(1).getVlera())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getZaret().get(1).getVlera());
+                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getVlera2())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getVlera2());
                             i++;
                         }
                     }
@@ -144,17 +144,17 @@ abstract public class Loje {
                 else {
                     //Rasti kur bie dopio. Levizjet kryhen njera pas tjetres
                     if(radha.getZaret().eshteDopio()){
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getZaret().get(0).getVlera())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getZaret().get(0).getVlera());
+                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getVlera1())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getVlera1());
                             i++;
-                            if(this.aMundTeShkojeTek(g,s.getPozicioni()-2*radha.getZaret().getZaret().get(1).getVlera())){
-                                levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-2*radha.getZaret().getZaret().get(1).getVlera());
+                            if(this.aMundTeShkojeTek(g,s.getPozicioni()-2*radha.getZaret().getVlera1())){
+                                levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-2*radha.getZaret().getVlera1());
                                 i++;
-                                if(this.aMundTeShkojeTek(g,s.getPozicioni()-3*radha.getZaret().getZaret().get(1).getVlera())){
-                                    levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-3*radha.getZaret().getZaret().get(1).getVlera());
+                                if(this.aMundTeShkojeTek(g,s.getPozicioni()-3*radha.getZaret().getVlera1())){
+                                    levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-3*radha.getZaret().getVlera1());
                                     i++;
-                                    if(this.aMundTeShkojeTek(g,s.getPozicioni()-4*radha.getZaret().getZaret().get(1).getVlera())){
-                                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-4*radha.getZaret().getZaret().get(1).getVlera());
+                                    if(this.aMundTeShkojeTek(g,s.getPozicioni()-4*radha.getZaret().getVlera1())){
+                                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-4*radha.getZaret().getVlera1());
                                         i++;
                                     }
                                 }
@@ -167,12 +167,12 @@ abstract public class Loje {
                             levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-sa);
                             i++;
                         }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getZaret().get(0).getVlera())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getZaret().get(0).getVlera());
+                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getVlera1())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getVlera1());
                             i++;
                         }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getZaret().get(1).getVlera())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getZaret().get(1).getVlera());
+                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getVlera2())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getVlera2());
                             i++;
                         }
                     }
