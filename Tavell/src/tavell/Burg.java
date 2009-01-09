@@ -36,7 +36,7 @@ public class Burg extends Loje {
                 for (int i=0; i < nrLevizjeve; i++) {
                     radha.rregjistroLevizje(zaret.getVlera1());
                 }
-            } else if (!zaret.eshteDopio() && zaret.getShuma()==nga + tek) {
+            } else if (!zaret.eshteDopio() && zaret.getShuma()==Math.abs(tek-nga)) {
                 radha.rregjistroLevizje(zaret.getVlera1());
                 radha.rregjistroLevizje(zaret.getVlera2());                
             } else {

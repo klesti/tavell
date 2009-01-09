@@ -144,7 +144,6 @@ public class Fushe extends Canvas {
             else if (p.x>=(3*WIDTH/4)-58 && p.x<=(3*WIDTH/4)+49 && p.y>=HEIGHT/2-24 && p.y<=HEIGHT/2-24+49) {
                 pozicioni = -2; //Klikim mbi zaret
             }        
-            System.out.println(pozicioni);
             return pozicioni;
         }     
         
