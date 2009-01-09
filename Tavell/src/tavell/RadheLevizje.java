@@ -111,6 +111,7 @@ public class RadheLevizje {
             for (int i = 0; i < nrLevMbet-1; i++){
                 this.levizjetERradhes[i] = this.levizjetERradhes[i+1];
             }
+            this.levizjetERradhes[nrLevMbet-1] = 0;
             int mbetja = nrLevMbet % 4;
             if (mbetja == 3)
                 this.zaret.getZaret().get(0).setULuajt(true);
