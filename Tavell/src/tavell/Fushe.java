@@ -102,7 +102,7 @@ public class Fushe extends Canvas {
              Thread.sleep(700);
            } catch (InterruptedException ex) {}
 
-           l.getRadha().getZaret().hidhZaret();    
+           l.getRadha().populloLevizjetERradhes(l);
         }
         
         public void cngjyrosTrekendeshat() {
