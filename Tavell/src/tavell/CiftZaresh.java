@@ -7,14 +7,16 @@ import java.util.ArrayList;
 public class CiftZaresh 
 {
     private ArrayList<Zar> zaret;
-    private boolean ishtedopio;
+    private boolean ishteDopio;
+    private int vleraDopio;
 
     public CiftZaresh ()
     {
         this.zaret = new ArrayList<Zar>(2);
         this.zaret.add(new Zar());
         this.zaret.add(new Zar());  
-        ishtedopio = false;
+        ishteDopio = false;
+        vleraDopio = 0;
     }
 
     public ArrayList<Zar> getZaret () 
@@ -29,6 +31,8 @@ public class CiftZaresh
     
     public void setZaret (Zar nje, Zar dy)
     {
+        vleraDopio = 0;
+        ishteDopio = false;        
         if(this.zaret.size()==0){
             this.zaret.add(nje);
             this.zaret.add(dy);
@@ -37,21 +41,33 @@ public class CiftZaresh
             this.zaret.set(0, nje);
             this.zaret.set(1, dy);
         }
+         if (eshteDopio()) {
+            ishteDopio = true;
+            vleraDopio = getVlera1();
+        }
     }
     
     public void setZaret (int nje, int dy)
     {
+        ishteDopio = false;
+        vleraDopio = 0;
         this.zaret.get(0).setVlera(nje);
         this.zaret.get(1).setVlera(dy);
+        if (eshteDopio()) {
+            ishteDopio = true;
+            vleraDopio = getVlera1();
+        }
     }
 
     public void hidhZaret () 
     {   
-        ishtedopio = false;
+        ishteDopio = false;
+        vleraDopio = 0;
         this.zaret.get(0).hidh();       
         this.zaret.get(1).hidh();
         if (eshteDopio()) {
-            ishtedopio = true;
+            ishteDopio = true;
+            vleraDopio = getVlera1();
         }
     }
     
@@ -66,8 +82,8 @@ public class CiftZaresh
     public boolean eshteDopio()
     {
         if (getVlera1() == getVlera2() ||
-            (getVlera1()==0 && getVlera2()!=0 && ishtedopio) || 
-            (getVlera2()==0 && getVlera1()!=0 && ishtedopio) )
+            (getVlera1()==0 && getVlera2()!=0 && ishteDopio) || 
+            (getVlera2()==0 && getVlera1()!=0 && ishteDopio) )
             return true;
         else
             return false;
@@ -75,7 +91,7 @@ public class CiftZaresh
     
     public int getShuma() {
         if (eshteDopio())
-            return 4*zaret.get(0).getVlera();
+            return 4*vleraDopio;
         else 
             return zaret.get(0).getVlera() + zaret.get(1).getVlera();           
     }
