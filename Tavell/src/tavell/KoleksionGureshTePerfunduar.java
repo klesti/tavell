@@ -1,7 +1,10 @@
 
 package tavell;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.image.ImageObserver;
 
 /**
  *
@@ -12,6 +15,15 @@ public class KoleksionGureshTePerfunduar extends KoleksionGuresh {
     private int startX;
     private int direction;
     private Lojtar lojtari;
+    private Color ngjyre;
+    
+    public Color getNgjyre() {
+        return ngjyre;
+    }
+
+    public void setNgjyre(Color ngjyre) {
+        this.ngjyre = ngjyre;
+    }    
     
     public KoleksionGureshTePerfunduar(int poz,Loje l,Lojtar lojtar) {
         super(poz);
@@ -38,6 +50,20 @@ public class KoleksionGureshTePerfunduar extends KoleksionGuresh {
         return new Point(startX,y);
     }
     
+    public void ngjyros(Graphics g,Color c) {
+        if (ngjyre==null) {
+            return;
+        }
+        Color old = g.getColor();
+        g.setColor(c);
+        if (startY==23) {
+            g.fillRect(startX, startY, 50, 281);            
+        } else {
+             g.fillRect(startX, startY-281+14, 50, 281);
+        }
+        g.setColor(old);
+    }
+    
     @Override
     public void push(Gur g) {
         g.setIPerfunduar(true);
@@ -48,5 +74,12 @@ public class KoleksionGureshTePerfunduar extends KoleksionGuresh {
         lojtari.getTePerfunduar().push(g);
         super.push(g);
     }
+    
+    @Override
+    public void paraqit(Graphics g,ImageObserver obs) {
+        super.paraqit(g, obs);
+        ngjyros(g,ngjyre);
+    }
+  
 
 }

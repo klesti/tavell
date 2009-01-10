@@ -81,9 +81,10 @@ public class Fushe extends Canvas {
         public void mouseClicked(MouseEvent e) {
            cngjyrosTrekendeshat();
            int poz = pozicioniKuNdodhet(e.getPoint());
-           if (poz>=0 && poz<=24) {
+           if (poz>=0 && poz<=26) {
                if (l.getRadha().kaPerTuLevizur()) {
-                   l.leviz(l.getRadha().getZgjedhurPerTuLevizur(), poz);
+                   boolean uLeviz = l.leviz(l.getRadha().getZgjedhurPerTuLevizur(), poz);
+                   System.out.println(uLeviz);
                    l.getRadha().setZgjedhurPerTuLevizur(-1);
                } else {
                    tregoLevizjetELejuara(poz);
@@ -107,14 +108,26 @@ public class Fushe extends Canvas {
         
         public void cngjyrosTrekendeshat() {
             for(int i=0;i<l.getStivat().length;i++){
-                l.getStivat()[i].getTrekendeshi().setNgjyra(null);
+                KoleksionGuresh k = l.getStivat()[i];                
+                if (k instanceof KoleksionGureshTePerfunduar) {
+                    KoleksionGureshTePerfunduar k2 = (KoleksionGureshTePerfunduar)k;
+                    k2.setNgjyre(null);
+                } else {
+                    k.getTrekendeshi().setNgjyra(null);                    
+                }
             }        
         }
         
         public void tregoLevizjetELejuara(int poz) {
            int tmp [] = l.getLevizjetELejuara(l.getStivat()[poz]);
            for (int j=0;j<tmp.length && tmp[j]>0;j++) {               
-               l.getStivat()[tmp[j]].getTrekendeshi().setNgjyra(Color.yellow); 
+                KoleksionGuresh k =  l.getStivat()[tmp[j]];               
+                if (k instanceof KoleksionGureshTePerfunduar) {
+                    KoleksionGureshTePerfunduar k2 = (KoleksionGureshTePerfunduar)k;
+                    k2.setNgjyre(Color.yellow);
+                } else {
+                    k.getTrekendeshi().setNgjyra(Color.yellow);  
+                }              
            }
         }
         
@@ -140,13 +153,24 @@ public class Fushe extends Canvas {
             else if ((p.x>=Fushe.WIDTH/2-24 && p.x<=Fushe.WIDTH/2+24) && p.y>23 && p.y<HEIGHT-23) {
                 pozicioni = 0;
             }
-
+            //-- Klikim ne koleksionin e gureve te ngrene, lojtari 2 loja qyl
+            else if (p.x>=23 && p.x<=23+50 && p.y >=24 && p.y<305 && l instanceof Qyl) {
+                pozicioni = 26; 
+            }
+            //-- Klikim ne koleksionin e gureve te ngrene, lojtari 2 loja tavell, burg
+            else if (p.x>=WIDTH-23-50 && p.x<=WIDTH-23 && p.y>=23 && p.y<=305 &&  !(l instanceof Qyl)) {
+                pozicioni = 26;
+            }
+            //-- Klikim ne koleksionin e gureve te ngrene, lojtari 1 cdo loje --
+            else if (p.x>=WIDTH-23-50 && p.x<=WIDTH-23 && p.y>=HEIGHT-305 && p.y<=HEIGHT-23) {
+                pozicioni = 25;
+            }
+            // --- Klikim mbi zaret --
             else if (p.x>=(3*WIDTH/4)-58 && p.x<=(3*WIDTH/4)+49 && p.y>=HEIGHT/2-24 && p.y<=HEIGHT/2-24+49) {
                 pozicioni = -2; //Klikim mbi zaret
-            }        
+            }
             return pozicioni;
-        }     
-        
+        }       
         
     }
     /*
