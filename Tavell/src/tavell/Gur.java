@@ -125,6 +125,6 @@ public class Gur
             g.setColor(Color.LIGHT_GRAY);
             g.fillOval(koordinata.x+10, koordinata.y+10, 28, 28);            
         }
-    }  
+    }
 }
 

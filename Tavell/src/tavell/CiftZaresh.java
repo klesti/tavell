@@ -7,12 +7,14 @@ import java.util.ArrayList;
 public class CiftZaresh 
 {
     private ArrayList<Zar> zaret;
+    private boolean ishtedopio;
 
     public CiftZaresh ()
     {
         this.zaret = new ArrayList<Zar>(2);
         this.zaret.add(new Zar());
-        this.zaret.add(new Zar());        
+        this.zaret.add(new Zar());  
+        ishtedopio = false;
     }
 
     public ArrayList<Zar> getZaret () 
@@ -44,9 +46,13 @@ public class CiftZaresh
     }
 
     public void hidhZaret () 
-    {        
+    {   
+        ishtedopio = false;
         this.zaret.get(0).hidh();       
         this.zaret.get(1).hidh();
+        if (eshteDopio()) {
+            ishtedopio = true;
+        }
     }
     
     public boolean uLuajten ()
@@ -59,7 +65,9 @@ public class CiftZaresh
     
     public boolean eshteDopio()
     {
-        if (this.zaret.get(0).getVlera() == this.zaret.get(1).getVlera())
+        if (getVlera1() == getVlera2() ||
+            (getVlera1()==0 && getVlera2()!=0 && ishtedopio) || 
+            (getVlera2()==0 && getVlera1()!=0 && ishtedopio) )
             return true;
         else
             return false;

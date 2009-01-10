@@ -47,7 +47,7 @@ public class Zar
     {
         this.uLuajt = uLuajt;
         if (uLuajt==true) 
-            vlera = 0;
+           vlera = 0;
     }
     
     public String getImazhi(){ 
