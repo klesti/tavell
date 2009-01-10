@@ -93,7 +93,7 @@ public class CiftZaresh
         if (eshteDopio())
             return 4*vleraDopio;
         else 
-            return zaret.get(0).getVlera() + zaret.get(1).getVlera();           
+            return getVlera1()+getVlera2();
     }
     
     public int getVlera1() {
