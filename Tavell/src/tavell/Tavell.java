@@ -56,7 +56,7 @@ public class Tavell extends Loje {
             g.leviz(stivat, tek);
             //Regjistro levizje
             if (zaret.eshteDopio()) {
-                int vlera = zaret.getVlera1();
+                int vlera = zaret.getVleraDopio();
                 int nrLevizjeve = Math.abs(tek-nga)/vlera;
                 for (int i=0; i< nrLevizjeve; i++) {
                     radha.rregjistroLevizje(vlera);
@@ -68,7 +68,7 @@ public class Tavell extends Loje {
                 radha.rregjistroLevizje(Math.abs(nga-tek));
             }
             levizjet.add(new Levizje(radha.getLojtar(),nga,tek));
-            return true;
+             return true;
         }
         return false;
     }

@@ -104,6 +104,10 @@ public class CiftZaresh
         return zaret.get(1).getVlera();
     }
     
+    public int getVleraDopio() {
+        return vleraDopio;
+    }
+    
     public boolean janeHedhur() {
         return (this.zaret.get(0).getVlera() == 0 && this.zaret.get(1).getVlera() == 0);
     }

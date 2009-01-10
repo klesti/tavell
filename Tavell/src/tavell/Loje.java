@@ -200,8 +200,14 @@ abstract public class Loje {
         else if(radha.getLojtar().getNumri()==2 && nga > tek) return false;
         else {        
             int hapi = Math.abs(tek-nga);
-            int vlera1= radha.getZaret().getZaret().get(0).getVlera();
-            int vlera2= radha.getZaret().getZaret().get(1).getVlera();
+            int vlera1,vlera2;
+            if (radha.getZaret().eshteDopio()) {
+                vlera1 = radha.getZaret().getVleraDopio();
+                vlera2 = vlera1;
+            } else {
+                vlera1= radha.getZaret().getZaret().get(0).getVlera();
+                vlera2= radha.getZaret().getZaret().get(1).getVlera();
+            }
 
             if(aTeLejojneZaret(hapi, vlera1, vlera2) && (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek))) return true;
             else return false;
