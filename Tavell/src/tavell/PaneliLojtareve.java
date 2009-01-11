@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 /**
@@ -279,6 +280,19 @@ public class PaneliLojtareve extends JPanel{
        
     }
     
+    public void updatePaneliLojtareve() {
+        if (this.l.getRadha().getLojtar() == this.l.getLojtaret()[0]) {
+            this.paneliLojtarit1.setBackground(Color.DARK_GRAY);
+            this.setPips1(this.l.getLojtaret()[0].getPips());
+            this.setPike1(this.l.getLojtaret()[0].getPike());            
+        }
+        else {
+            this.paneliLojtarit2.setBackground(Color.DARK_GRAY);
+            this.setPips2(this.l.getLojtaret()[1].getPips());
+            this.setPike2(this.l.getLojtaret()[1].getPike());
+        }
+    }
+    
     public void setPips1(int pips){
         this.pips1.setText(String.valueOf(pips));
     }
@@ -299,4 +313,4 @@ public class PaneliLojtareve extends JPanel{
         return this.l;
     }
     
-    }
+}
