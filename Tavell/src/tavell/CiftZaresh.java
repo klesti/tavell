@@ -8,7 +8,7 @@ public class CiftZaresh
 {
     private ArrayList<Zar> zaret;
     private boolean ishteDopio;
-    private int vleraDopio;
+    private int vleraDopio;    
 
     public CiftZaresh ()
     {
@@ -16,13 +16,13 @@ public class CiftZaresh
         this.zaret.add(new Zar());
         this.zaret.add(new Zar());  
         ishteDopio = false;
-        vleraDopio = 0;
+        vleraDopio = 0;        
     }
 
     public ArrayList<Zar> getZaret () 
     {
         return zaret;
-    }
+    } 
 
     public void setZaret (ArrayList<Zar> val) 
     {
@@ -68,7 +68,7 @@ public class CiftZaresh
         if (eshteDopio()) {
             ishteDopio = true;
             vleraDopio = getVlera1();
-        }
+        }        
     }
     
     public boolean uLuajten ()
@@ -117,6 +117,10 @@ public class CiftZaresh
         this.zaret.get(0).paraqit(g, obs, x, y);
         this.zaret.get(1).setNgjyre("blue");
         this.zaret.get(1).paraqit(g, obs, x-58, y);
+    }
+    
+    public boolean eshteLuajturNdonje(){
+        return(zaret.get(0).isULuajt() || zaret.get(1).isULuajt());
     }
 }
 

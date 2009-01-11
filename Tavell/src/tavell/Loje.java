@@ -102,80 +102,29 @@ abstract public class Loje {
         if(s.size() >0) {
             Gur g = s.peek();        
             //--Kontrollo a e ka rradhen lojtari me gurin qe eshte klikuar
-            if(radha.getLojtar().getNumri()==g.getLojtari().getNumri()) {          
-                //--Lojtari i pare
-                if(g.getLojtari().getNumri()==2){
-                    //--Rasti kur bie dopio. Levizjet kryhen njera pas tjetres.                    
-                    if(radha.getZaret().eshteDopio()){
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getVleraDopio())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getVleraDopio());
-                            i++;
-                            if(this.aMundTeShkojeTek(g,s.getPozicioni()+2*radha.getZaret().getVleraDopio())){
-                                levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+2*radha.getZaret().getVleraDopio());
-                                i++;
-                                if(this.aMundTeShkojeTek(g,s.getPozicioni()+3*radha.getZaret().getVleraDopio())){
-                                    levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+3*radha.getZaret().getVleraDopio());
-                                    i++;
-                                    if(this.aMundTeShkojeTek(g,s.getPozicioni()+4*radha.getZaret().getVleraDopio())){
-                                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+4*radha.getZaret().getVleraDopio());
-                                        i++;
-                                    }
-                                }
-                            }
-                        }                
-                    }
-                    //--Rasti kur nuk bie dopio
-                    else {
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+sa)){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+sa);
-                            i++;
-                        }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getVlera1())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getVlera1());
-                            i++;
-                        }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()+radha.getZaret().getVlera2())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getZaret().getVlera2());
+            if(radha.getLojtar().getNumri()==g.getLojtari().getNumri()) {                                
+                //--Rasti kur bie dopio. Levizjet kryhen njera pas tjetres.                    
+                if(radha.getZaret().eshteDopio()){
+                    for(int j=1;j<=radha.nrLevizjeTeMbetura();j++){
+                        if(aEshteEMundurLevizja(s.getPozicioni(),s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio())){
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio());
                             i++;
                         }
                     }
                 }
-                //--Lojtari dyte
+                //--Rasti kur nuk bie dopio
                 else {
-                    //Rasti kur bie dopio. Levizjet kryhen njera pas tjetres
-                    if(radha.getZaret().eshteDopio()){
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getVleraDopio())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getVleraDopio());
-                            i++;
-                            if(this.aMundTeShkojeTek(g,s.getPozicioni()-2*radha.getZaret().getVleraDopio())){
-                                levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-2*radha.getZaret().getVleraDopio());
-                                i++;
-                                if(this.aMundTeShkojeTek(g,s.getPozicioni()-3*radha.getZaret().getVleraDopio())){
-                                    levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-3*radha.getZaret().getVleraDopio());
-                                    i++;
-                                    if(this.aMundTeShkojeTek(g,s.getPozicioni()-4*radha.getZaret().getVlera1())){
-                                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-4*radha.getZaret().getVleraDopio());
-                                        i++;
-                                    }
-                                }
-                            }
-                        }                
-                    }
-                    //--Rasti kur nuk bie dopio
-                    else {
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-sa)){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-sa);
-                            i++;
-                        }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getVlera1())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getVlera1());
-                            i++;
-                        }
-                        if(this.aMundTeShkojeTek(g,s.getPozicioni()-radha.getZaret().getVlera2())){
-                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()-radha.getZaret().getVlera2());
+                    for(int j=0;j<radha.nrLevizjeTeMbetura();j++){
+                        if(aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+radha.getLojtar().getDrejtimi()*radha.getLevizjetERradhes()[j])) {
+                            levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getLojtar().getDrejtimi()*radha.getLevizjetERradhes()[j]);
                             i++;
                         }
                     }
+                    //Kontrollo per levizjen shume e dy zareve
+                    if(aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+radha.getLojtar().getDrejtimi()*sa)){
+                        levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getLojtar().getDrejtimi()*sa);
+                        i++;
+                    }                       
                 }
             }
         }
@@ -209,7 +158,7 @@ abstract public class Loje {
                 vlera2= radha.getZaret().getZaret().get(1).getVlera();
             }
 
-            if(aTeLejojneZaret(hapi, vlera1, vlera2) && (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek))) return true;
+            if(aTeLejojneZaret(hapi, vlera1, vlera2) && (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) && !aKaPengesa(nga,tek)) return true;
             else return false;
         }
     }
@@ -255,6 +204,23 @@ abstract public class Loje {
     
     protected  boolean aJaneGureTeLojtarit(int pozicioni){
         return (this.getStivat()[pozicioni].peek().getLojtari().getNumri() == radha.getLojtar().getNumri());
-    }  
+    }
+    
+    protected boolean aKaPengesa (int nga, int tek){
+        int drejtimi=radha.getLojtar().getDrejtimi();
+        int hapi=Math.abs(tek-nga);        
+        //--Mos bej kontroll nese nuk po luhet shuma e zareve
+        if(hapi != radha.getZaret().getShuma() || radha.getZaret().eshteLuajturNdonje()) return false;
+        if(!(aEshteBoshStiva(nga+drejtimi*radha.getZaret().getVlera1()) ||
+           aKaNjeGurKundershtar(nga+drejtimi*radha.getZaret().getVlera1()) ||
+           aJaneGureTeLojtarit(nga+drejtimi*radha.getZaret().getVlera1())) && 
+           !(aEshteBoshStiva(nga+drejtimi*radha.getZaret().getVlera2()) ||
+           aKaNjeGurKundershtar(nga+drejtimi*radha.getZaret().getVlera2()) ||
+           aJaneGureTeLojtarit(nga+drejtimi*radha.getZaret().getVlera2()))) {           
+           return true;
+        }
+        else
+            return false;
+    }
 }
 
