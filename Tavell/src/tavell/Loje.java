@@ -132,18 +132,6 @@ abstract public class Loje {
     }
     
     
-    protected boolean aMundTeShkojeTek(Gur g, int tek){
-        tek = getFundiLevizjes(g.getLojtari(), tek);
-        if(g.getLojtari().getNumri()==1 && tek==25 && this.getStivat()[g.getPozicioni()+1].size()==0 && !aKaGureJashteKuadratitTeFundit(g.getLojtari())) return true;
-        else if(g.getLojtari().getNumri()==2 && tek==26 && this.getStivat()[g.getPozicioni()-1].size()==0 && !aKaGureJashteKuadratitTeFundit(g.getLojtari())) return true;
-        else if(this.getStivat()[tek].size()<2){
-            return true;
-        }
-        else if(this.getStivat()[tek].peek().getLojtari().getNumri() == g.getLojtari().getNumri())
-            return true;
-        else return false;
-    }
-    
     public boolean aEshteEMundurLevizja(int nga, int tek){
         if(radha.getLojtar().getNumri()==1 && nga < tek) return false;
         else if(radha.getLojtar().getNumri()==2 && nga > tek) return false;
@@ -154,8 +142,8 @@ abstract public class Loje {
                 vlera1 = radha.getZaret().getVleraDopio();
                 vlera2 = vlera1;
             } else {
-                vlera1= radha.getZaret().getZaret().get(0).getVlera();
-                vlera2= radha.getZaret().getZaret().get(1).getVlera();
+                vlera1= radha.getZaret().getVlera1();
+                vlera2= radha.getZaret().getVlera2();
             }
 
             if(aTeLejojneZaret(hapi, vlera1, vlera2) && (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) && !aKaPengesa(nga,tek)) return true;
