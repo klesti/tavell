@@ -103,8 +103,8 @@ public class RadheLevizje {
     public int nrLevizjeTeMbetura() {
         for (int i = 0; i < this.levizjetERradhes.length; i++)
             if (this.levizjetERradhes[i] == 0)
-                return i+1;
-        return 0;
+                return i;
+        return 4;
     }
     
     public void rregjistroLevizje(int vlera) {
