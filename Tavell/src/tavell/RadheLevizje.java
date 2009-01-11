@@ -100,6 +100,13 @@ public class RadheLevizje {
         }
     }
     
+    public int shumaELevizjeTeMbetura() {
+        int shuma = 0;
+        for (int i = 0; i < this.levizjetERradhes.length; i++)
+            shuma += this.levizjetERradhes[i];
+        return shuma;
+    }
+    
     public int nrLevizjeTeMbetura() {
         for (int i = 0; i < this.levizjetERradhes.length; i++)
             if (this.levizjetERradhes[i] == 0)
