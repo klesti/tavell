@@ -114,7 +114,7 @@ abstract public class Loje {
     }
     
     public int[] getLevizjetELejuara(KoleksionGuresh s){        
-        int sa = radha.getZaret().getShuma();
+        int sa = radha.shumaELevizjeTeMbetura();
         int levizjetTmp[] = new int[5];
         int i=0;
         //Kontrollo a ka gure stiva
@@ -163,7 +163,8 @@ abstract public class Loje {
     
     
     public boolean aEshteEMundurLevizja(int nga, int tek){
-        if((tek>24 || tek<1) && (aKaGureJashteKuadratitTeFundit(radha.getLojtar()) || kaGureMajtas(getStivat()[nga].peek()))) return false;
+        if((tek>26 || tek<1) && (aKaGureJashteKuadratitTeFundit(radha.getLojtar()) || kaGureMajtas(getStivat()[nga].peek()))) return false;
+        else if(tek>24 || tek<1) return true;
         else if(radha.getLojtar().getNumri()==1 && nga < tek) return false;
         else if(radha.getLojtar().getNumri()==2 && nga > tek) return false;
         else {            
@@ -182,7 +183,7 @@ abstract public class Loje {
         }
     }
     
-    protected  boolean aKaGureJashteKuadratitTeFundit(Lojtar l){        
+    protected  boolean aKaGureJashteKuadratitTeFundit(Lojtar l){
         if(l.getNumri()==1){
             for(int i=7;i<=24;i++){
                 if(this.getStivat()[i].size()>0) 
@@ -239,7 +240,7 @@ abstract public class Loje {
         int drejtimi=radha.getLojtar().getDrejtimi();
         int hapi=Math.abs(tek-nga);        
         //--Mos bej kontroll nese nuk po luhet shuma e zareve
-        if(hapi != radha.getZaret().getShuma() || radha.getZaret().eshteLuajturNdonje()) return false;
+        if(hapi != radha.shumaELevizjeTeMbetura() || radha.getZaret().eshteLuajturNdonje()) return false;
         if(!(aEshteBoshStiva(nga+drejtimi*radha.getZaret().getVlera1()) ||
            aKaNjeGurKundershtar(nga+drejtimi*radha.getZaret().getVlera1()) ||
            aJaneGureTeLojtarit(nga+drejtimi*radha.getZaret().getVlera1())) && 
