@@ -106,10 +106,14 @@ abstract public class Loje {
                 //--Rasti kur bie dopio. Levizjet kryhen njera pas tjetres.                    
                 if(radha.getZaret().eshteDopio()){
                     for(int j=1;j<=radha.nrLevizjeTeMbetura();j++){
+                        //Nese pozicioni perfundimtar e kalon kufirin e lejueshem nderpritet cikli
+                        if(s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio() > getStivat().length ||
+                           s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio() < 0) break;
                         if(aEshteEMundurLevizja(s.getPozicioni(),s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio())){
                             levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio());
                             i++;
                         }
+                        else break;
                     }
                 }
                 //--Rasti kur nuk bie dopio
@@ -177,7 +181,8 @@ abstract public class Loje {
     }
     
     protected  boolean aTeLejojneZaret(int hapi, int vlera1, int vlera2){
-        if(radha.getZaret().eshteDopio() && hapi%vlera1==0 && hapi<=4*vlera1) return true;
+        if(vlera1==0 || vlera2==0) return false;
+        if(radha.getZaret().eshteDopio() && hapi%radha.getZaret().getVleraDopio()==0 && hapi<=4*vlera1) return true;
         else if(!radha.getZaret().eshteDopio() && (hapi==vlera1 || hapi==vlera2 || hapi==vlera1+vlera2)) return true;
         else return false;
     }
