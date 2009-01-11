@@ -89,6 +89,13 @@ public class CiftZaresh
             return false;
     }
     
+    public void reset() {
+        zaret.get(0).setVlera(0);
+        zaret.get(1).setVlera(1);
+        ishteDopio = false;
+        vleraDopio = 0;
+    }
+    
     public int getShuma() {
         if (eshteDopio())
             return 4*vleraDopio;

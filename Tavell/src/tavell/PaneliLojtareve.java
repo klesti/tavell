@@ -7,6 +7,8 @@ package tavell;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -39,6 +41,7 @@ public class PaneliLojtareve extends JPanel{
     private JButton ngarko;
     private JButton dorezohu;
     private Loje l;            
+    private Fushe fusha;
     
     public PaneliLojtareve() {        
         
@@ -96,6 +99,16 @@ public class PaneliLojtareve extends JPanel{
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
         
+        lojeRe.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                l.fillo();
+                lojeRe.setEnabled(false);
+                fusha.rifresko();
+                JOptionPane.showMessageDialog(paneliButonave, "Rradhen e ka " +
+                        l.getRadha().getLojtar().getEmri());
+            }
+        });
+        
         paneliButonave.add(ruajLojen);
         paneliButonave.add(lojeRe);
         paneliButonave.add(ngarko);
@@ -147,12 +160,13 @@ public class PaneliLojtareve extends JPanel{
         //-------------FUND PANELI LOJTAREVE----------------------        
     }
     
-    public PaneliLojtareve(Lojtar l1,Lojtar l2, AvatarImage avatar1, AvatarImage avatar2, Loje loja) {        
+    public PaneliLojtareve(Lojtar l1,Lojtar l2, AvatarImage avatar1, AvatarImage avatar2, Loje loja, Fushe f) {        
         
         this.setBounds(Fushe.WIDTH+5,0,1100-Fushe.WIDTH-15,Fushe.HEIGHT);
         this.setBorder(new LineBorder(Color.black));
         this.setLayout(null);
         this.l = loja;
+        this.fusha = f;
         
         //-------------PANELI LOJTAREVE---------------------------        
                 
@@ -202,6 +216,16 @@ public class PaneliLojtareve extends JPanel{
         lojeRe = new JButton("Loje e Re");
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
+        
+         lojeRe.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                l.fillo();
+                lojeRe.setEnabled(false);
+                fusha.rifresko();
+                JOptionPane.showMessageDialog(paneliButonave, "Rradhen e ka " +
+                        l.getRadha().getLojtar().getEmri());
+            }
+        });
         
         paneliButonave.add(ruajLojen);
         paneliButonave.add(lojeRe);

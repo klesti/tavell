@@ -14,7 +14,7 @@ public class RadheLevizje {
     private Lojtar lojtar;
     private CiftZaresh zaret;
     private int[] levizjetERradhes;
-    private int zgjedhurPerTuLevizur;
+    private int zgjedhurPerTuLevizur;        
     private Loje loja;
 
     public RadheLevizje(Loje loja) {

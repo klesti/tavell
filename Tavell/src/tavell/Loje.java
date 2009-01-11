@@ -17,7 +17,7 @@ abstract public class Loje {
         lojtaret = l;
         piket = p;        
         levizjet = new KoleksionLevizjesh(); 
-        radha = new RadheLevizje(lojtaret[0]); //---Do ndryshoje me vone
+        radha = new RadheLevizje(this); //---Do ndryshoje me vone
         /*
           Stivat[0] jane guret jashte loje, Stivat[1..24] jane guret ne loje, 
           Stivat[25..26] jane guret e perfunduar
@@ -76,14 +76,6 @@ abstract public class Loje {
     
     public abstract boolean leviz(int nga, int tek);
     
-    public void percaktoRadhen()
-    {
-        //ketu do jene disa rreshta qe bejne hedhjen e nga nje zari per secilin lojtar
-        //dhe keshtu percaktojne se kush e ka radhen
-        //dhe krijohet radha
-        radha = new RadheLevizje(/*ketu do jete lojtari qe ka radhen*/);
-        //radha.populloLevizjetERradhes(this);
-    }
     
     public void ruaj () {
     }
@@ -92,6 +84,33 @@ abstract public class Loje {
     }
     
     public void vendosGuret () {
+    }
+    
+    public void percaktoRradhenFillestare() {
+        radha.hidhZaret();
+        if (radha.getZaret().getVlera1() > radha.getZaret().getVlera2()) {
+            radha.setLojtar(lojtaret[0]);
+         } else if (radha.getZaret().getVlera2() > radha.getZaret().getVlera1()) {
+            radha.setLojtar(lojtaret[1]);            
+        }        
+    }
+    
+    public int ndryshoRradhe() {
+        if (radha.getLojtar()==lojtaret[0]) {
+            radha.setLojtar(lojtaret[1]);
+            return 1;
+        } else {
+            radha.setLojtar(lojtaret[0]);
+            return 0;
+        }
+    }
+    
+    public void fillo() {
+        radha.setLojtar(null);
+        radha.getZaret().reset();
+        lojtaret[0].setPike(0);
+        lojtaret[1].setPike(1);
+        percaktoRradhenFillestare();
     }
     
     public int[] getLevizjetELejuara(KoleksionGuresh s){        
