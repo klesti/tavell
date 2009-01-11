@@ -15,12 +15,14 @@ public class RadheLevizje {
     private CiftZaresh zaret;
     private int[] levizjetERradhes;
     private int zgjedhurPerTuLevizur;
+    private Loje loja;
 
-    public RadheLevizje() {
+    public RadheLevizje(Loje loja) {
         //konstruktor i perkoheshem
-        this.levizjetERradhes = new int[24];
+        this.levizjetERradhes = new int[4];
         this.zaret = new CiftZaresh();
         this.zgjedhurPerTuLevizur = -1;
+        this.loja = loja;
     }
 
     public RadheLevizje(Lojtar lojtar, CiftZaresh zaret, int[] levzjetERradhes) {
@@ -31,7 +33,7 @@ public class RadheLevizje {
 
     public RadheLevizje(Lojtar lojtar) {
         this.lojtar = lojtar;
-        this.levizjetERradhes = new int[24];
+        this.levizjetERradhes = new int[4];
         this.zaret = new CiftZaresh();
     }
 
@@ -71,26 +73,26 @@ public class RadheLevizje {
         return zgjedhurPerTuLevizur!=-1;
     }
         
-    public void populloLevizjetERradhes(Loje l) {
+    public void hidhZaret() {
         this.zaret.hidhZaret();
         int vlera1 = this.zaret.getZaret().get(0).getVlera();
         int vlera2 = this.zaret.getZaret().get(1).getVlera();
         if (zaret.eshteDopio()) {
-            if (l instanceof Qyl) {
-                int nrDopiosh = 0;
-                while (vlera1 <= 6){
-                    for (int i = nrDopiosh; i <= nrDopiosh+3; i++){
-                        this.levizjetERradhes[i] = vlera1;
-                    }
-                    nrDopiosh += 4;
-                    vlera1++;
-                }
-            }
-            else {
+//            if (l instanceof Qyl) {
+//                int nrDopiosh = 0;
+//                while (vlera1 <= 6){
+//                    for (int i = nrDopiosh; i <= nrDopiosh+3; i++){
+//                        this.levizjetERradhes[i] = vlera1;
+//                    }
+//                    nrDopiosh += 4;
+//                    vlera1++;
+//                }
+//            }
+//            else {
                 for (int i = 0; i <= 3; i++) {
                     this.levizjetERradhes[i] = vlera1;
                 }
-            }
+            //}
         }
         else {
             this.levizjetERradhes[0] = vlera1;
@@ -101,7 +103,7 @@ public class RadheLevizje {
     public int nrLevizjeTeMbetura() {
         for (int i = 0; i < this.levizjetERradhes.length; i++)
             if (this.levizjetERradhes[i] == 0)
-                return i;
+                return i+1;
         return 0;
     }
     
@@ -117,8 +119,8 @@ public class RadheLevizje {
                 this.zaret.getZaret().get(0).setULuajt(true);
             else if (mbetja == 1) {
                 this.zaret.getZaret().get(1).setULuajt(true);
-                if (nrLevMbet > 4)//rasti i qylit kur jane disa dopio
-                    this.zaret.setZaret(this.levizjetERradhes[0], this.levizjetERradhes[0]);                
+                if (this.loja instanceof Qyl)//nrLevMbet > 4)//rasti i qylit kur jane disa dopio
+                    this.zaret.setZaret(vlera+1, vlera+1);//this.levizjetERradhes[0], this.levizjetERradhes[0]);                
             }
         }
         else {
