@@ -38,6 +38,7 @@ public class PaneliLojtareve extends JPanel{
     private JButton lojeRe;
     private JButton ngarko;
     private JButton dorezohu;
+    private Loje l;            
     
     public PaneliLojtareve() {        
         
@@ -146,11 +147,12 @@ public class PaneliLojtareve extends JPanel{
         //-------------FUND PANELI LOJTAREVE----------------------        
     }
     
-    public PaneliLojtareve(Lojtar l1,Lojtar l2, AvatarImage avatar1, AvatarImage avatar2) {        
+    public PaneliLojtareve(Lojtar l1,Lojtar l2, AvatarImage avatar1, AvatarImage avatar2, Loje loja) {        
         
         this.setBounds(Fushe.WIDTH+5,0,1100-Fushe.WIDTH-15,Fushe.HEIGHT);
         this.setBorder(new LineBorder(Color.black));
         this.setLayout(null);
+        this.l = loja;
         
         //-------------PANELI LOJTAREVE---------------------------        
                 
@@ -268,4 +270,9 @@ public class PaneliLojtareve extends JPanel{
     public void setPike2 (int pike){
         this.pike2.setText(String.valueOf(pike));
     }
-}
+    
+    public Loje getLoje(){
+        return this.l;
+    }
+    
+    }

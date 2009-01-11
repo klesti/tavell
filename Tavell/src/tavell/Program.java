@@ -35,7 +35,7 @@ public class Program extends JFrame{
         setTitle("Tavell");
         
         panel = (JPanel)this.getContentPane();
-        paneliLojtareve = new PaneliLojtareve(lojtari1,lojtari2,avatar1,avatar2);        
+        paneliLojtareve = new PaneliLojtareve(lojtari1,lojtari2,avatar1,avatar2,this.loja);        
         fusha = new Fushe(this.lojtari1, this.lojtari2, this.loja);
         panel.setPreferredSize(new java.awt.Dimension(Fushe.WIDTH,Fushe.HEIGHT));
         panel.setLayout(null);
