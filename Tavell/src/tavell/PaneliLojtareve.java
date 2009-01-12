@@ -282,16 +282,16 @@ public class PaneliLojtareve extends JPanel{
     }
     
     public void updatePaneliLojtareve() {
+        this.setPips2(this.l.getLojtaret()[1].getPips());
+        this.setPips1(this.l.getLojtaret()[0].getPips());
+        this.setPike2(this.l.getLojtaret()[1].getPike());
+        this.setPike1(this.l.getLojtaret()[0].getPike());    
         if (this.l.getRadha().getLojtar() == this.l.getLojtaret()[0]) {
-            this.paneliLojtarit1.setBackground(Color.LIGHT_GRAY);
-            this.setPips1(this.l.getLojtaret()[0].getPips());
-            this.setPike1(this.l.getLojtaret()[0].getPike());    
+            this.paneliLojtarit1.setBackground(Color.LIGHT_GRAY);            
             this.paneliLojtarit2.setBackground(null);
         }
         else if (this.l.getRadha().getLojtar() == this.l.getLojtaret()[1]) {
-            this.paneliLojtarit2.setBackground(Color.LIGHT_GRAY);
-            this.setPips2(this.l.getLojtaret()[1].getPips());
-            this.setPike2(this.l.getLojtaret()[1].getPike());
+            this.paneliLojtarit2.setBackground(Color.LIGHT_GRAY);            
             this.paneliLojtarit1.setBackground(null);
         }
     }
