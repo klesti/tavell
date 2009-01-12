@@ -120,7 +120,7 @@ abstract public class Loje {
         radha.setLojtar(null);
         radha.getZaret().reset();
         lojtaret[0].setPike(0);
-        lojtaret[1].setPike(1);
+        lojtaret[1].setPike(0);
         percaktoRradhenFillestare();
     }
     
