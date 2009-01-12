@@ -78,21 +78,9 @@ public class RadheLevizje {
         int vlera1 = this.zaret.getZaret().get(0).getVlera();
         int vlera2 = this.zaret.getZaret().get(1).getVlera();
         if (zaret.eshteDopio()) {
-//            if (l instanceof Qyl) {
-//                int nrDopiosh = 0;
-//                while (vlera1 <= 6){
-//                    for (int i = nrDopiosh; i <= nrDopiosh+3; i++){
-//                        this.levizjetERradhes[i] = vlera1;
-//                    }
-//                    nrDopiosh += 4;
-//                    vlera1++;
-//                }
-//            }
-//            else {
                 for (int i = 0; i <= 3; i++) {
                     this.levizjetERradhes[i] = vlera1;
                 }
-            //}
         }
         else {
             this.levizjetERradhes[0] = vlera1;
