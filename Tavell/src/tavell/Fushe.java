@@ -61,7 +61,8 @@ public class Fushe extends Canvas {
         g = Program.strategy.getDrawGraphics();
         g.drawImage(sprites.getSprite(background),0,0,this);
         paraqitGuret(g);
-        paraqitZaret(g);        
+        paraqitZaret(g); 
+        program.getPaneliLojtareve().updatePaneliLojtareve();
         Program.strategy.show();
     }
     
