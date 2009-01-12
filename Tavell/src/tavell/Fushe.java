@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,9 +22,11 @@ public class Fushe extends Canvas {
     private SpriteCache sprites;
     public static final String background = "background.png";
     private Loje l;
+    private Program program;
     
-    public Fushe(Lojtar l1, Lojtar l2, Loje l) {        
+    public Fushe(Lojtar l1, Lojtar l2, Loje l, Program p) {        
         this.l = l;
+        this.program = p;
         Lojtar[] lojtaret = {l1,l2};
         l.setLojtaret(lojtaret);
         sprites = new SpriteCache();      
@@ -83,17 +86,26 @@ public class Fushe extends Canvas {
            int poz = pozicioniKuNdodhet(e.getPoint());
            if (poz>=0 && poz<=26) {
                if (l.getRadha().kaPerTuLevizur()) {
-                   boolean uLeviz = l.leviz(l.getRadha().getZgjedhurPerTuLevizur(), poz);
-                   System.out.println(uLeviz);
+                   boolean uLeviz = l.leviz(l.getRadha().getZgjedhurPerTuLevizur(), poz);                   
                    l.getRadha().setZgjedhurPerTuLevizur(-1);
                } else {
                    tregoLevizjetELejuara(poz);
                    l.getRadha().setZgjedhurPerTuLevizur(poz); 
                }
            } else if (poz==-2) { //Klikim mbi zaret
-               hidhZaret();
+               if (!l.kaFilluar())
+                   filloLojen();
+               else    
+                   hidhZaret();
            }
-           update(getGraphics());
+           rifresko();
+        }
+        
+        public void filloLojen() {
+            l.fillo();          
+            program.getPaneliLojtareve().getLojeRe().setEnabled(false);
+            JOptionPane.showMessageDialog(program, "Rradhen e ka " +
+            l.getRadha().getLojtar().getEmri());
         }
         
         public void hidhZaret() {

@@ -10,12 +10,14 @@ abstract public class Loje {
     
     protected Lojtar[] lojtaret;    
     
+    private boolean kaFilluar;
     
     protected int piket;
 
     public Loje (Lojtar[] l, int p) {
         lojtaret = l;
-        piket = p;        
+        piket = p;
+        kaFilluar = false;
         levizjet = new KoleksionLevizjesh(); 
         radha = new RadheLevizje(this); //---Do ndryshoje me vone
         /*
@@ -74,6 +76,14 @@ abstract public class Loje {
         this.piket = p;
     }
     
+    public boolean kaFilluar() {
+        return kaFilluar;
+    }
+    
+    public void setKaFilluar(boolean kaFilluar) {
+        this.kaFilluar = kaFilluar;
+    }
+    
     public abstract boolean leviz(int nga, int tek);
     
     
@@ -92,7 +102,7 @@ abstract public class Loje {
             radha.setLojtar(lojtaret[0]);
          } else if (radha.getZaret().getVlera2() > radha.getZaret().getVlera1()) {
             radha.setLojtar(lojtaret[1]);            
-        }        
+        }
     }
     
     public int ndryshoRradhe() {
@@ -106,6 +116,7 @@ abstract public class Loje {
     }
     
     public void fillo() {
+        setKaFilluar(true);
         radha.setLojtar(null);
         radha.getZaret().reset();
         lojtaret[0].setPike(0);

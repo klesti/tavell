@@ -143,5 +143,8 @@ public class RadheLevizje {
                 this.levizjetERradhes[1] = 0;
             }
         }
+        if (zaret.uLuajten()) {
+            zaret.reset();
+        }
     }
 }

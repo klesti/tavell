@@ -6,17 +6,13 @@ import java.util.ArrayList;
 
 public class CiftZaresh 
 {
-    private ArrayList<Zar> zaret;
-    private boolean ishteDopio;
-    private int vleraDopio;    
+    private ArrayList<Zar> zaret;  
 
     public CiftZaresh ()
     {
         this.zaret = new ArrayList<Zar>(2);
         this.zaret.add(new Zar());
-        this.zaret.add(new Zar());  
-        ishteDopio = false;
-        vleraDopio = 0;        
+        this.zaret.add(new Zar());      
     }
 
     public ArrayList<Zar> getZaret () 
@@ -31,8 +27,7 @@ public class CiftZaresh
     
     public void setZaret (Zar nje, Zar dy)
     {
-        vleraDopio = 0;
-        ishteDopio = false;        
+      
         if(this.zaret.size()==0){
             this.zaret.add(nje);
             this.zaret.add(dy);
@@ -41,34 +36,18 @@ public class CiftZaresh
             this.zaret.set(0, nje);
             this.zaret.set(1, dy);
         }
-         if (eshteDopio()) {
-            ishteDopio = true;
-            vleraDopio = getVlera1();
-        }
     }
     
     public void setZaret (int nje, int dy)
     {
-        ishteDopio = false;
-        vleraDopio = 0;
         this.zaret.get(0).setVlera(nje);
         this.zaret.get(1).setVlera(dy);
-        if (eshteDopio()) {
-            ishteDopio = true;
-            vleraDopio = getVlera1();
-        }
     }
 
     public void hidhZaret () 
     {   
-        ishteDopio = false;
-        vleraDopio = 0;
         this.zaret.get(0).hidh();       
-        this.zaret.get(1).hidh();
-        if (eshteDopio()) {
-            ishteDopio = true;
-            vleraDopio = getVlera1();
-        }        
+        this.zaret.get(1).hidh();   
     }
     
     public boolean uLuajten ()
@@ -81,24 +60,17 @@ public class CiftZaresh
     
     public boolean eshteDopio()
     {
-        if (getVlera1() == getVlera2() ||
-            (getVlera1()==0 && getVlera2()!=0 && ishteDopio) || 
-            (getVlera2()==0 && getVlera1()!=0 && ishteDopio) )
-            return true;
-        else
-            return false;
+        return (getVlera1()==getVlera2());
     }
     
     public void reset() {
-        zaret.get(0).setVlera(0);
-        zaret.get(1).setVlera(1);
-        ishteDopio = false;
-        vleraDopio = 0;
+        zaret.get(0).reset();
+        zaret.get(1).reset();
     }
     
     public int getShuma() {
         if (eshteDopio())
-            return 4*vleraDopio;
+            return 4*getVlera1();
         else 
             return getVlera1()+getVlera2();
     }
@@ -112,17 +84,15 @@ public class CiftZaresh
     }
     
     public int getVleraDopio() {
-        return vleraDopio;
+        return getVlera1();
     }
     
     public boolean janeHedhur() {
-        return (this.zaret.get(0).getVlera() == 0 && this.zaret.get(1).getVlera() == 0);
+        return (getVlera1()!=0 && getVlera2()!=0);
     }
     
     public void paraqit(Graphics g, ImageObserver obs,int x,int y) {
-        this.zaret.get(0).setNgjyre("blue");
         this.zaret.get(0).paraqit(g, obs, x, y);
-        this.zaret.get(1).setNgjyre("blue");
         this.zaret.get(1).paraqit(g, obs, x-58, y);
     }
     

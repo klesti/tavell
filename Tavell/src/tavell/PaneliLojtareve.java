@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Arbri
@@ -50,8 +51,9 @@ public class PaneliLojtareve extends JPanel{
         this.setBorder(new LineBorder(Color.black));
         this.setLayout(null);
         
-        //-------------PANELI LOJTAREVE---------------------------        
-                
+        //-------------PANELI LOJTAREVE---------------------------   
+        
+                      
         //Paneli i Lojtarit 1
         paneliLojtarit1 = new JPanel(null);        
         paneliLojtarit1.setBounds(10,20,200,250);
@@ -103,7 +105,7 @@ public class PaneliLojtareve extends JPanel{
         lojeRe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 l.fillo();
-                lojeRe.setEnabled(false);
+                getLojeRe().setEnabled(false);
                 fusha.rifresko();
                 JOptionPane.showMessageDialog(paneliButonave, "Rradhen e ka " +
                         l.getRadha().getLojtar().getEmri());
@@ -221,7 +223,7 @@ public class PaneliLojtareve extends JPanel{
          lojeRe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 l.fillo();
-                lojeRe.setEnabled(false);
+                getLojeRe().setEnabled(false);
                 fusha.rifresko();
                 JOptionPane.showMessageDialog(paneliButonave, "Rradhen e ka " +
                         l.getRadha().getLojtar().getEmri());
@@ -312,5 +314,8 @@ public class PaneliLojtareve extends JPanel{
     public Loje getLoje(){
         return this.l;
     }
-    
+
+    public JButton getLojeRe() {
+        return lojeRe;
+    } 
 }

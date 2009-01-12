@@ -46,8 +46,6 @@ public class Zar
     public void setULuajt(boolean uLuajt) 
     {
         this.uLuajt = uLuajt;
-        if (uLuajt==true) 
-          vlera = 0;
     }
     
     public String getImazhi(){ 
@@ -64,7 +62,14 @@ public class Zar
         uLuajt = false;
     }
     
-    public void paraqit(Graphics g, ImageObserver obs, int x, int y){        
+    public void reset() {
+        vlera = 0;
+        uLuajt = false;
+    }
+    
+    public void paraqit(Graphics g, ImageObserver obs, int x, int y){
+        if (uLuajt) setNgjyre("blue");
+        else setNgjyre("white");
         g.drawImage(sprites.getSprite(getImazhi()), x,y, obs);       
     }
 }
