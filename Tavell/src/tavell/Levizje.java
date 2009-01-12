@@ -8,7 +8,6 @@ public class Levizje
 
     public Levizje () 
     {
-        
     }
     
     public Levizje (Lojtar l, int nga, int tek)

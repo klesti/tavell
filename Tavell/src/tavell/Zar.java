@@ -58,7 +58,7 @@ public class Zar
     
     public void hidh () 
     {
-        this.vlera = new Random().nextInt(5) + 1;
+        this.vlera = new Random().nextInt(6) + 1;
         uLuajt = false;
     }
     

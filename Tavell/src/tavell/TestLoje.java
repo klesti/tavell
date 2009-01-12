@@ -15,7 +15,9 @@ import javax.swing.*;
  */
 public class TestLoje extends JFrame {
     private JPanel panel;
-    private Fushe fusha;
+    private PaneliLojtareve paneliLojtareve;
+    private Fushe fusha;   
+
     
     public TestLoje() {
         setTitle("Test Tavell");
@@ -25,16 +27,15 @@ public class TestLoje extends JFrame {
         fusha.setBounds(0,0,Fushe.WIDTH,Fushe.HEIGHT);
         panel.setPreferredSize(new java.awt.Dimension(Fushe.WIDTH,Fushe.HEIGHT));
         panel.setLayout(null);
-        
+        paneliLojtareve = new PaneliLojtareve();
         
         panel.add(fusha);
-        panel.add(new PaneliLojtareve());
-       
+        panel.add(paneliLojtareve);       
+        
         setBounds(0,0,1100,700);
         setResizable(false);        
         setVisible(true);        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
     }
     
 

@@ -84,7 +84,7 @@ public class RadheLevizje {
         }
         else {
             this.levizjetERradhes[0] = vlera1;
-            this.levizjetERradhes[1] = vlera2;
+            this.levizjetERradhes[1] = vlera2;            
         }
     }
     

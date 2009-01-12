@@ -29,9 +29,11 @@ public class Fushe extends Canvas {
         this.program = p;
         Lojtar[] lojtaret = {l1,l2};
         l.setLojtaret(lojtaret);
+        //l.getRadha().setLojtar(l1);
         sprites = new SpriteCache();      
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());
+        //simulo();
     }
     
     public Fushe() {    
@@ -77,6 +79,21 @@ public class Fushe extends Canvas {
     public void rifresko() {
         update(getGraphics());
     }
+    
+    public void simulo(){
+        KoleksionGuresh[] s = l.getStivat();
+        s[24].peek().leviz(s, 5);
+        s[24].peek().leviz(s, 5);
+        for (int i=0;i<5;i++) {
+            s[13].peek().leviz(s, 3);
+        }
+        
+        for (int i = 0; i < 3; i++) {
+           s[8].peek().leviz(s, 2);
+        }
+        
+        
+    }
     /*
      *   Mouse Listener
      **/
@@ -100,7 +117,7 @@ public class Fushe extends Canvas {
                    hidhZaret();
            }
            rifresko();
-        }
+        }        
         
         public void filloLojen() {
             l.fillo();          
