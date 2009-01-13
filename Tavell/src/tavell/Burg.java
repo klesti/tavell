@@ -25,11 +25,12 @@ public class Burg extends Loje {
     
    @Override
     public boolean leviz(int nga, int tek) {
-        CiftZaresh zaret = radha.getZaret();        
+       CiftZaresh zaret = radha.getZaret();        
         
         if (aEshteEMundurLevizja(nga, tek)) {
             Gur g = stivat[nga].peek();
             g.leviz(stivat, tek);
+            Main.sounds.playSound("move.wav");
             //Regjistro levizje
             if (zaret.eshteDopio()) {                
                 int vlera = zaret.getVleraDopio();
@@ -45,7 +46,7 @@ public class Burg extends Loje {
             }
             levizjet.add(new Levizje(radha.getLojtar(),nga,tek));
             return true;
-        }
+        }        
         return false;
     }
 

@@ -65,8 +65,12 @@ public class RadheLevizje {
         return zgjedhurPerTuLevizur;
     }
 
-    public void setZgjedhurPerTuLevizur(int zgjedhurPerTuLevizur) {
-        this.zgjedhurPerTuLevizur = zgjedhurPerTuLevizur;
+    public void setZgjedhurPerTuLevizur(int z) {
+        if (z!=-1 && (loja.getStivat()[z].size()<1 || 
+            loja.getStivat()[z].peek().getLojtari()!=getLojtar())) {
+            return;
+        }
+        this.zgjedhurPerTuLevizur = z;
     }
     
     public boolean kaPerTuLevizur() {

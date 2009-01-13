@@ -59,8 +59,10 @@ public class Tavell extends Loje {
             Gur g = stivat[nga].peek();
             
             if (stivat[tek].size()==1 && stivat[tek].peek().getLojtari()!=g.getLojtari()) {
+                Main.sounds.playSound("hit.wav");
                 g.vrit(stivat,tek);
             } else {
+                Main.sounds.playSound("move.wav");
                 g.leviz(stivat, tek);
             }
             //Regjistro levizje
@@ -78,7 +80,7 @@ public class Tavell extends Loje {
             }
             levizjet.add(new Levizje(radha.getLojtar(),nga,tek));
             return true;
-        }
+        }        
         return false;
     }
     

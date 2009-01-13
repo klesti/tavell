@@ -36,13 +36,15 @@ public class KoleksionGureshJashteLoje extends KoleksionGuresh {
         g.setKoordinata(koordinatatERradhes(g.getLojtari()));
     //Zhvendos gurin ne stivat e lojtarit                    
         g.getLojtari().getNeLoje().remove(g);
+        g.getLojtari().getJashteLoje().push(g);
         super.push(g);        
     }
     
     @Override 
     public Gur pop() {   
         Gur g = super.pop();
-     //Zhvendos gurin ne stivat e lojtarit           
+     //Zhvendos gurin ne stivat e lojtarit   
+        g.getLojtari().getJashteLoje().pop(g.getLojtari());
         g.getLojtari().getNeLoje().push(g);
         return g;
     }

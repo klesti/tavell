@@ -30,10 +30,10 @@ public class Fushe extends Canvas {
         Lojtar[] lojtaret = {l1,l2};
         l.setLojtaret(lojtaret);
         l.getRadha().setLojtar(l1);
-        sprites = new SpriteCache();      
+        sprites = new SpriteCache();    
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());
-        //simulo();
+        simulo();
     }
     
     public Fushe() {    
@@ -135,6 +135,7 @@ public class Fushe extends Canvas {
            }
            l.getRadha().getZaret().setZaret(0,0);
            rifresko();
+           Main.sounds.playSound("roll.wav");
            try { 
              Thread.sleep(700);
            } catch (InterruptedException ex) {}

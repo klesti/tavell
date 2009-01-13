@@ -113,13 +113,16 @@ abstract public class Loje {
 
     
     public int ndryshoRradhe() {
+        int rradha;
         if (radha.getLojtar()==lojtaret[0]) {
             radha.setLojtar(lojtaret[1]);
-            return 1;
+            rradha = 1;
         } else {
             radha.setLojtar(lojtaret[0]);
-            return 0;
+            rradha = 0;
         }
+        Main.sounds.playSound("nextturn.wav");
+        return rradha;
     }
     
     public void fillo() {

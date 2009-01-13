@@ -113,8 +113,8 @@ public class PaneliLojtareve extends JPanel{
         
         paneliButonave.add(ruajLojen);
         paneliButonave.add(lojeRe);
-        paneliButonave.add(ngarko);
-        paneliButonave.add(dorezohu);
+       // paneliButonave.add(ngarko);
+       // paneliButonave.add(dorezohu);
         
         //Paneli Lojtarit2
         paneliLojtarit2 = new JPanel(null);        
@@ -229,9 +229,9 @@ public class PaneliLojtareve extends JPanel{
             }
         });
         
-        paneliButonave.add(ruajLojen);
+        //paneliButonave.add(ruajLojen);
         paneliButonave.add(lojeRe);
-        paneliButonave.add(ngarko);
+        //paneliButonave.add(ngarko);
         paneliButonave.add(dorezohu);
         
         //Paneli Lojtarit2
