@@ -155,6 +155,8 @@ public class Fushe extends Canvas {
         }
         
         public void tregoLevizjetELejuara(int poz) {
+           if (l.radha.getLojtar().kaJashteLoje() && poz!=0) 
+               return;
            int tmp [] = l.getLevizjetELejuara(l.getStivat()[poz]);
            for (int j=0;j<tmp.length && tmp[j]>0;j++) {               
                 KoleksionGuresh k =  l.getStivat()[tmp[j]];               

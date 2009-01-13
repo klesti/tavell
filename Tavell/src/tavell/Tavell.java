@@ -51,7 +51,11 @@ public class Tavell extends Loje {
     @Override
     public boolean leviz(int nga, int tek) {
         CiftZaresh zaret = radha.getZaret();
-        if (!radha.getLojtar().kaJashteLoje() && aEshteEMundurLevizja(nga, tek)) {
+        if (aEshteEMundurLevizja(nga, tek)) {
+            //Nqs ke gure te vrare dhe po tenton te levizesh nje gur tjeter nuk te lejon
+            if (radha.getLojtar().kaJashteLoje() && nga!=0) {
+                return false; 
+            }
             Gur g = stivat[nga].peek();
             
             if (stivat[tek].size()==1 && stivat[tek].peek().getLojtari()!=g.getLojtari()) {
