@@ -111,6 +111,10 @@ public class KoleksionGuresh extends Stack {
         return (Gur)super.pop();
     }
     
+    public Gur pop(Lojtar l) {
+        return pop();
+    }
+    
     @Override
     public Gur get(int i) {
         return (Gur)super.get(i);

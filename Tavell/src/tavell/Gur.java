@@ -109,9 +109,13 @@ public class Gur
         stivat[tek].push(this);
     }
     
-    public void vrit(KoleksionGuresh[] stivat,int tek) {
+    public void vrit(KoleksionGuresh[] stivat,int tek) {        
         stivat[0].push(stivat[tek].pop());
-        leviz(stivat,tek);
+        if (pozicioni==0) 
+            stivat[pozicioni].pop(lojtari);
+        else
+            stivat[pozicioni].pop();
+        stivat[tek].push(this);
     }
     
     public void paraqit(Graphics g,ImageObserver obs) {
