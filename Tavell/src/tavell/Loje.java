@@ -98,6 +98,9 @@ abstract public class Loje {
     
     public void percaktoRradhenFillestare() {
         radha.hidhZaret();
+        if (radha.getZaret().eshteDopio()) {
+            percaktoRradhenFillestare();
+        }
         if (radha.getZaret().getVlera1() > radha.getZaret().getVlera2()) {
             radha.setLojtar(lojtaret[0]);
          } else if (radha.getZaret().getVlera2() > radha.getZaret().getVlera1()) {
@@ -129,10 +132,16 @@ abstract public class Loje {
     }
     
     public boolean kaLevizjeTeLejuara() {
-        KoleksionGuresh neLoje = radha.getLojtar().getNeLoje();
+        KoleksionGuresh k;
+        if (this instanceof Tavell && radha.getLojtar().kaJashteLoje()) {
+            k = radha.getLojtar().getJashteLoje();
+        }
+        else {
+            k = radha.getLojtar().getNeLoje();
+        }
         int i = 0;
-        while ( neLoje.size()>0 ) {
-            Gur g = neLoje.get(i);
+        while ( k.size()>0 ) {
+            Gur g = k.get(i);
             if (getLevizjetELejuara(getStivat()[g.getPozicioni()]).length!=0) {
                 return true;
             }
