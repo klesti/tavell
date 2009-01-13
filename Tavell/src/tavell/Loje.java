@@ -108,7 +108,7 @@ abstract public class Loje {
             radha.setLojtar(lojtaret[1]);            
         }
     //radha hardcode
-        //radha.setLojtar(lojtaret[0]);
+        //radha.setLojtar(lojtaret[1]);
     }
 
     
@@ -203,7 +203,7 @@ abstract public class Loje {
     public boolean aEshteEMundurLevizja(int nga, int tek){
         //--I rivendos vlerat ne rast se tek del jashte kufijve 1 dhe 24
         int hapi = getHapi(nga,tek);
-        if(tek!=25) tek = getTek(tek);
+        if((tek!=25 && radha.getLojtar().getNumri()==1) || tek!=26) tek = getTek(tek);
         //--Fund vendos vlerat
         int vlera1;
         int vlera2;
@@ -219,7 +219,7 @@ abstract public class Loje {
             if(aKaGureJashteKuadratitTeFundit(radha.getLojtar())) {                
                 return(aTeLejojneZaret(hapi, vlera1, vlera2) &&
                     (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
-                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi) && tek!=25);
+                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi) && (tek!=25 || tek!=26));
             }
             else {
                 return(((aTeLejojneZaretTeHash(hapi)) || !kaGureMajtas(getStivat()[nga].peek()) || aTeLejojneZaret(hapi, vlera1, vlera2)) &&
@@ -366,8 +366,8 @@ abstract public class Loje {
     }
     
     protected int getHapi(int nga, int tek){
-        if(getTek(tek)==25 || tek==25) return nga;
-        else if(getTek(tek)==26) return 25-nga;
+        if(tek==26 || getTek(tek)==26) return 25-nga;
+        else if(tek==25 || getTek(tek)==25) return nga;        
         else return Math.abs(getTek(tek)-nga);
     }
     
@@ -382,7 +382,8 @@ abstract public class Loje {
     protected int getTek(int tek){
         int t;
         if(tek<1) t=25;
-        else if(tek>24) t=26;
+        else if(tek>25) t=26;
+        else if(tek == 25 && radha.getLojtar().getNumri()==2) t=26;
         else t = tek;
         return t;
     }
