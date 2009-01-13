@@ -91,11 +91,9 @@ public class Fushe extends Canvas {
         for (int i = 0; i < 3; i++) {
            s[8].peek().leviz(s, 2);
         }
-        
-        for (int i=0;i<5;i++) {
-            s[6].peek().leviz(s,25);
-        }
-        
+        /*for (int i=0;i<5;i++) {
+        s[6].peek().leviz(s,25);
+        }*/
     }
     /*
      *   Mouse Listener
@@ -130,6 +128,11 @@ public class Fushe extends Canvas {
         }
         
         public void hidhZaret() {
+           if (l.getRadha().nrLevizjeTeMbetura()!=0 && l.kaLevizjeTeLejuara()) {
+               JOptionPane.showMessageDialog(program, "Levizni te gjitha " +
+               "levizjet e mundshme. ");
+               return;
+           }
            l.getRadha().getZaret().setZaret(0,0);
            rifresko();
            try { 

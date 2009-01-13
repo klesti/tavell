@@ -128,6 +128,19 @@ abstract public class Loje {
         percaktoRradhenFillestare();
     }
     
+    public boolean kaLevizjeTeLejuara() {
+        KoleksionGuresh neLoje = radha.getLojtar().getNeLoje();
+        int i = 0;
+        while ( neLoje.size()>0 ) {
+            Gur g = neLoje.get(i);
+            if (getLevizjetELejuara(getStivat()[g.getPozicioni()]).length!=0) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+    
     public int[] getLevizjetELejuara(KoleksionGuresh s){        
         int sa = radha.shumaELevizjeTeMbetura();
         int levizjetTmp[] = new int[5];
