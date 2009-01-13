@@ -198,10 +198,12 @@ abstract public class Loje {
         return levizjetTmp;
     }
     
+    
+    //TODO: Llogjikoje me laps e leter pastaj perfundoje. Per guret qe s'jane ne kuadratin e fundit ecen.
     public boolean aEshteEMundurLevizja(int nga, int tek){
         //--I rivendos vlerat ne rast se tek del jashte kufijve 1 dhe 24
         int hapi = getHapi(nga,tek);
-        tek = getTek(tek);
+        if(tek!=25) tek = getTek(tek);
         //--Fund vendos vlerat
         int vlera1;
         int vlera2;
@@ -214,9 +216,16 @@ abstract public class Loje {
             vlera2 = radha.getZaret().getVlera2();
         }
         if(!aPoLevizMbrapsht(nga, tek)){
-            return(aTeLejojneZaret(hapi, vlera1, vlera2) &&
+            if(aKaGureJashteKuadratitTeFundit(radha.getLojtar())) {                
+                return(aTeLejojneZaret(hapi, vlera1, vlera2) &&
                     (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
-                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi));
+                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi) && tek!=25);
+            }
+            else {
+                return(((aTeLejojneZaretTeHash(hapi)) || !kaGureMajtas(getStivat()[nga].peek()) || aTeLejojneZaret(hapi, vlera1, vlera2)) &&
+                        (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
+                        !aKaPengesa(nga, tek) && (!radha.aEshteKryerLevizja(hapi) || !kaGureMajtas(getStivat()[nga].peek())));
+            }
         }
         else return false;
     }
@@ -356,12 +365,20 @@ abstract public class Loje {
         }
     }
     
-    protected int getHapi(int nga, int tek){        
-        return Math.abs(getTek(tek)-nga);
+    protected int getHapi(int nga, int tek){
+        if(getTek(tek)==25 || tek==25) return nga;
+        else if(getTek(tek)==26) return 25-nga;
+        else return Math.abs(getTek(tek)-nga);
     }
     
     //If i Cenit
     
+    /*
+     * E KE LENE KETU.
+     * KONTROLLO NESE ESHTE MIRE QE t=25 APO DUHET t=0.
+     * KUJDES !! MERR PARASYSH CDO RAST
+     */
+    //TODO: Perfundoje
     protected int getTek(int tek){
         int t;
         if(tek<1) t=25;
@@ -371,11 +388,15 @@ abstract public class Loje {
     }
     
     protected boolean aPoLevizMbrapsht(int nga, int tek){
-        tek = getTek(tek);
-        if(radha.getLojtar().getNumri()==1 && nga < tek) return true;
-        else if(radha.getLojtar().getNumri()==2 && nga > tek) return true;
+        //tek = getTek(tek);
+        if(radha.getLojtar().getNumri()==1 && nga < tek && tek!=25) return true;
+        else if(radha.getLojtar().getNumri()==2 && nga > tek && tek != 26) return true;
         else return false;
     } 
+    
+    protected boolean aTeLejojneZaretTeHash(int hapi){
+        return (hapi==radha.getZaret().getVlera1() || hapi==radha.getZaret().getVlera2());
+    }
     
 }
 
