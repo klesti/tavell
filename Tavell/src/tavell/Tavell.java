@@ -65,7 +65,7 @@ public class Tavell extends Loje {
                 radha.rregjistroLevizje(zaret.getVlera1());
                 radha.rregjistroLevizje(zaret.getVlera2());                
             } else {
-                radha.rregjistroLevizje(Math.abs(nga-tek));
+                radha.rregjistroLevizje(getHapi(nga,tek));
             }
             levizjet.add(new Levizje(radha.getLojtar(),nga,tek));
             return true;
