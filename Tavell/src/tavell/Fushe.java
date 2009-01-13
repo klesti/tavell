@@ -121,10 +121,11 @@ public class Fushe extends Canvas {
         }        
         
         public void filloLojen() {
-            l.fillo();          
+            l.fillo();        
             program.getPaneliLojtareve().getLojeRe().setEnabled(false);
             JOptionPane.showMessageDialog(program, "Rradhen e ka " +
             l.getRadha().getLojtar().getEmri());
+            Main.sounds.playSound("roll.wav");
         }
         
         public void hidhZaret() {
