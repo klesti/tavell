@@ -120,8 +120,7 @@ abstract public class Loje {
         } else {
             radha.setLojtar(lojtaret[0]);
             rradha = 0;
-        }
-        Main.sounds.playSound("nextturn.wav");
+        }        
         return rradha;
     }
     
