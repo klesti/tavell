@@ -20,7 +20,7 @@ public class RadheLevizje {
     public RadheLevizje(Loje loja) {
         //konstruktor i perkoheshem
         this.levizjetERradhes = new int[4];
-        this.zaret = new CiftZaresh();
+        this.zaret = new CiftZaresh(this);
         this.zgjedhurPerTuLevizur = -1;
         this.loja = loja;
     }
@@ -34,7 +34,7 @@ public class RadheLevizje {
     public RadheLevizje(Lojtar lojtar) {
         this.lojtar = lojtar;
         this.levizjetERradhes = new int[4];
-        this.zaret = new CiftZaresh();
+        this.zaret = new CiftZaresh(this);
     }
 
     public int[] getLevizjetERradhes() {

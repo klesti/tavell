@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class CiftZaresh 
 {
     private ArrayList<Zar> zaret;  
+    private RadheLevizje radha;
 
-    public CiftZaresh ()
+    public CiftZaresh (RadheLevizje r)
     {
+        this.radha = r;
         this.zaret = new ArrayList<Zar>(2);
         this.zaret.add(new Zar());
         this.zaret.add(new Zar());      
@@ -92,8 +94,16 @@ public class CiftZaresh
     }
     
     public void paraqit(Graphics g, ImageObserver obs,int x,int y) {
-        this.zaret.get(0).paraqit(g, obs, x, y);
-        this.zaret.get(1).paraqit(g, obs, x-58, y);
+        String ngjyra;
+        if (radha.getLojtar()==null || radha.getLojtar().getNumri()==1)
+            ngjyra = "white";
+        else 
+            ngjyra = "blue";
+        
+        zaret.get(0).setNgjyre(ngjyra);
+        zaret.get(0).paraqit(g, obs, x, y);
+        zaret.get(1).setNgjyre(ngjyra);
+        zaret.get(1).paraqit(g, obs, x-58, y);
     }
     
     public boolean eshteLuajturNdonje(){

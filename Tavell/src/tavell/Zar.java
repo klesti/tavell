@@ -56,6 +56,13 @@ public class Zar
         else return "";
     }
     
+    public void nderroNgjyre() {
+        if (getNgjyre().equals("blue"))
+            setNgjyre("white");
+        else if (getNgjyre().equals("white"))
+            setNgjyre("blue");
+    }
+    
     public void hidh () 
     {
         this.vlera = new Random().nextInt(6) + 1;
@@ -68,8 +75,9 @@ public class Zar
     }
     
     public void paraqit(Graphics g, ImageObserver obs, int x, int y){
-        if (uLuajt) setNgjyre("blue");
-        else setNgjyre("white");
+        if (uLuajt)
+            nderroNgjyre();
+        
         g.drawImage(sprites.getSprite(getImazhi()), x,y, obs);       
     }
 }
