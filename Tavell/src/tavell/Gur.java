@@ -127,5 +127,12 @@ public class Gur
             g.fillOval(koordinata.x+10, koordinata.y+10, 28, 28);            
         }
     }
+    
+    public int getPips() {
+        if(lojtari.getNumri()==1)
+            return this.pozicioni;
+        else
+            return 25-pozicioni;
+    }
 }
 

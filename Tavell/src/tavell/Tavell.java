@@ -55,13 +55,9 @@ public class Tavell extends Loje {
             Gur g = stivat[nga].peek();
             g.leviz(stivat, tek);
             //Regjistro levizje
-            if (zaret.eshteDopio()) {
-                int t;
-                if(tek==25) t=0;
-                else if(tek==26) t=25;
-                else t = tek;
+            if (zaret.eshteDopio()) {                
                 int vlera = zaret.getVleraDopio();
-                int nrLevizjeve = Math.abs(t-nga)/vlera;
+                int nrLevizjeve = getHapi(nga, tek)/vlera;
                 for (int i=0; i< nrLevizjeve; i++) {
                     radha.rregjistroLevizje(vlera);                    
                 }

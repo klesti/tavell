@@ -101,9 +101,13 @@ abstract public class Loje {
         if (radha.getZaret().getVlera1() > radha.getZaret().getVlera2()) {
             radha.setLojtar(lojtaret[0]);
          } else if (radha.getZaret().getVlera2() > radha.getZaret().getVlera1()) {
+            
             radha.setLojtar(lojtaret[1]);            
         }
+    //radha hardcode
+        //radha.setLojtar(lojtaret[0]);
     }
+
     
     public int ndryshoRradhe() {
         if (radha.getLojtar()==lojtaret[0]) {
@@ -174,12 +178,10 @@ abstract public class Loje {
     
     
     public boolean aEshteEMundurLevizja(int nga, int tek){
-        if((tek>26 || tek<1) && (aKaGureJashteKuadratitTeFundit(radha.getLojtar()) || kaGureMajtas(getStivat()[nga].peek()))) return false;
-        else if(tek>24 || tek<1) return true;
-        else if(radha.getLojtar().getNumri()==1 && nga < tek) return false;
-        else if(radha.getLojtar().getNumri()==2 && nga > tek) return false;
-        else {            
-            int hapi = Math.abs(tek-nga);
+        //tek=getTek(tek);        
+        if(!aPoLevizMbrapsht(nga, tek))
+        {            
+            int hapi = getHapi(nga, tek);
             int vlera1,vlera2;            
             if (radha.getZaret().eshteDopio()) {
                 vlera1 = radha.getZaret().getVleraDopio();
@@ -189,9 +191,40 @@ abstract public class Loje {
                 vlera2= radha.getZaret().getVlera2();
             }
 
-            if(aTeLejojneZaret(hapi, vlera1, vlera2) && (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) && !aKaPengesa(nga,tek)) return true;
-            else return false;
+            if(aKaGureJashteKuadratitTeFundit(radha.getLojtar()) || !(tek>24 || tek<1)) {
+                if(aTeLejojneZaret(hapi, vlera1, vlera2) &&
+                    (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
+                    !aKaPengesa(nga,tek)) 
+                        return true;
+                else return false;
+            }
+            else {        
+                    //if(getStivat()[nga].size()>0 && !kaGureMajtas(getStivat()[nga].peek(),hapi)) tek=getFundiLevizjes(radha.getLojtar(), tek);
+                //return (aTeLejojneZaret(hapi, vlera1, vlera2) && kaGureMajtas(getStivat()[nga].peek(), hapi));
+                
+                /*
+                 * --RASTI KUR HA GURE
+                 */
+                  if(getStivat()[nga].size()<0) return false;
+                    Gur g = getStivat()[nga].peek();
+                //--Rasti kur nuk ka gure majtas
+                if (getStivat()[nga].size()>0 && !kaGureMajtas(getStivat()[nga].peek(), hapi))  {                   
+                   /* if (hapi!=vlera1 && hapi!=vlera2 && hapi!=vlera1+vlera2) {
+                        if (vlera1>vlera2)
+                            hapi = vlera1;
+                        else 
+                            hapi = vlera2;
+                    }*/    
+                    return(g.getPips()<=hapi);
+                }
+                //--Rasti kur ka gure majtas
+                else {
+                   
+                    return (g.getPips()==hapi);
+                }
+           }
         }
+        return false;
     }
     
     protected  boolean aKaGureJashteKuadratitTeFundit(Lojtar l){
@@ -232,19 +265,19 @@ abstract public class Loje {
         else return false;
     }
     
-    protected  boolean aEshteBoshStiva(int pozicioni){
-        if(pozicioni>24 || pozicioni<1) return false;
-        else return this.getStivat()[pozicioni].isEmpty();
+    protected  boolean aEshteBoshStiva(int pozicioni){ 
+        if (pozicioni > 24 || pozicioni < 1) return true;
+        return this.getStivat()[pozicioni].isEmpty();
     }
     
     protected  boolean aKaNjeGurKundershtar(int pozicioni){
-        if(pozicioni>24 || pozicioni<1) return false;
-        else return (this.getStivat()[pozicioni].size()==1 && this.getStivat()[pozicioni].peek().getLojtari().getNumri() != radha.getLojtar().getNumri());
+        if(pozicioni>24 || pozicioni<1) return true;
+        return (this.getStivat()[pozicioni].size()==1 && this.getStivat()[pozicioni].peek().getLojtari().getNumri() != radha.getLojtar().getNumri());
     }
     
     protected  boolean aJaneGureTeLojtarit(int pozicioni){
-        if(pozicioni>24 || pozicioni<1) return false;
-        else return (this.getStivat()[pozicioni].peek().getLojtari().getNumri() == radha.getLojtar().getNumri());
+        if(pozicioni>24 || pozicioni<1) return true;
+        return (this.getStivat()[pozicioni].peek().getLojtari().getNumri() == radha.getLojtar().getNumri());
     }
     
     protected boolean aKaPengesa (int nga, int tek){
@@ -264,21 +297,48 @@ abstract public class Loje {
             return false;
     }
     
-    protected boolean kaGureMajtas(Gur g){        
+    protected boolean kaGureMajtas(Gur g,int hapi){        
         if(radha.getLojtar().getNumri()==1) {
+            //Kontroll nese hapi eshte fiks sa koordinata e stives tePefunduara
+            //if(g.getPozicioni()==hapi) return false;
             for(int i=g.getPozicioni()+1;i<=24;i++) {
                 if(getStivat()[i].size()>0)
-                    if (getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) return true;
+                    if (getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
+                        return true;
             }
             return false;
         }
         else {
+            //Kontroll nese hapi eshte fiks sa koordinata e stives tePefunduara
+            //if(hapi==25-g.getPozicioni()) return false;
             for(int i=1;i<g.getPozicioni();i++){
                 if(getStivat()[i].size()>0)
-                    if (getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) return true;
+                    if (getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
+                        return true;
             }
             return false;
         }
+    }
+    
+    protected int getHapi(int nga, int tek){        
+        return Math.abs(getTek(tek)-nga);
+    }
+    
+    //If i Cenit
+    
+    protected int getTek(int tek){
+        int t;
+        if(tek==25) t=0;
+        else if(tek==26) t=25;
+        else t = tek;
+        return t;
+    }
+    
+    protected boolean aPoLevizMbrapsht(int nga, int tek){
+        tek = getTek(tek);
+        if(radha.getLojtar().getNumri()==1 && nga < tek) return true;
+        else if(radha.getLojtar().getNumri()==2 && nga > tek) return true;
+        else return false;
     }
 }
 

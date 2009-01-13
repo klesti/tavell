@@ -134,6 +134,6 @@ public class RadheLevizje {
         if (zaret.uLuajten()) {
             zaret.reset();
             loja.ndryshoRradhe();
-        }
+        }    
     }
 }
