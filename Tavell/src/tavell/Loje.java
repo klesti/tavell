@@ -189,8 +189,30 @@ abstract public class Loje {
         return levizjetTmp;
     }
     
-    
     public boolean aEshteEMundurLevizja(int nga, int tek){
+        //--I rivendos vlerat ne rast se tek del jashte kufijve 1 dhe 24
+        int hapi = getHapi(nga,tek);
+        tek = getTek(tek);
+        //--Fund vendos vlerat
+        int vlera1;
+        int vlera2;
+        if(radha.getZaret().eshteDopio()) {
+            vlera1 = radha.getZaret().getVleraDopio();
+            vlera2 = vlera1;
+        }
+        else {
+            vlera1 = radha.getZaret().getVlera1();
+            vlera2 = radha.getZaret().getVlera2();
+        }
+        if(!aPoLevizMbrapsht(nga, tek)){
+            return(aTeLejojneZaret(hapi, vlera1, vlera2) &&
+                    (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
+                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi));
+        }
+        else return false;
+    }
+    
+    public boolean aEshteEMundurLevizja2(int nga, int tek){
         //tek=getTek(tek);        
         if(!aPoLevizMbrapsht(nga, tek))
         {            
@@ -221,7 +243,7 @@ abstract public class Loje {
                   if(getStivat()[nga].size()<0) return false;
                     Gur g = getStivat()[nga].peek();
                 //--Rasti kur nuk ka gure majtas
-                if (getStivat()[nga].size()>0 && !kaGureMajtas(getStivat()[nga].peek(), hapi))  {                   
+                if (getStivat()[nga].size()>0 && !kaGureMajtas(getStivat()[nga].peek()))  {                   
                    /* if (hapi!=vlera1 && hapi!=vlera2 && hapi!=vlera1+vlera2) {
                         if (vlera1>vlera2)
                             hapi = vlera1;
@@ -242,20 +264,18 @@ abstract public class Loje {
     
     protected  boolean aKaGureJashteKuadratitTeFundit(Lojtar l){
         if(l.getNumri()==1){
-            for(int i=7;i<=24;i++){
-                if(this.getStivat()[i].size()>0) 
-                    if(this.getStivat()[i].peek().getLojtari()==l) {                        
-                        return true;
-                    }
+            for(int i=7;i<=24;i++){                
+                if(this.getStivat()[i].size()>0 && this.getStivat()[i].peek().getLojtari()==l) {                        
+                    return true;
+                }
             }
             return false;
         }
         else {
-            for(int i=1;i<=18;i++){
-                if(this.getStivat()[i].size()>0)
-                    if(this.getStivat()[i].peek().getLojtari()==l) {                        
-                        return true;
-                    }
+            for(int i=1;i<=18;i++){                
+                if(this.getStivat()[i].size()>0 && this.getStivat()[i].peek().getLojtari()==l) {                        
+                    return true;
+                }
             }
             return false;
         }
@@ -310,24 +330,18 @@ abstract public class Loje {
             return false;
     }
     
-    protected boolean kaGureMajtas(Gur g,int hapi){        
-        if(radha.getLojtar().getNumri()==1) {
-            //Kontroll nese hapi eshte fiks sa koordinata e stives tePefunduara
-            //if(g.getPozicioni()==hapi) return false;
-            for(int i=g.getPozicioni()+1;i<=24;i++) {
-                if(getStivat()[i].size()>0)
-                    if (getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
-                        return true;
+    protected boolean kaGureMajtas(Gur g){        
+        if(radha.getLojtar().getNumri()==1) {            
+            for(int i=g.getPozicioni()+1;i<=24;i++) {                
+                if (getStivat()[i].size()>0 && getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
+                    return true;
             }
             return false;
         }
-        else {
-            //Kontroll nese hapi eshte fiks sa koordinata e stives tePefunduara
-            //if(hapi==25-g.getPozicioni()) return false;
-            for(int i=1;i<g.getPozicioni();i++){
-                if(getStivat()[i].size()>0)
-                    if (getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
-                        return true;
+        else {            
+            for(int i=1;i<g.getPozicioni();i++){                
+                if (getStivat()[i].size()>0 && getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
+                    return true;
             }
             return false;
         }
@@ -341,8 +355,8 @@ abstract public class Loje {
     
     protected int getTek(int tek){
         int t;
-        if(tek==25) t=0;
-        else if(tek==26) t=25;
+        if(tek<1) t=25;
+        else if(tek>24) t=26;
         else t = tek;
         return t;
     }
@@ -352,6 +366,7 @@ abstract public class Loje {
         if(radha.getLojtar().getNumri()==1 && nga < tek) return true;
         else if(radha.getLojtar().getNumri()==2 && nga > tek) return true;
         else return false;
-    }
+    } 
+    
 }
 

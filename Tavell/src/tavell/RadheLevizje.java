@@ -136,4 +136,16 @@ public class RadheLevizje {
             loja.ndryshoRradhe();
         }    
     }
+    
+    public boolean aEshteKryerLevizja(int levizja){
+        if(zaret.eshteDopio()){
+            return !(levizja==levizjetERradhes[0] || levizja==2*levizjetERradhes[0] ||
+                    levizja==3*levizjetERradhes[0] || levizja==4*levizjetERradhes[0]);
+        }
+        else{
+            return !(levizja==levizjetERradhes[0] || levizja==levizjetERradhes[1] ||
+                    levizja==levizjetERradhes[0]+levizjetERradhes[1]);
+        }
+    }
+    
 }
