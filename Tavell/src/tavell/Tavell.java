@@ -53,7 +53,12 @@ public class Tavell extends Loje {
         CiftZaresh zaret = radha.getZaret();
         if (!radha.getLojtar().kaJashteLoje() && aEshteEMundurLevizja(nga, tek)) {
             Gur g = stivat[nga].peek();
-            g.leviz(stivat, tek);
+            
+            if (stivat[tek].size()==1 && stivat[tek].peek().getLojtari()!=g.getLojtari()) {
+                g.vrit(stivat,tek);
+            } else {
+                g.leviz(stivat, tek);
+            }
             //Regjistro levizje
             if (zaret.eshteDopio()) {                
                 int vlera = zaret.getVleraDopio();

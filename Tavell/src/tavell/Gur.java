@@ -109,6 +109,11 @@ public class Gur
         stivat[tek].push(this);
     }
     
+    public void vrit(KoleksionGuresh[] stivat,int tek) {
+        stivat[0].push(stivat[tek].pop());
+        leviz(stivat,tek);
+    }
+    
     public void paraqit(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
