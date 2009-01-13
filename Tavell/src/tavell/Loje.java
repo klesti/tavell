@@ -221,7 +221,7 @@ abstract public class Loje {
             if(aKaGureJashteKuadratitTeFundit(radha.getLojtar())) {                
                 return(aTeLejojneZaret(hapi, vlera1, vlera2) &&
                     (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
-                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi) && (tek!=25 || tek!=26));
+                    !aKaPengesa(nga, tek) && !radha.aEshteKryerLevizja(hapi) && (tek!=25 && tek!=26));
             }
             else {
                 return(((aTeLejojneZaretTeHash(hapi)) || !kaGureMajtas(getStivat()[nga].peek()) || aTeLejojneZaret(hapi, vlera1, vlera2)) &&
@@ -335,7 +335,7 @@ abstract public class Loje {
     
     protected boolean aKaPengesa (int nga, int tek){
         int drejtimi=radha.getLojtar().getDrejtimi();
-        int hapi=Math.abs(tek-nga);        
+        int hapi=Math.abs(tek-nga);       
         //--Mos bej kontroll nese nuk po luhet shuma e zareve
         if(hapi != radha.shumaELevizjeTeMbetura() || radha.getZaret().eshteLuajturNdonje()) return false;
         if(!(aEshteBoshStiva(nga+drejtimi*radha.getZaret().getVlera1()) ||
@@ -350,7 +350,8 @@ abstract public class Loje {
             return false;
     }
     
-    protected boolean kaGureMajtas(Gur g){        
+    protected boolean kaGureMajtas(Gur g){
+        if(g.getPozicioni()==6 || g.getPozicioni()==19) return true;
         if(radha.getLojtar().getNumri()==1) {            
             for(int i=g.getPozicioni()+1;i<=24;i++) {                
                 if (getStivat()[i].size()>0 && getStivat()[i].peek().getLojtari().getNumri() == g.getLojtari().getNumri()) 
