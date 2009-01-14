@@ -104,9 +104,35 @@ public class Gur
             return true;
     }
     
+    public void levizjeAnimuar(KoleksionGuresh[] stivat, int tek) {
+        Point p0 = getKoordinata();
+        Point p1 = stivat[tek].koordinatatERradhes();
+        Point p2 =  new Point((p0.x+p1.x)/2,Fushe.HEIGHT/2);
+        Parabole p = new Parabole(p0, p1, p2);
+        
+        int start, stop;
+        if (p0.x<p1.x) {
+            start = p0.x;
+            stop = p1.x;
+        }
+        else {
+            start = p1.x;
+            stop = p0.x;
+        }
+        for (int x=start;x<=stop;x++) {
+            int y = p.interpolo(x);
+            if (x%70==0 || x==p0.x) {
+                 getKoordinata().x = x;
+                 getKoordinata().y = y;
+                 Program.fusha.rifresko();
+            }
+        }
+    }
+    
     public void leviz(KoleksionGuresh[] stivat,int tek) {
+        levizjeAnimuar(stivat, tek);
         stivat[pozicioni].pop();
-        stivat[tek].push(this);
+        stivat[tek].push(this);        
     }
     
     public void vrit(KoleksionGuresh[] stivat,int tek) {        

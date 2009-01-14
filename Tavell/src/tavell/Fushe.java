@@ -78,7 +78,7 @@ public class Fushe extends Canvas {
         Parabole p = new Parabole(p0, p1,p2);
       
         for (int x=p1.x;x<=p0.x;x++)  {
-            int y = (int)p.interpolo(x);
+            int y = p.interpolo(x);
             if (x%70==0 || x==p0.x) {
                  gur.setKoordinata(new Point(x,y));
                  rifresko();      

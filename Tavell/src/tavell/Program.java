@@ -22,7 +22,7 @@ public class Program extends JFrame{
     private Loje loja;
     private JPanel panel;
     private PaneliLojtareve paneliLojtareve;
-    private Fushe fusha;
+    public static Fushe fusha;
     public static boolean llojiParaqitjes;
     public static BufferStrategy strategy;
     

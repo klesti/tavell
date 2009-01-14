@@ -34,11 +34,11 @@ public class Parabole {
         
     }
     
-    public double interpolo(int x) {
+    public int interpolo(int x) {
         double p0x = (double) ((x-p1.x)*(x-p2.x)) / (double) ((p0.x-p1.x)*(p0.x-p2.x));
         double p1x = (double) ((x-p0.x)*(x-p2.x)) / (double) ((p1.x-p0.x)*(p1.x-p2.x));
         double p2x = (double) ((x-p0.x)*(x-p1.x)) / (double) ((p2.x-p0.x)*(p2.x-p1.x));
         
-        return (double)(p0.y*p0x + p1.y*p1x + p2.y*p2x);        
+        return (int)(p0.y*p0x + p1.y*p1x + p2.y*p2x);        
     }
 }
