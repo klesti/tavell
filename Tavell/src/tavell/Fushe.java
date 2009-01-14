@@ -58,12 +58,37 @@ public class Fushe extends Canvas {
         l.getRadha().setZaret(zaret);
     }
     
+    public void interpolim(Graphics g) {
+        int x1,y1;
+        Trekendesh t = l.getStivat()[1].getTrekendeshi();
+        x1 = t.getPikaA().x;
+        
+        y1 = l.getStivat()[1].peek().getKoordinata().y;
+        Point p0 = new Point(x1,y1);
+        t = l.getStivat()[6].getTrekendeshi();
+        x1 = t.getPikaA().x;
+        
+        y1 = l.getStivat()[6].peek().getKoordinata().y;        
+        Point p1 = new Point(x1,y1);
+        x1 = (p0.x+p1.x)/2;
+        y1 = HEIGHT/2;
+        Point p2 = new Point(x1,y1);            
+        
+        Parabole p = new Parabole(p0, p1,p2);
+        g.setColor(Color.red);
+        for (int x=p1.x;x<=p0.x;x++)  {
+            int y = (int)p.interpolo(x);
+            g.drawRect(x,y,5,5);
+        }    
+    }
+ 
     @Override
-    public void paint(Graphics g) {
+    public void paint(Graphics g) {    
         g = Program.strategy.getDrawGraphics();
         g.drawImage(sprites.getSprite(background),0,0,this);
         paraqitGuret(g);
         paraqitZaret(g); 
+        interpolim(g);
         program.getPaneliLojtareve().updatePaneliLojtareve();
         Program.strategy.show();
     }
@@ -95,6 +120,7 @@ public class Fushe extends Canvas {
         s[6].peek().leviz(s,25);
         }*/
     }
+    
     /*
      *   Mouse Listener
      **/
@@ -121,11 +147,11 @@ public class Fushe extends Canvas {
         }        
         
         public void filloLojen() {
+            Main.sounds.playSound("roll.wav");
             l.fillo();        
             program.getPaneliLojtareve().getLojeRe().setEnabled(false);
             JOptionPane.showMessageDialog(program, "Rradhen e ka " +
-            l.getRadha().getLojtar().getEmri());
-            Main.sounds.playSound("roll.wav");
+            l.getRadha().getLojtar().getEmri());            
         }
         
         public void hidhZaret() {
@@ -142,7 +168,8 @@ public class Fushe extends Canvas {
            } catch (InterruptedException ex) {}
 
            l.getRadha().hidhZaret();
-        }
+        }      
+
         
         public void cngjyrosTrekendeshat() {
             for(int i=0;i<l.getStivat().length;i++){

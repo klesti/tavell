@@ -93,6 +93,7 @@ public class Trekendesh
         if (ngjyra==null) {
             return; //Mos e ngjyros nqs nuk ka ngjyre
         }
+
         Color oldColor = g.getColor();
         g.setColor(ngjyra);
         int start=0, stop=0;

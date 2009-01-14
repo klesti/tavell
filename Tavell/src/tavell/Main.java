@@ -5,8 +5,6 @@
 
 package tavell;
 
-import javax.swing.UIManager;
-
 /**
  *
  * @author Klesti
