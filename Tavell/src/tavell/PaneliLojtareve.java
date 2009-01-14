@@ -41,6 +41,7 @@ public class PaneliLojtareve extends JPanel{
     private JButton lojeRe;
     private JButton ngarko;
     private JButton dorezohu;
+    private JCheckBox paraqitja;
     private Loje l;            
     private Fushe fusha;
     
@@ -100,6 +101,15 @@ public class PaneliLojtareve extends JPanel{
         lojeRe = new JButton("Loje e Re");
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
+        paraqitja = new JCheckBox("Paraqite te vizatuar");
+        
+        paraqitja.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                Program.llojiParaqitjes = paraqitja.isSelected();
+                Program.fusha.rifresko();
+            }
+        });
         
         dorezohu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -119,6 +129,7 @@ public class PaneliLojtareve extends JPanel{
         
         paneliButonave.add(ruajLojen);
         paneliButonave.add(lojeRe);
+        paneliButonave.add(paraqitja);
        // paneliButonave.add(ngarko);
        // paneliButonave.add(dorezohu);
         
@@ -224,6 +235,15 @@ public class PaneliLojtareve extends JPanel{
         lojeRe = new JButton("Loje e Re");
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
+        paraqitja = new JCheckBox("Paraqite te vizatuar");
+        
+        paraqitja.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                Program.llojiParaqitjes = paraqitja.isSelected();
+                Program.fusha.rifresko();
+            }
+        });
         
         dorezohu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -245,6 +265,7 @@ public class PaneliLojtareve extends JPanel{
         paneliButonave.add(lojeRe);
         //paneliButonave.add(ngarko);
         paneliButonave.add(dorezohu);
+        paneliButonave.add(paraqitja);
         
         //Paneli Lojtarit2
         paneliLojtarit2 = new JPanel(null);        
