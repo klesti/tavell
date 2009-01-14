@@ -33,7 +33,7 @@ public class Fushe extends Canvas {
         sprites = new SpriteCache();    
         setBounds(0,0,WIDTH,HEIGHT);
         addMouseListener(new Listener());
-        //simulo();
+        simulo();
     }
     
     public Fushe() {    
@@ -58,34 +58,6 @@ public class Fushe extends Canvas {
         l.getRadha().setZaret(zaret);
     }
     
-    public void interpolim() {
-        int x1,y1;
-        Trekendesh t = l.getStivat()[1].getTrekendeshi();
-        x1 = t.getPikaA().x;
-        Gur gur = l.getStivat()[1].peek();
-        y1 = gur.getKoordinata().y;
-        Point p0 = new Point(x1,y1);
-        t = l.getStivat()[6].getTrekendeshi();
-        x1 = t.getPikaA().x;
-        gur = l.getStivat()[6].peek();
-        y1 = gur.getKoordinata().y;        
-        Point p1 = new Point(x1,y1);
-        x1 = (p0.x+p1.x)/2;
-        y1 = HEIGHT/2;
-        Point p2 = new Point(x1,y1);           
-        
-        
-        Parabole p = new Parabole(p0, p1,p2);
-      
-        for (int x=p1.x;x<=p0.x;x++)  {
-            int y = p.interpolo(x);
-            if (x%70==0 || x==p0.x) {
-                 gur.setKoordinata(new Point(x,y));
-                 rifresko();      
-            }
-        }    
-    }
- 
     @Override
     public void paint(Graphics g) {    
         g = Program.strategy.getDrawGraphics();
