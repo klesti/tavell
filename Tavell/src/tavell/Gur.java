@@ -130,9 +130,13 @@ public class Gur
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
             if(lojtari.getNumri()==1){
-                vizatoBardhe(g, obs);
+               if(iPerfunduar) vizatoHolleBardhe(g, obs);
+               else vizatoBardhe(g, obs);
             }
-            else vizatoBlu(g, obs);
+            else {
+                if(iPerfunduar) vizatoHolleBlu(g, obs);
+                else vizatoBlu(g, obs);
+            }
         }        
     }
     
@@ -143,7 +147,7 @@ public class Gur
             return 25-pozicioni;
     }
     
-    public void vizatoBlu(Graphics g, ImageObserver obs){        
+    private void vizatoBlu(Graphics g, ImageObserver obs){        
         g.setColor(new Color(82,82,189));
         g.fillOval(koordinata.x, koordinata.y, 48, 48);
         g.setColor(Color.WHITE);
@@ -153,13 +157,27 @@ public class Gur
         
     }
     
-    public void vizatoBardhe(Graphics g, ImageObserver obs){        
+    private void vizatoBardhe(Graphics g, ImageObserver obs){        
         g.setColor(new Color(245,245,245));
         g.fillOval(koordinata.x, koordinata.y, 48, 48);
         g.setColor(new Color(82,82,189));
         g.fillOval(koordinata.x+11, koordinata.y+12, 25, 25);
         g.setColor(Color.white);
         g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);        
+    }
+    
+    private void vizatoHolleBlu(Graphics g, ImageObserver obs){        
+        g.setColor(new Color(82,82,189));        
+        g.fill3DRect(koordinata.x+2, koordinata.y+2, 44, 13, true);
+        g.setColor(Color.white);
+        g.drawLine(koordinata.x+4, koordinata.y+4, koordinata.x+44, koordinata.y+4);
+    }
+    
+    private void vizatoHolleBardhe(Graphics g, ImageObserver obs){
+        g.setColor(Color.white);        
+        g.fill3DRect(koordinata.x, koordinata.y, 44, 13, true);
+        g.setColor(new Color(82,82,189));
+        g.drawLine(koordinata.x+4, koordinata.y+4, koordinata.x+44, koordinata.y+4);
     }
     
 }
