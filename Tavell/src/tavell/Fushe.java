@@ -79,8 +79,10 @@ public class Fushe extends Canvas {
       
         for (int x=p1.x;x<=p0.x;x++)  {
             int y = (int)p.interpolo(x);
-            gur.setKoordinata(new Point(x,y));
-            rifresko();            
+            if (x%70==0 || x==p0.x) {
+                 gur.setKoordinata(new Point(x,y));
+                 rifresko();      
+            }
         }    
     }
  
