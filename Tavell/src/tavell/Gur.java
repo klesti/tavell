@@ -129,14 +129,11 @@ public class Gur
     public void vizato(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
-            //g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);            
-            g.setColor(Color.black);
-            g.fillOval(koordinata.x, koordinata.y, 48, 48);
-            g.setColor(new Color(229, 229, 229));
-            g.fillOval(koordinata.x+10, koordinata.y+10, 26, 26);
-            g.setColor(Color.gray);
-            g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);
-        }
+            if(lojtari.getNumri()==1){
+                vizatoBardhe(g, obs);
+            }
+            else vizatoBlu(g, obs);
+        }        
     }
     
     public int getPips() {
@@ -145,5 +142,25 @@ public class Gur
         else
             return 25-pozicioni;
     }
+    
+    public void vizatoBlu(Graphics g, ImageObserver obs){        
+        g.setColor(new Color(82,82,189));
+        g.fillOval(koordinata.x, koordinata.y, 48, 48);
+        g.setColor(Color.WHITE);
+        g.fillOval(koordinata.x+11, koordinata.y+12, 25, 25);
+        g.setColor(new Color(51,102,204));
+        g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);
+        
+    }
+    
+    public void vizatoBardhe(Graphics g, ImageObserver obs){        
+        g.setColor(new Color(245,245,245));
+        g.fillOval(koordinata.x, koordinata.y, 48, 48);
+        g.setColor(new Color(82,82,189));
+        g.fillOval(koordinata.x+11, koordinata.y+12, 25, 25);
+        g.setColor(Color.white);
+        g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);        
+    }
+    
 }
 
