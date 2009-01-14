@@ -121,8 +121,8 @@ public class Gur
     public void paraqit(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
-            g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);            
-            //vizato(g,obs);
+            //g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);
+            vizato(g,obs);
         }
     }
     
@@ -132,8 +132,10 @@ public class Gur
             //g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);            
             g.setColor(Color.black);
             g.fillOval(koordinata.x, koordinata.y, 48, 48);
-            g.setColor(Color.RED);
-            g.fillOval(koordinata.x+10, koordinata.y+10, 28, 28);            
+            g.setColor(new Color(229, 229, 229));
+            g.fillOval(koordinata.x+10, koordinata.y+10, 26, 26);
+            g.setColor(Color.gray);
+            g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);
         }
     }
     
