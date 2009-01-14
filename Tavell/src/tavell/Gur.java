@@ -110,23 +110,30 @@ public class Gur
         Point p2 =  new Point((p0.x+p1.x)/2,Fushe.HEIGHT/2);
         Parabole p = new Parabole(p0, p1, p2);
         
-        int start, stop;
+        
+        int start = p0.x;
+        int stop = p1.x;
         if (p0.x<p1.x) {
-            start = p0.x;
-            stop = p1.x;
-        }
-        else {
-            start = p1.x;
-            stop = p0.x;
-        }
-        for (int x=start;x<=stop;x++) {
-            int y = p.interpolo(x);
-            if (x%70==0 || x==p0.x) {
-                 getKoordinata().x = x;
-                 getKoordinata().y = y;
-                 Program.fusha.rifresko();
+            for (int x=start;x<=stop;x++) {
+                int y = p.interpolo(x);
+                if (x%70==0 || x==p0.x) {
+                     getKoordinata().x = x;
+                     getKoordinata().y = y;
+                     Program.fusha.rifresko();
+                }
             }
         }
+        else {
+            for (int x=start;x>=stop;x--) {
+                int y = p.interpolo(x);
+                if (x%70==0 || x==p0.x) {
+                     getKoordinata().x = x;
+                     getKoordinata().y = y;
+                     Program.fusha.rifresko();
+                }
+            }
+        }
+
     }
     
     public void leviz(KoleksionGuresh[] stivat,int tek) {
@@ -181,7 +188,7 @@ public class Gur
         g.setColor(Color.WHITE);
         g.fillOval(koordinata.x+11, koordinata.y+12, 25, 25);
         g.setColor(new Color(51,102,204));
-        g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);
+        g.fillOval(koordinata.x+12, koordinata.y+12, 24, 24);        
         
     }
     
