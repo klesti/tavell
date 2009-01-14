@@ -101,6 +101,12 @@ public class PaneliLojtareve extends JPanel{
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
         
+        dorezohu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                fusha.interpolim();
+            }
+        });
+        
         lojeRe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 l.fillo();
@@ -218,6 +224,12 @@ public class PaneliLojtareve extends JPanel{
         lojeRe = new JButton("Loje e Re");
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
+        
+        dorezohu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                fusha.interpolim();
+            }
+        });
         
          lojeRe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
