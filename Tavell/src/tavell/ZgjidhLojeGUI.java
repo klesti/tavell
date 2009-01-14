@@ -83,11 +83,15 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         anulloButon = new javax.swing.JButton();
         okButon = new javax.swing.JButton();
+        zgjidhParaqitjenPanel = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zgjidh Lojen");
         setBounds(new java.awt.Rectangle(300, 300, 0, 0));
         setResizable(false);
+
+        mainPanel.setPreferredSize(mainPanel.getPreferredSize());
 
         zgjidhLojenPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Zgjidh Lojen"));
 
@@ -120,15 +124,14 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         zgjidhLojenPanelLayout.setVerticalGroup(
             zgjidhLojenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(zgjidhLojenPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tavellRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(burgRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(qylRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(teGjithaRd)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(teGjithaRd))
         );
 
         lojtaretPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Lojtaret"));
@@ -275,32 +278,61 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
             }
         });
 
+        zgjidhParaqitjenPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Zgjidh paraqitjen"));
+        zgjidhParaqitjenPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Zgjidh Paraqitjen"));
+
+        jCheckBox1.setText("Te vizatuara");
+
+        javax.swing.GroupLayout zgjidhParaqitjenPanelLayout = new javax.swing.GroupLayout(zgjidhParaqitjenPanel);
+        zgjidhParaqitjenPanel.setLayout(zgjidhParaqitjenPanelLayout);
+        zgjidhParaqitjenPanelLayout.setHorizontalGroup(
+            zgjidhParaqitjenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zgjidhParaqitjenPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jCheckBox1)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        zgjidhParaqitjenPanelLayout.setVerticalGroup(
+            zgjidhParaqitjenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(zgjidhParaqitjenPanelLayout.createSequentialGroup()
+                .addComponent(jCheckBox1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lojtaretPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(242, Short.MAX_VALUE)
-                .addComponent(anulloButon)
-                .addGap(35, 35, 35)
-                .addComponent(okButon)
-                .addContainerGap())
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(zgjidhParaqitjenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lojtaretPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(anulloButon)
+                        .addGap(45, 45, 45)
+                        .addComponent(okButon)
+                        .addGap(28, 28, 28))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lojtaretPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(zgjidhParaqitjenPanel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(lojtaretPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(anulloButon)
                     .addComponent(okButon))
                 .addContainerGap())
@@ -310,15 +342,16 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -405,6 +438,8 @@ private void okButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     prog.setLojtari1(this.lojtari1);
     prog.setLojtari2(this.lojtari2);
     Lojtar l [] = {this.lojtari1, this.lojtari2};
+    //Percaktimi i paraqitjes (e vizatuar ose jo)
+    Program.llojiParaqitjes = this.jCheckBox1.isSelected();
     //Percaktimi se cila loje eshte
     String selectedGame = getSelected().getText();
     if(selectedGame.equalsIgnoreCase("Tavell"))
@@ -475,6 +510,7 @@ private void displayInCenter(){
     private javax.swing.JPanel avatar4Panel;
     private javax.swing.JRadioButton burgRd;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel lojtaretPanel;
@@ -490,6 +526,7 @@ private void displayInCenter(){
     private javax.swing.JRadioButton tavellRd;
     private javax.swing.JRadioButton teGjithaRd;
     private javax.swing.JPanel zgjidhLojenPanel;
+    private javax.swing.JPanel zgjidhParaqitjenPanel;
     // End of variables declaration//GEN-END:variables
     private AvatarImage avatar1= new AvatarImage("male.jpg");    
     private AvatarImage avatar2 = new AvatarImage("female.jpg");    

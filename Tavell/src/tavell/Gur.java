@@ -121,8 +121,10 @@ public class Gur
     public void paraqit(Graphics g,ImageObserver obs) {
         if (koordinata.x>0 && koordinata.x<Fushe.WIDTH &&
             koordinata.y>0 && koordinata.y<Fushe.HEIGHT) {
-            //g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);
-            vizato(g,obs);
+            if (Program.llojiParaqitjes)
+                vizato(g,obs);
+            else
+                g.drawImage(sprites.getSprite(getImazhi()), koordinata.x, koordinata.y, obs);
         }
     }
     

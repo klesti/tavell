@@ -22,8 +22,10 @@ public class Program extends JFrame{
     private Loje loja;
     private JPanel panel;
     private PaneliLojtareve paneliLojtareve;
-    private Fushe fusha; 
+    private Fushe fusha;
+    public static boolean llojiParaqitjes;
     public static BufferStrategy strategy;
+    
     
     public Program(){
         ZgjidhLojeGUI zgjidh = new ZgjidhLojeGUI(this);
