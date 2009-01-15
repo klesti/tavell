@@ -146,7 +146,7 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
 
         pikeLabel.setText("Pike:");
 
-        pikeTxt.setText("120");
+        pikeTxt.setText("5");
 
         javax.swing.GroupLayout avatar1PanelLayout = new javax.swing.GroupLayout(avatar1Panel);
         avatar1Panel.setLayout(avatar1PanelLayout);
