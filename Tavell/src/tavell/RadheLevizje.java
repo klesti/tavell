@@ -5,6 +5,8 @@
 
 package tavell;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Enkel
@@ -106,7 +108,8 @@ public class RadheLevizje {
         return 4;
     }
     
-    public void rregjistroLevizje(int vlera) {
+    @SuppressWarnings("static-access")
+    public boolean rregjistroLevizje(int vlera) {
         int nrLevMbet = this.nrLevizjeTeMbetura();
         if (this.zaret.eshteDopio()) {
             for (int i = 0; i < nrLevMbet-1; i++){
@@ -133,6 +136,8 @@ public class RadheLevizje {
             }
             else if (vlera == this.levizjetERradhes[1]) {
                 this.levizjetERradhes[1] = 0;
+            } else {
+                return false;
             }
         }
         if (!loja.kaLevizjeTeLejuara()) {
@@ -141,7 +146,30 @@ public class RadheLevizje {
         if (zaret.uLuajten()) {
             zaret.reset();
             loja.ndryshoRradhe();
-        }    
+        }   
+        
+        //Perfundimi i lojes
+        if (lojtar.getNeLoje().size() < 1) {
+            int pike = 1;
+            if (lojtar.getNumri()==1) {
+               if (loja.aKaGureJashteKuadratitTeFundit(loja.getLojtaret()[1])) 
+                   pike++;
+            } else {
+                if (loja.aKaGureJashteKuadratitTeFundit(loja.getLojtaret()[1])) 
+                   pike++;
+            }
+            lojtar.shtoPike(pike);
+             if(lojtar.getPike()>=Program.loja.getPiket()) {
+                JOptionPane.showMessageDialog(Program.fusha, "Loja u fitua nga "
+                        +lojtar.getEmri()+"!","Loja Mbaroi!",JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+            else {                        
+                Program.fusha.listener.filloLojen();
+                Program.loja.vendosGuret();
+            }
+        }
+        return true;        
     }
     
     public boolean aEshteKryerLevizja(int levizja){
