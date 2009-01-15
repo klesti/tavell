@@ -67,7 +67,6 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         tavellRd = new javax.swing.JRadioButton();
         burgRd = new javax.swing.JRadioButton();
         qylRd = new javax.swing.JRadioButton();
-        teGjithaRd = new javax.swing.JRadioButton();
         lojtaretPanel = new javax.swing.JPanel();
         lojtari1Label = new javax.swing.JLabel();
         lojtari2Label = new javax.swing.JLabel();
@@ -105,9 +104,6 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         buttonGroup1.add(qylRd);
         qylRd.setText("Qyl");
 
-        buttonGroup1.add(teGjithaRd);
-        teGjithaRd.setText("Te gjitha");
-
         javax.swing.GroupLayout zgjidhLojenPanelLayout = new javax.swing.GroupLayout(zgjidhLojenPanel);
         zgjidhLojenPanel.setLayout(zgjidhLojenPanelLayout);
         zgjidhLojenPanelLayout.setHorizontalGroup(
@@ -115,11 +111,10 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
             .addGroup(zgjidhLojenPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(zgjidhLojenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(teGjithaRd)
                     .addComponent(qylRd)
                     .addComponent(burgRd)
                     .addComponent(tavellRd))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         zgjidhLojenPanelLayout.setVerticalGroup(
             zgjidhLojenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,8 +125,7 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
                 .addComponent(burgRd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(qylRd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(teGjithaRd))
+                .addGap(26, 26, 26))
         );
 
         lojtaretPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Lojtaret"));
@@ -290,7 +284,7 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
             .addGroup(zgjidhParaqitjenPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jCheckBox1)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         zgjidhParaqitjenPanelLayout.setVerticalGroup(
             zgjidhParaqitjenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,9 +298,9 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(zgjidhParaqitjenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -323,16 +317,14 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(zgjidhParaqitjenPanel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(lojtaretPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(zgjidhLojenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(zgjidhParaqitjenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lojtaretPanel, 0, 204, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(anulloButon)
                     .addComponent(okButon))
                 .addContainerGap())
@@ -342,16 +334,14 @@ public class ZgjidhLojeGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
         );
 
         pack();
@@ -524,7 +514,6 @@ private void displayInCenter(){
     private javax.swing.JTextField pikeTxt;
     private javax.swing.JRadioButton qylRd;
     private javax.swing.JRadioButton tavellRd;
-    private javax.swing.JRadioButton teGjithaRd;
     private javax.swing.JPanel zgjidhLojenPanel;
     private javax.swing.JPanel zgjidhParaqitjenPanel;
     // End of variables declaration//GEN-END:variables
