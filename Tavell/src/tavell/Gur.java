@@ -137,7 +137,7 @@ public class Gur
     }
     
     public void leviz(KoleksionGuresh[] stivat,int tek) {
-        //levizjeAnimuar(stivat, tek);
+        levizjeAnimuar(stivat, tek);
         stivat[pozicioni].pop();
         stivat[tek].push(this);        
     }

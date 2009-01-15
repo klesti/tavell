@@ -35,7 +35,7 @@ public class Fushe extends Canvas {
         setBounds(0,0,WIDTH,HEIGHT);
         listener  = new Listener();
         addMouseListener(listener);
-        simulo();
+        //simulo();
     }
     
     public Fushe() {    
