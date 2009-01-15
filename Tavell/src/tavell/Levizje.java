@@ -50,7 +50,7 @@ public class Levizje
     @Override public String toString()
     {//???duhet shtuar nje logjike qe sheh nese guri eshte ne "pozicionin" i ngrene(jashte loje) ose
      //ne "pozicionin" i perfunduar dhe per secilin rast te kthehet nje String tjeter???
-        return this.lojtari.getEmri() +"levizi gurin nga "+ this.nga +"tek "+this.tek+"\n";
+        return this.lojtari.getEmri() +" levizi gurin nga "+ this.nga +" tek "+this.tek+"\n";
     }
 }
 

@@ -87,6 +87,7 @@ public class Tavell extends Loje {
                 }
             }
             levizjet.add(new Levizje(radha.getLojtar(),nga,tek));
+            System.out.println(levizjet.peek());
             return true;
         }        
         return false;

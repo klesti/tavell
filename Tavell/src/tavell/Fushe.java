@@ -70,7 +70,7 @@ public class Fushe extends Canvas {
         Program.strategy.show();
     }
     
-    @Override
+   @Override
     public void update(Graphics g)
     {
         g = Program.strategy.getDrawGraphics();
@@ -79,7 +79,7 @@ public class Fushe extends Canvas {
     }
     
     public void rifresko() {
-        update(getGraphics());
+        update(getGraphics());        
     }
     
     public void simulo(){
@@ -144,7 +144,8 @@ public class Fushe extends Canvas {
             l.fillo();        
             program.getPaneliLojtareve().getLojeRe().setEnabled(false);
             JOptionPane.showMessageDialog(program, "Rradhen e ka " +
-            l.getRadha().getLojtar().getEmri());            
+            l.getRadha().getLojtar().getEmri());
+            rifresko();
         }
         
         public void hidhZaret() {
