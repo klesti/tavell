@@ -10,6 +10,7 @@ public class Tavell extends Loje {
     
     @Override
     public void vendosGuret () {
+        super.vendosGuret();
         KoleksionGuresh l1 = lojtaret[0].getNeLoje();
         KoleksionGuresh l2 = lojtaret[1].getNeLoje();
         Gur g;
@@ -58,12 +59,12 @@ public class Tavell extends Loje {
             }
             Gur g = stivat[nga].peek();
             
-            if (stivat[tek].size()==1 && stivat[tek].peek().getLojtari()!=g.getLojtari()) {
-                Main.sounds.playSound("hit.wav");
+            if (stivat[tek].size()==1 && stivat[tek].peek().getLojtari()!=g.getLojtari()) {                
                 g.vrit(stivat,tek);
-            } else {
-                Main.sounds.playSound("move.wav");
+                Main.sounds.playSound("hit.wav");
+            } else {                
                 g.leviz(stivat, tek);
+                Main.sounds.playSound("move.wav");
             }
             //Regjistro levizje
             if (zaret.eshteDopio()) {                

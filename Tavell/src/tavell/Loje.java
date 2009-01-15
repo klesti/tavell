@@ -94,6 +94,7 @@ abstract public class Loje {
     }
     
     public void vendosGuret () {
+        reset();
     }
     
     public void percaktoRradhenFillestare() {
@@ -108,7 +109,7 @@ abstract public class Loje {
             radha.setLojtar(lojtaret[1]);            
         }
     //radha hardcode
-        //radha.setLojtar(lojtaret[1]);
+        //radha.setLojtar(lojtaret[0]);
     }
 
     
@@ -128,8 +129,8 @@ abstract public class Loje {
         setKaFilluar(true);
         radha.setLojtar(null);
         radha.getZaret().reset();
-        lojtaret[0].setPike(0);
-        lojtaret[1].setPike(0);
+        //lojtaret[0].setPike(0);
+        //lojtaret[1].setPike(0);
         percaktoRradhenFillestare();
     }
     
@@ -164,9 +165,7 @@ abstract public class Loje {
                 //--Rasti kur bie dopio. Levizjet kryhen njera pas tjetres.                    
                 if(radha.getZaret().eshteDopio()){
                     for(int j=1;j<=radha.nrLevizjeTeMbetura();j++){
-                        //Nese pozicioni perfundimtar e kalon kufirin e lejueshem nderpritet cikli
-                        /*if((s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio() > 24 ||
-                           s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio() < 0) && aKaGureJashteKuadratitTeFundit(radha.getLojtar())) break;*/
+                        //Nese pozicioni perfundimtar e kalon kufirin e lejueshem nderpritet cikli                        
                         if(aEshteEMundurLevizja(s.getPozicioni(),s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio())){
                             levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+j*radha.getLojtar().getDrejtimi()*radha.getZaret().getVleraDopio());
                             i++;
@@ -177,19 +176,13 @@ abstract public class Loje {
                 //--Rasti kur nuk bie dopio
                 else {
                     for(int j=0;j<radha.nrLevizjeTeMbetura();j++){
-                        //Nese pozicioni perfundimtar e kalon kufirin e lejueshem nderpritet cikli
-                        /*if((s.getPozicioni()+radha.getLojtar().getDrejtimi()*radha.getLevizjetERradhes()[j] > 24 ||
-                           s.getPozicioni()+radha.getLojtar().getDrejtimi()*radha.getLevizjetERradhes()[j] < 0) && aKaGureJashteKuadratitTeFundit(radha.getLojtar())) break;*/
+                        //Nese pozicioni perfundimtar e kalon kufirin e lejueshem nderpritet cikli                       
                         if(aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+radha.getLojtar().getDrejtimi()*radha.getLevizjetERradhes()[j])) {
                             levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getLojtar().getDrejtimi()*radha.getLevizjetERradhes()[j]);
                             i++;
                         }
                     }
-                    //Kontrollo per levizjen shume e dy zareve
-                    /*if(((s.getPozicioni()+radha.getLojtar().getDrejtimi()*sa > 24 ||
-                           s.getPozicioni()+radha.getLojtar().getDrejtimi()*sa < 0) && aKaGureJashteKuadratitTeFundit(radha.getLojtar()))) {  
-                           System.out.println("u fut");
-                    }*/
+                    //Kontrollo per levizjen shume e dy zareve                    
                     if(aEshteEMundurLevizja(s.getPozicioni(), s.getPozicioni()+radha.getLojtar().getDrejtimi()*sa)){
                             levizjetTmp[i]=getFundiLevizjes(g.getLojtari(),s.getPozicioni()+radha.getLojtar().getDrejtimi()*sa);
                             i++;
@@ -203,9 +196,12 @@ abstract public class Loje {
     
     //TODO: Llogjikoje me laps e leter pastaj perfundoje. Per guret qe s'jane ne kuadratin e fundit ecen.
     public boolean aEshteEMundurLevizja(int nga, int tek){
-        //--I rivendos vlerat ne rast se tek del jashte kufijve 1 dhe 24
+        //--I rivendos vlerat ne rast se tek del jashte kufijve 1 dhe 24        
         int hapi = getHapi(nga,tek);
-        if((tek!=25 && radha.getLojtar().getNumri()==1) || tek!=26) tek = getTek(tek);
+        if((tek==25 && radha.getLojtar().getNumri()==1) || tek==26){
+            //Mos bej asgje
+        }
+        else tek = getTek(tek);
         //--Fund vendos vlerat
         int vlera1;
         int vlera2;
@@ -230,57 +226,7 @@ abstract public class Loje {
             }
         }
         else return false;
-    }
-    
-    public boolean aEshteEMundurLevizja2(int nga, int tek){
-        //tek=getTek(tek);        
-        if(!aPoLevizMbrapsht(nga, tek))
-        {            
-            int hapi = getHapi(nga, tek);
-            int vlera1,vlera2;            
-            if (radha.getZaret().eshteDopio()) {
-                vlera1 = radha.getZaret().getVleraDopio();
-                vlera2 = vlera1;
-            } else {
-                vlera1= radha.getZaret().getVlera1();
-                vlera2= radha.getZaret().getVlera2();
-            }
-
-            if(aKaGureJashteKuadratitTeFundit(radha.getLojtar()) || !(tek>24 || tek<1)) {
-                if(aTeLejojneZaret(hapi, vlera1, vlera2) &&
-                    (aEshteBoshStiva(tek) || aKaNjeGurKundershtar(tek) || aJaneGureTeLojtarit(tek)) &&
-                    !aKaPengesa(nga,tek)) 
-                        return true;
-                else return false;
-            }
-            else {        
-                    //if(getStivat()[nga].size()>0 && !kaGureMajtas(getStivat()[nga].peek(),hapi)) tek=getFundiLevizjes(radha.getLojtar(), tek);
-                //return (aTeLejojneZaret(hapi, vlera1, vlera2) && kaGureMajtas(getStivat()[nga].peek(), hapi));
-                
-                /*
-                 * --RASTI KUR HA GURE
-                 */
-                  if(getStivat()[nga].size()<0) return false;
-                    Gur g = getStivat()[nga].peek();
-                //--Rasti kur nuk ka gure majtas
-                if (getStivat()[nga].size()>0 && !kaGureMajtas(getStivat()[nga].peek()))  {                   
-                   /* if (hapi!=vlera1 && hapi!=vlera2 && hapi!=vlera1+vlera2) {
-                        if (vlera1>vlera2)
-                            hapi = vlera1;
-                        else 
-                            hapi = vlera2;
-                    }*/    
-                    return(g.getPips()<=hapi);
-                }
-                //--Rasti kur ka gure majtas
-                else {
-                   
-                    return (g.getPips()==hapi);
-                }
-           }
-        }
-        return false;
-    }
+    }    
     
     protected  boolean aKaGureJashteKuadratitTeFundit(Lojtar l){
         if(l.getNumri()==1){
@@ -330,7 +276,7 @@ abstract public class Loje {
     
     protected  boolean aJaneGureTeLojtarit(int pozicioni){
         if(pozicioni>24 || pozicioni<1) return true;
-        return (this.getStivat()[pozicioni].peek().getLojtari().getNumri() == radha.getLojtar().getNumri());
+        return (this.getStivat()[pozicioni].size()>0 && this.getStivat()[pozicioni].peek().getLojtari().getNumri() == radha.getLojtar().getNumri());
     }
     
     protected boolean aKaPengesa (int nga, int tek){
@@ -402,5 +348,20 @@ abstract public class Loje {
         return (hapi==radha.getZaret().getVlera1() || hapi==radha.getZaret().getVlera2());
     }
     
+    public void reset(){
+        lojtaret[0].getNeLoje().removeAllElements();
+        lojtaret[0].getJashteLoje().removeAllElements();
+        lojtaret[0].getTePerfunduar().removeAllElements();
+        lojtaret[0].mbushNeLoje();
+        
+        lojtaret[1].getNeLoje().removeAllElements();
+        lojtaret[1].getJashteLoje().removeAllElements();
+        lojtaret[1].getTePerfunduar().removeAllElements();
+        lojtaret[1].mbushNeLoje();
+        
+        for(int i=0;i<27;i++){
+            getStivat()[i].removeAllElements();
+        }
+    }
 }
 

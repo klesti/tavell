@@ -10,6 +10,7 @@ public class Qyl extends Loje {
 
     @Override
     public void vendosGuret () {
+        super.vendosGuret();
         Gur g;
         Lojtar l1 = lojtaret[0];
         Lojtar l2 = lojtaret[1];

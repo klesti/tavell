@@ -19,7 +19,7 @@ public class Program extends JFrame{
     private Lojtar lojtari2;
     private AvatarImage avatar1;
     private AvatarImage avatar2;
-    private Loje loja;
+    public static Loje loja;
     private JPanel panel;
     private PaneliLojtareve paneliLojtareve;
     public static Fushe fusha;

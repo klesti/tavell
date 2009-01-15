@@ -209,11 +209,10 @@ public class Gur
     }
     
     private void vizatoHolleBardhe(Graphics g, ImageObserver obs){
-        g.setColor(Color.white);        
+        g.setColor(new Color(245,245,245));        
         g.fill3DRect(koordinata.x+2, koordinata.y-1, 46, 13, true);
         g.setColor(new Color(82,82,189));
         g.drawLine(koordinata.x+4, koordinata.y+2, koordinata.x+44, koordinata.y+2);
     }
     
 }
-

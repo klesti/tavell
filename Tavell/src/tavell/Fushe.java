@@ -22,7 +22,8 @@ public class Fushe extends Canvas {
     private SpriteCache sprites;
     public static final String background = "background.png";
     private Loje l;
-    private Program program;
+    public Program program;
+    public static Listener listener;
     
     public Fushe(Lojtar l1, Lojtar l2, Loje l, Program p) {        
         this.l = l;
@@ -32,7 +33,8 @@ public class Fushe extends Canvas {
         l.getRadha().setLojtar(l1);
         sprites = new SpriteCache();    
         setBounds(0,0,WIDTH,HEIGHT);
-        addMouseListener(new Listener());
+        listener  = new Listener();
+        addMouseListener(listener);
         //simulo();
     }
     
@@ -90,6 +92,22 @@ public class Fushe extends Canvas {
         
         for (int i = 0; i < 3; i++) {
            s[8].peek().leviz(s, 2);
+        }
+        /*for (int i=0;i<5;i++) {
+        s[6].peek().leviz(s,25);
+        }*/
+    }
+    
+    public void simulo2(){
+        KoleksionGuresh[] s = l.getStivat();
+        s[1].peek().leviz(s, 20);
+        s[1].peek().leviz(s, 20);
+        for (int i=0;i<5;i++) {
+            s[12].peek().leviz(s, 22);
+        }
+        
+        for (int i = 0; i < 3; i++) {
+           s[17].peek().leviz(s, 23);
         }
         /*for (int i=0;i<5;i++) {
         s[6].peek().leviz(s,25);

@@ -98,6 +98,10 @@ public class Lojtar {
         if(this.numri==1) return -1;
         else return +1;
     }
+    
+    public void shtoPike(int pike){
+        this.pike+=pike;
+    }
 
 }
 

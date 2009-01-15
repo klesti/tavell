@@ -103,7 +103,7 @@ public class PaneliLojtareve extends JPanel{
         ngarko = new JButton("Ngarko");
         dorezohu = new JButton("Dorezohu");
         paraqitja = new JCheckBox("Paraqite te vizatuar");
-        
+        paraqitja.setSelected(Program.llojiParaqitjes);
         paraqitja.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -120,6 +120,44 @@ public class PaneliLojtareve extends JPanel{
                 fusha.rifresko();
                 JOptionPane.showMessageDialog(paneliButonave, "Rradhen e ka " +
                         l.getRadha().getLojtar().getEmri());
+            }
+        });
+        
+        dorezohu.addActionListener(new ActionListener() {
+
+            @SuppressWarnings("static-access")
+            public void actionPerformed(ActionEvent e) {
+                if(JOptionPane.showConfirmDialog(fusha, "Jeni te sigurt qe doni te dorezoheni?", "Dorezohu!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION) {
+                    Lojtar lojtariQeFitonPike;
+                    if(Program.loja.aKaGureJashteKuadratitTeFundit(Program.loja.radha.getLojtar())){
+                        if(Program.loja.radha.getLojtar().getNumri()==1) {
+                            lojtariQeFitonPike = Program.loja.lojtaret[1];
+                            lojtariQeFitonPike.shtoPike(2);
+                        }
+                        else{
+                            lojtariQeFitonPike = Program.loja.lojtaret[0];
+                            lojtariQeFitonPike.shtoPike(2);
+                        }                            
+                    }
+                    else {
+                        if(Program.loja.radha.getLojtar().getNumri()==1) {
+                            lojtariQeFitonPike = Program.loja.lojtaret[1];
+                            lojtariQeFitonPike.shtoPike(1);
+                        }                            
+                        else{ 
+                            lojtariQeFitonPike = Program.loja.lojtaret[0];
+                            lojtariQeFitonPike.shtoPike(1);
+                        }
+                    }
+                    if(lojtariQeFitonPike.getPike()>=Program.loja.getPiket()) {
+                        JOptionPane.showMessageDialog(fusha, "Loja u fitua nga "+lojtariQeFitonPike.getEmri()+"!","Loja Mbaroi!",JOptionPane.INFORMATION_MESSAGE);
+                        System.exit(0);
+                    }
+                    else {                        
+                        Program.fusha.listener.filloLojen();
+                        Program.loja.vendosGuret();
+                    }
+                }                
             }
         });
         
