@@ -77,8 +77,8 @@ public class KoleksionGureshTePerfunduar extends KoleksionGuresh {
     
     @Override
     public void paraqit(Graphics g,ImageObserver obs) {
-        super.paraqit(g, obs);
         ngjyros(g,ngjyre);
+        super.paraqit(g, obs);        
     }
   
 

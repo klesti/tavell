@@ -27,6 +27,5 @@ public class Qyl extends Loje {
     public boolean leviz(int nga, int tek) {
         return false;
     }
-
 }
 

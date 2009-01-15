@@ -135,6 +135,9 @@ public class RadheLevizje {
                 this.levizjetERradhes[1] = 0;
             }
         }
+        if (!loja.kaLevizjeTeLejuara()) {
+            loja.ndryshoRradhe();
+        }
         if (zaret.uLuajten()) {
             zaret.reset();
             loja.ndryshoRradhe();
