@@ -119,6 +119,12 @@ public class Gur
                 if (x%70==0 || x==p0.x) {
                      getKoordinata().x = x;
                      getKoordinata().y = y;
+                     //Vonesë prej 15 milisec për animimin
+                    try {
+                        Thread.sleep(15);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Gur.class.getName()).log(Level.SEVERE, null, ex);
+                    }                     
                      Program.fusha.rifresko();
                 }
             }
