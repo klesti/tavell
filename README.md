@@ -11,4 +11,4 @@ duke qenë se është ndërtuar duke përdorur UML në fazat e para. Konkretisht
 
 Folderi tavell përmban projektin NetBeans për lojën Tavëll
 
-Folderi TavellUML përmban projektin Netbeans për diagramat UML
+Folderi TavellUML përmban projektin Visual Paradigm për diagramat UML si dhe imazhet e eksportuara te diagramave
